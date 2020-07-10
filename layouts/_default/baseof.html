@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+{{ partial "head.html" . }}
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+    {{ partial "header.html" . }}
+
+    {{ block "main" . }}
+    {{ end }}
+    </div>
+</body>
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<script>
+  feather.replace()
+</script>
+</html>

@@ -1,0 +1,56 @@
+{{ define "main" }}
+<section id="about">
+  {{ if isset .Site.Params "description" }}
+    {{ .Site.Param.description}}
+  {{ end }}
+  {{ if isset .Site.Params "social" }}
+      <p>Find me on
+      {{ $length := (len .Site.Params.social) }}
+      {{ range $index, $elem := .Site.Params.social}}
+        <a class="icon" target="_blank" rel="noopener" href="{{ $elem.link }}">
+          <i class="fab fa-{{ lower $elem.name }}"></i>
+        </a>
+        {{ if (lt (add $index 2) $length) }}
+          {{ print " , " }}
+        {{ else if (lt (add $index 1) $length) }}
+          {{ print " and " }}
+        {{ else }}
+          {{ print "."}}
+        {{ end }}
+      {{ end }}
+      </p>
+  {{ end }}
+  </section>
+
+  <section id="writing">
+    <!-- TODO: use built in mainSections parameter https://gohugo.io/functions/where/#mainsections -->
+    <span class="h1"><a href="{{ .Site.Params.mainSection | absURL }}">Writings</a></span>
+    {{ if (and (and (isset .Site.Params "tagsoverview") (eq .Site.Params.tagsOverview true)) (gt (len .Site.Taxonomies.tags) 0)) }}
+    <span class="h2">Topics</span>
+    <span class="widget tagcloud">
+      {{ $AllRegularPagesCount := len .Site.RegularPages }}
+      {{ range $elem := .Site.Taxonomies.tags.Alphabetical }}
+      <a style="font-size: {{ (add 0.5 (mul 5 (div (float $elem.Count) $AllRegularPagesCount))) }}rem;" href="{{ $elem.Page.Permalink }}">
+        {{- .Page.Title -}}
+      </a>
+      {{ end }}
+    </span>
+    <span class="h2">Most recent</span>
+    {{ end }}
+    <ul class="post-list">
+      {{ .Scratch.Set "count" 5 }}
+      {{ if isset .Site.Params "postsonhomepage" }}
+        {{ .Scratch.Set "count" .Site.Params.postsOnHomePage }}
+      {{ end }}
+      {{ range (first (.Scratch.Get "count") (sort .Site.RegularPages "Date" "desc")) }}
+        <li class="post-item">
+          <div class="meta"><time datetime="{{ time .Date }}" itemprop="datePublished">{{ .Date.Format .Site.Params.dateFormat }}</time></div>
+          <span><a class="meta" href="{{ .Permalink }}">{{ .Title }}</a></span>
+        </li>
+      {{ end }}
+    </ul>
+    {{ if (and (isset .Site.Params "showallpostsonhomepage") .Site.Params.showAllPostsOnHomePage) }}
+      {{ partial "pagination.html" . }}
+    {{ end }}
+  </section>
+  {{ end }}
