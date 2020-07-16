@@ -37,6 +37,20 @@
     </span>
     <span class="h2">Most recent</span>
     {{ end }}
+    
+    {{ if (and (isset .Site.Params "showallpostsonhomepage") .Site.Params.showAllPostsOnHomePage) }}
+    <ul class="post-list">
+      {{ range (sort .Paginator.Pages "Date" "desc") }}
+        <li class="post-item">
+          <div class="meta"><time datetime="{{ time .Date }}" itemprop="datePublished">{{ .Date.Format .Site.Params.dateFormat }}</time></div>
+          <span><a class="meta" href="{{ .Permalink }}">{{ .Title }}</a></span>
+        </li>
+      {{ end }}
+    </ul>
+
+    {{ partial "pagination.html" . }}
+
+    {{ else }}
     <ul class="post-list">
       {{ .Scratch.Set "count" 5 }}
       {{ if isset .Site.Params "postsonhomepage" }}
@@ -49,8 +63,6 @@
         </li>
       {{ end }}
     </ul>
-    {{ if (and (isset .Site.Params "showallpostsonhomepage") .Site.Params.showAllPostsOnHomePage) }}
-      {{ partial "pagination.html" . }}
     {{ end }}
   </section>
   {{ end }}

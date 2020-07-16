@@ -702,8 +702,20 @@
   #header-post a.icon:hover {
     color: #d480aa;
   }
-  #header-post ol {
+  #header-post nav ul {
+    display: block;
+    list-style-image: none;
+    list-style-position: outside;
     list-style-type: none;
+    padding-inline-start: 40px;
+  }
+  #header-post nav > ul {
+    margin-block-end: 1em;
+    margin-block-start: 1em;
+  }
+  #header-post nav ul li {
+    display: list-item;
+    margin-right: 0px;
   }
   #header-post ul {
     display: inline-block;
@@ -822,19 +834,26 @@
   #header-post #toc .toc-level-1 > .toc-link {
     display: none;
   }
-  #header-post #toc .toc-level-2 {
+  #header-post #toc nav > ul > li {
     color: #383838;
     font-size: 0.8rem;
   }
-  #header-post #toc .toc-level-2:before {
+  #header-post #toc nav > ul > li:before {
     color: #2bbc8a;
     content: "#";
+    margin-right: 8px;
   }
-  #header-post #toc .toc-level-3 {
+  #header-post #toc nav > ul > li > ul > li {
     color: #666;
     font-size: 0.7rem;
   }
-  #header-post #toc .toc-level-4 {
+  #header-post #toc nav > ul > li > ul > li:before {
+    color: #2bbc8a;
+    content: "·";
+    font-weight: bold;
+    margin-right: 3px;
+  }
+  #header-post #toc nav > ul > li > ul > li > ul > li {
     color: #525252;
     font-size: 0.4rem;
   }
