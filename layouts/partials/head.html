@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
-  {{- template "_internal/opengraph.html" . -}}
-  {{- template "_internal/twitter_cards.html" . -}}
+  {{ template "_internal/opengraph.html" . }}
+  {{ template "_internal/twitter_cards.html" . }}
   {{ template "_internal/google_analytics.html" . }}
   <link rel="stylesheet" href="{{ "/css/style.css" | absURL }}">
   {{ `
@@ -17,7 +17,7 @@
     <![endif]-->
   ` | safeHTML }}
 
-  {{- partial "favicon.html" . -}}
+  {{ partial "favicon.html" . }}
   {{ with .OutputFormats.Get "RSS" }}
     {{ printf `<link href="%s" rel="%s" type="%s" title="%s" />` .Permalink .Rel .MediaType.Type $.Site.Title | safeHTML }}
   {{ end }}
