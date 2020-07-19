@@ -2,16 +2,15 @@
 <html lang="{{ .Site.LanguageCode }}">
 {{ partial "head.html" . }}
 <body class="max-width mx-auto px3 ltr">
-  {{ if .IsPage }}
-  {{ partial "page_nav.html" . }}
-  {{ end }}
   <div class="content index py4">
+
     {{ partial "header.html" . }}
 
     {{ block "main" . }}
     {{ end }}
 
     {{ partial "footer.html" . }}
+
   </div>
 </body>
 

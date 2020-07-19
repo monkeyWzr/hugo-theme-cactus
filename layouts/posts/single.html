@@ -1,60 +1,79 @@
-{{ define "main" }}
-<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
-    <h1 class="posttitle" itemprop="name headline">
-      {{ .Title }}
-    </h1>
-    <div class="meta">
-      {{ if (or (isset .Site "author") (isset .Site "title"))}}
-      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name">
-          {{ if isset .Site "author" }}
-            {{ .Site.Author }}
-          {{ else if isset .Site "title" }}
-            {{ .Site.Title }}
-          {{ end }}
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+{{ partial "head.html" . }}
+<body class="max-width mx-auto px3 ltr">
+  <div class="content index py4">
+
+  {{ partial "page_nav.html" . }}
+
+  <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <header>
+      <h1 class="posttitle" itemprop="name headline">
+        {{ .Title }}
+      </h1>
+      <div class="meta">
+        {{ if (or (isset .Site "author") (isset .Site "title"))}}
+        <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <span itemprop="name">
+            {{ if isset .Site "author" }}
+              {{ .Site.Author }}
+            {{ else if isset .Site "title" }}
+              {{ .Site.Title }}
+            {{ end }}
+          </span>
         </span>
-      </span>
-      {{ end }}
-      <div class="postdate">
-        <time datetime="{{ .Date }}" itemprop="datePublished">{{ .Date.Format .Site.Params.dateFormat }}</time>
-         {{ if (and .Site.Params.show_updated (ne .Lastmod .Date)) }}
-          (Updated: <time datetime="{{ .Lastmod }}" itemprop="dateModified">{{ .Lastmod.Format .Site.Params.dateFormat }}</time>)
+        {{ end }}
+        <div class="postdate">
+          <time datetime="{{ .Date }}" itemprop="datePublished">{{ .Date.Format .Site.Params.dateFormat }}</time>
+          {{ if (and .Site.Params.show_updated (ne .Lastmod .Date)) }}
+            (Updated: <time datetime="{{ .Lastmod }}" itemprop="dateModified">{{ .Lastmod.Format .Site.Params.dateFormat }}</time>)
+          {{ end }}
+        </div>
+        {{ if gt .Params.categories 0 }}
+        <div class="article-category">
+            <i class="fas fa-archive"></i>
+            {{ range $index, $value := .Params.categories }}
+            {{ if gt $index 1 }} {{ print ", " }} {{ end }}
+            <a class="category-link" href="{{ "/categories/" | relLangURL }}{{ $value | urlize }}">{{ $value }}</a>
+            {{ end }}
+        </div>
+        {{ end }}
+        {{ if gt .Params.tags 0 }}
+        <div class="article-tag">
+            <i class="fas fa-tag"></i>
+            {{ range $index, $value := .Params.tags }}
+            {{ if gt $index 1 }} {{ print ", " }} {{ end }}
+            <a class="tag-link" href="{{ "/tags/" | relLangURL }}{{ $value | urlize }}" rel="tag">{{ $value }}</a>
+            {{ end }}
+        </div> 
         {{ end }}
       </div>
-      {{ if gt .Params.categories 0 }}
-      <div class="article-category">
-          <i class="fas fa-archive"></i>
-          {{ range $index, $value := .Params.categories }}
-          {{ if gt $index 1 }} {{ print ", " }} {{ end }}
-          <a class="category-link" href="{{ "/categories/" | relLangURL }}{{ $value | urlize }}">{{ $value }}</a>
-          {{ end }}
-      </div>
-      {{ end }}
-      {{ if gt .Params.tags 0 }}
-      <div class="article-tag">
-          <i class="fas fa-tag"></i>
-          {{ range $index, $value := .Params.tags }}
-          {{ if gt $index 1 }} {{ print ", " }} {{ end }}
-          <a class="tag-link" href="{{ "/tags/" | relLangURL }}{{ $value | urlize }}" rel="tag">{{ $value }}</a>
-          {{ end }}
-      </div> 
+    </header>
+
+  {{ with .Resources.ByType "image" }}
+    <div class="article-gallery">
+      {{ range $index, $value := . }}
+      <a class="gallery-item" href="{{ .RelPermalink }}" rel="gallery_{{ $index }}">
+          <img src="{{ .RelPermalink }}" itemprop="image" />
+      </a>
       {{ end }}
     </div>
-  </header>
+  {{ end }}
+    <div class="content" itemprop="articleBody">
+      {{ .Content}}
+    </div>
+  </article>
 
-{{ with .Resources.ByType "image" }}
-  <div class="article-gallery">
-    {{ range $index, $value := . }}
-    <a class="gallery-item" href="{{ .RelPermalink }}" rel="gallery_{{ $index }}">
-        <img src="{{ .RelPermalink }}" itemprop="image" />
-    </a>
-    {{ end }}
+  <!-- TODO: Comments -->
+
+  {{ partial "page_nav_mobile.html" . }}
+
+  {{ partial "footer.html" . }}
+
   </div>
-{{ end }}
-  <div class="content" itemprop="articleBody">
-    {{ .Content}}
-  </div>
-</article>
-<!-- TODO: Ccomments -->
-{{ end }}
+</body>
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/js/main.js"></script>
+</html>
