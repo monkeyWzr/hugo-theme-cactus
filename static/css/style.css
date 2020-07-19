@@ -831,6 +831,7 @@
   #header-post #toc a:hover {
     color: #d480aa;
   }
+  /* TODO: handle title level */
   /* #header-post #toc .toc-level-1 > .toc-link {
     display: none;
   } */
@@ -1010,6 +1011,7 @@
   #footer-post #toc-footer a:hover {
     color: #d480aa;
   }
+  /* TODO: handle title level */
   /* #footer-post #toc-footer #TableOfContents > ul > li > a {
     display: none;
   } */

@@ -45,7 +45,8 @@
     </span>
     <br/>
     <div id="share" style="display: none">
-      <!-- TODO: share -->
+      {{ .Scratch.Set "icon_class_name" ""}}
+      {{ partial "share.html" . }}
     </div>
     <div id="toc">
       {{ .TableOfContents }}
