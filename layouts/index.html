@@ -43,7 +43,7 @@
       {{ range (sort .Paginator.Pages "Date" "desc") }}
         <li class="post-item">
           <div class="meta"><time datetime="{{ time .Date }}" itemprop="datePublished">{{ .Date.Format .Site.Params.dateFormat }}</time></div>
-          <span><a class="meta" href="{{ .Permalink }}">{{ .Title }}</a></span>
+          <span><a href="{{ .Permalink }}">{{ if .Title }} {{- .Title -}} {{ else }} {{- print "Untitled" -}}{{ end }}</a></span>
         </li>
       {{ end }}
     </ul>
@@ -59,7 +59,7 @@
       {{ range (first (.Scratch.Get "count") (sort .Site.RegularPages "Date" "desc")) }}
         <li class="post-item">
           <div class="meta"><time datetime="{{ time .Date }}" itemprop="datePublished">{{ .Date.Format .Site.Params.dateFormat }}</time></div>
-          <span><a class="meta" href="{{ .Permalink }}">{{ .Title }}</a></span>
+          <span><a href="{{ .Permalink }}">{{ if .Title }} {{- .Title -}} {{ else }} {{- print "Untitled" -}}{{ end }}</a></span>
         </li>
       {{ end }}
     </ul>
