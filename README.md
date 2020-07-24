@@ -164,7 +164,7 @@ Comments is disabled by default. Enable comments in your `.Site.Params`.
 ```
 
 You can also enable/disable comments per post. in your posts' front matter, add:
-```toml
+```yaml
 comments: true
 ```
 
@@ -230,7 +230,7 @@ Cactus supports mathjax. Just add `mathjax` option in your site config:
 ```
 
 You can also enable/disable mathjax per post. In your posts' front matter, add:
-```toml
+```yaml
 mathjax: true # or false
 ```
 
