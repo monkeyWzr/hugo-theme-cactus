@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>racket on Cactus theme example</title>
-    <link>https://www.takuzen.me/hugo-theme-cactus/tags/racket/</link>
+    <link>https://example.com/tags/racket/</link>
     <description>Recent content in racket on Cactus theme example</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>You</copyright>
     <lastBuildDate>Sat, 29 Feb 2020 09:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://www.takuzen.me/hugo-theme-cactus/tags/racket/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://example.com/tags/racket/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Racket notes</title>
-      <link>https://www.takuzen.me/hugo-theme-cactus/posts/2020-02-29-racket/</link>
+      <link>https://example.com/posts/2020-02-29-racket/</link>
       <pubDate>Sat, 29 Feb 2020 09:00:00 +0000</pubDate>
       
-      <guid>https://www.takuzen.me/hugo-theme-cactus/posts/2020-02-29-racket/</guid>
+      <guid>https://example.com/posts/2020-02-29-racket/</guid>
       <description>Basic #lang racket (provide (all-defined-out)) ;this is a comment (define s &amp;#34;hello&amp;#34;) (define x 3) (define y (+ x 2)) (define cube1 (lambda (x) (* x (* x x)))) (define cube2 (lambda (x) (* x x x))) (define (cube3 x) (* x x x)) (define (pow1 x y) (if (=y 0) 1 (* x (pow1 x (- y 1))))) ; currying (define pow2 (lambda (x) (lambda (y) (pow1 x y)))) List  Empty list: null  () doesn&amp;quot;t work for null but &#39;() does   build a list: (list e1 .</description>
     </item>
     

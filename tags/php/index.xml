@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>php on Cactus theme example</title>
-    <link>https://www.takuzen.me/hugo-theme-cactus/tags/php/</link>
+    <link>https://example.com/tags/php/</link>
     <description>Recent content in php on Cactus theme example</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>You</copyright>
     <lastBuildDate>Wed, 11 Jan 2017 18:39:17 +0000</lastBuildDate>
     
-	<atom:link href="https://www.takuzen.me/hugo-theme-cactus/tags/php/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://example.com/tags/php/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>php的闭包特性</title>
-      <link>https://www.takuzen.me/hugo-theme-cactus/posts/2017-01-11-php-lambada/</link>
+      <link>https://example.com/posts/2017-01-11-php-lambada/</link>
       <pubDate>Wed, 11 Jan 2017 18:39:17 +0000</pubDate>
       
-      <guid>https://www.takuzen.me/hugo-theme-cactus/posts/2017-01-11-php-lambada/</guid>
+      <guid>https://example.com/posts/2017-01-11-php-lambada/</guid>
       <description>闭包和匿名函数在PHP 5.3.0引入，并且PHP将两者视为相同的概念。闭包其实是伪装成函数的对象，它的实质其实是Closure实例。
 创建闭包非常简单：
 $c = function($name) { return sprintf(&amp;#34;Hello World! Hello %s!&amp;#34;, $name); }; echo $c(&amp;#39;PHP&amp;#39;); 使用use对闭包附加状态，多个参数使用,分隔：
@@ -28,10 +28,10 @@ class Bind { protected $name = &amp;#39;no name&amp;#39;; public $change; public
     
     <item>
       <title>composer中的autoload</title>
-      <link>https://www.takuzen.me/hugo-theme-cactus/posts/2016-11-05-php-composer-autoload/</link>
+      <link>https://example.com/posts/2016-11-05-php-composer-autoload/</link>
       <pubDate>Sat, 05 Nov 2016 02:42:06 +0000</pubDate>
       
-      <guid>https://www.takuzen.me/hugo-theme-cactus/posts/2016-11-05-php-composer-autoload/</guid>
+      <guid>https://example.com/posts/2016-11-05-php-composer-autoload/</guid>
       <description>composer的autoload可以轻松的实现php的自动加载。在composer.json中添加autoload字段即可。当前支持 PSR-0 PSR-4 classmap解析和files包含。官方推荐PSR-4标准（添加类时不需要重新生成加载器）。
 PSR-4 Under the psr-4 key you define a mapping from namespaces to paths, relative to the package root. When autoloading a class like Foo\\Bar\\Baz a namespace prefix Foo\\ pointing to a directory src/ means that the autoloader will look for a file named src/Bar/Baz.php and include it if present. Note that as opposed to the older PSR-0 style, the prefix (Foo\\) is not present in the file path.</description>
     </item>
