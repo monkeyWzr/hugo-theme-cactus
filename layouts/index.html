@@ -1,7 +1,7 @@
 {{ define "main" }}
   <section id="about">
   {{ if isset .Site.Params "description" }}
-    {{ .Site.Param.description}}
+    {{ .Site.Params.description }}
   {{ end }}
   {{ if isset .Site.Params "social" }}
       <p>Find me on
