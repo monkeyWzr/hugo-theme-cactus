@@ -12,7 +12,13 @@
     {{ partial "footer.html" . }}
 
   </div>
-  {{ template "_internal/google_analytics.html" . }}
+  {{ if .Site.GoogleAnalytics }}
+    {{ if .Site.Params.googleAnalyticsAsync }}
+      {{ template "_internal/google_analytics_async.html" . }}
+    {{ else }}
+      {{ template "_internal/google_analytics.html" . }}
+    {{ end }}
+  {{ end }}
 </body>
 
 <link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
