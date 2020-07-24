@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linux on Cactus theme example</title>
-    <link>https://example.com/tags/linux/</link>
+    <link>https://www.takuzen.me/cactus/tags/linux/</link>
     <description>Recent content in Linux on Cactus theme example</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>You</copyright>
     <lastBuildDate>Tue, 29 Nov 2016 21:08:52 +0000</lastBuildDate>
     
-	<atom:link href="https://example.com/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.takuzen.me/cactus/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>netfilter/iptables 笔记</title>
-      <link>https://example.com/posts/2016-11-29-iptables-usage/</link>
+      <link>https://www.takuzen.me/cactus/posts/2016-11-29-iptables-usage/</link>
       <pubDate>Tue, 29 Nov 2016 21:08:52 +0000</pubDate>
       
-      <guid>https://example.com/posts/2016-11-29-iptables-usage/</guid>
+      <guid>https://www.takuzen.me/cactus/posts/2016-11-29-iptables-usage/</guid>
       <description>netfilter 与 iptables netfilter是linux默认的防火墙，在2.4之后的版本正式进入内核。netfilter 使用四个表(Table)来存放控制信息包过滤处理的规则集。每张表由链(Chain)组成，每条链又包含了多条规则(rule)。
 iptables是用来编辑操作这些表的一个工具。iptables包中也包含了针对IPv6的工具ip6tables。
 四个表及其包含的链：
