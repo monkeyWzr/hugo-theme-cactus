@@ -226,7 +226,7 @@ Please also check [Configure RSS](https://gohugo.io/templates/rss/#configure-rss
 Cactus supports mathjax. Just add `mathjax` option in your site config:
 ```toml
 [params]
-  # mathjax = true  # not required
+  mathjax = true  # not required
 ```
 
 You can also enable/disable mathjax per post. In your posts' front matter, add:
