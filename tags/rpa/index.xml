@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>RPA on Cactus theme example</title>
+    <link>https://example.com/tags/rpa/</link>
+    <description>Recent content in RPA on Cactus theme example</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>You</copyright>
+    <lastBuildDate>Sat, 23 Nov 2019 09:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://example.com/tags/rpa/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>uipath ノート（三）- uipath orchestrator</title>
+      <link>https://example.com/posts/2019-11-23-uipath-orchestrator/</link>
+      <pubDate>Sat, 23 Nov 2019 09:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/2019-11-23-uipath-orchestrator/</guid>
+      <description>利用手順 Official doc: https://docs.uipath.com/robot/docs/from-orchestrator-and-the-orchestrator-settings-window
+マシンを追加 マシン側でマシン名とユーザ名を確認
+C:\Users\user&amp;gt;hostnameDESKTOP-ABCDE5FC:\Users\user&amp;gt;whoamidesktop-abcde5f\userC:\Users\user&amp;gt;追加完了後、マシンキーを取得する。
+ロボットを登録  Type: studio (開発用？) Domain/Username: 上記のユーザ名  ローカルのorchestrator設定 Uipath Robotを開き⇒orchestratorの設定で、上記のマシンキーを入力する。 orchestrator URLに https://platform.uipath.com/ を入力する. Invalid machine keyというエラーが出たら、下記のようなURLを試す：
+https://platform.uipath.com/&amp;lt;account name&amp;gt;/&amp;lt;service name&amp;gt;参照：Uipath orchestrator error : invalid machine key
+ロボットグループ(Environment)作成 プロジェクトをパブリッシュ(Publish) プロセスを追加 Automations　⇒　Processes
+ジョブ(Jobs)の実行 Monitoring　⇒　Jobs
+その他 再パブリッシュすると、Processが最新バージョンを使うため、変更作業が必要 Processes　⇒　More Options　⇒　View Process　⇒　最新のバージョンに切り替える
+ジョブの停止  停止(Stop)：必ずワークフロー内で「停止すべきか確認(Should Stop)」アクティビティを使用する 強制終了(Kill)：処理中の内容に関わらず、ジョブを停止する  アクティブなジョブは削除できない パラメーター変更の優先順位 ジョブ (Jobs) -&amp;gt; プロセス (Processes) -&amp;gt; パッケージ(UiPath Studio)</description>
+    </item>
+    
+    <item>
+      <title>uipath ノート（二）- Best Practice</title>
+      <link>https://example.com/posts/2019-11-18-uipath-best-practice/</link>
+      <pubDate>Mon, 18 Nov 2019 09:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/2019-11-18-uipath-best-practice/</guid>
+      <description>時間をかけて各ワークフローに適したレイアウトを選択しましょう。   メイン: フローチャートまたはステートマシン
+  ビジネスロジック: フローチャート
+  UI インタラクション: シーケンス
+  フローチャートを使用することで、入れ子状の IF を回避
+  プロセスを小さなワークフローに分割しましょう。   分割したものを個別に開発、テスト
+  ワークフローの再利用
+  分割ファイルで作業することによる、より効率的な共同作業
+  必ず例外を処理しましょう。   例外が発生しやすいワークフローを [Try Catch (トライキャッチ)] ブロックに配置
+  外部から呼び出されたワークフローでも同様
+  リカバリシーケンスの設定
+  ワークフローを読みやすいものにしましょう。   すべてのコンポーネントにわかりやすい名前を選択
+  注記やコメントの使用
+  リアルタイムの実行状況のログ取得
+  環境設定を Config ファイルに格納
+  不要になったアプリケーションを終了させることで、常にクリーンな状態を維持しましょう。 </description>
+    </item>
+    
+    <item>
+      <title>uipath ノート（一）</title>
+      <link>https://example.com/posts/2019-10-27-uipath/</link>
+      <pubDate>Sun, 27 Oct 2019 09:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/2019-10-27-uipath/</guid>
+      <description>変数  Int32 String Boolean GenericValue　参照   UiPath Studio には GenericValue 変数の自動変換メカニズムがあり、式を正しく定義することで、目的の結果を得ることができます。式の最初の要素は、Studio から操作するガイドラインとして使用されることを考慮してください。例えば、2 つの GenericValue 変数を追加し、式の最初の変数が String として定義されてた場合、最初に代入された値を元に 2 つの値を結合し、文字列となります。 Integer として定義した場合の結果は、合計の値となります。
+  Array DataTime DataTable  .Net 変数型を参照して探す方法
+アクティビティ レイアウトダイアグラム  シーエンス：　より高度で複雑な自動化に向こう フローチャート：　シンプルな自動化プロジェクトに適している ステートマシン Global Exception Handler (グローバル例外ハンドラー)   参照：https://docs.uipath.com/studio/lang-ja/docs/workflow-design
+ 選択肢  条件分岐(If)：　シーケンス用条件分岐 フロー条件分岐(flow desicion)：　フローチャート用条件分岐 フロースイッチ (Flow Switch)  繰り返し  繰り返し（前判定）(While) 繰り返し（後判定）(Do While) 繰り返し（コレクションの各要素）(For Each)  データ操作  CSVを読み込み(Read CSV)  オプションにエンコーディングを指定できる（日本語データがある場合、&amp;quot;SHIFT-JIS&amp;quot;を指定する） 列名を含める(IncludeColumnNames)を指定できる 出力タイプ：System.</description>
+    </item>
+    
+  </channel>
+</rss>

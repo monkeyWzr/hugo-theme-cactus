@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>life on Cactus theme example</title>
+    <link>https://example.com/categories/life/</link>
+    <description>Recent content in life on Cactus theme example</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>You</copyright>
+    <lastBuildDate>Sat, 22 Oct 2016 16:56:54 +0000</lastBuildDate>
+    
+	<atom:link href="https://example.com/categories/life/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>幸せ</title>
+      <link>https://example.com/posts/2016-10-22-z/</link>
+      <pubDate>Sat, 22 Oct 2016 16:56:54 +0000</pubDate>
+      
+      <guid>https://example.com/posts/2016-10-22-z/</guid>
+      <description>:-)
+Look at the stars
+抬头仰望满天繁星
+Look how they shine for you
+看它们为你绽放着 闪烁不息
+And everything you do
+而你的一颦一举
+Yeah&amp;rsquo; they were all Yellow
+却满含胆怯和羞意
+I came along
+我追随着你的气息
+I wrote a song for you
+为你写下一首歌曲
+And all the things you do
+回想着你的所有举动和笑意
+it was called Yellow
+并用Yellow为这首歌命名
+So then I took my turn
+我耗尽心力
+Oh what a thing to have done
+用行动表达我的爱意
+And it was all Yellow
+噢这过程充满不安羞怯和点滴暖意
+Your skin</description>
+    </item>
+    
+  </channel>
+</rss>

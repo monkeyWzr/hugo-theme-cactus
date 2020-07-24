@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SML on Cactus theme example</title>
+    <link>https://example.com/tags/sml/</link>
+    <description>Recent content in SML on Cactus theme example</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>You</copyright>
+    <lastBuildDate>Mon, 30 Dec 2019 09:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://example.com/tags/sml/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Standard ML notes</title>
+      <link>https://example.com/posts/2019-12-30-standardml-notes/</link>
+      <pubDate>Mon, 30 Dec 2019 09:00:00 +0000</pubDate>
+      
+      <guid>https://example.com/posts/2019-12-30-standardml-notes/</guid>
+      <description>Basics Comments (* SML comment *)Variable bindings and Expressions val x = 34;(* static environment: x : int *)(* dynamic environment: x --&amp;gt; 34 *)val y = x + 1;(* Use tilde character instead of minus to reprsent negation *)val z = ~1;(* Integer Division *)val w = y div xStrings:
+(* `\n`のようなエスケープシーケンスが利用できる *)val x = &amp;quot;hello\n&amp;quot;; (* 文字列の連結には&#39;^&#39;を使う *)val y = &amp;quot;hello &amp;quot; ^ &amp;quot;world&amp;quot;;An ML program is a sequence of bindings.</description>
+    </item>
+    
+  </channel>
+</rss>
