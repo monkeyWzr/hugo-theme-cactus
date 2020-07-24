@@ -48,8 +48,8 @@
     {{ if (isset .Site.Params "showallpostsonhomepage") }}
       {{ $showAllPostsOnHomePage = .Site.Params.ShowAllPostsOnHomePage }}
     {{ end }}
-    {{ if $showAllPostsOnHomePage }}
     {{ $dataFormat := .Site.Params.dateFormat | default "2006-01-02" }}
+    {{ if $showAllPostsOnHomePage }}
     <ul class="post-list">
       {{ range (sort .Paginator.Pages "Date" "desc") }}
         <li class="post-item">
