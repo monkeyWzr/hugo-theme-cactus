@@ -2,6 +2,8 @@
 
 A hugo theme for personal blog. Fork from hexo theme [cactus](https://github.com/probberechts/hexo-theme-cactus) created by @probberechts.
 
+[Live demo on github pages](https://www.takuzen.me/hugo-theme-cactus/).
+
 Some works are still in progress. See [TODOS](#todos) below.
 
 ## Install
