@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>JavaScript on Cactus theme example</title>
-    <link>https://example.com/tags/javascript/</link>
+    <link>https://www.takuzen.me/hugo-theme-cactus/tags/javascript/</link>
     <description>Recent content in JavaScript on Cactus theme example</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>You</copyright>
     <lastBuildDate>Sun, 10 Nov 2019 09:00:00 +0000</lastBuildDate>
     
-	<atom:link href="https://example.com/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.takuzen.me/hugo-theme-cactus/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>JavaScript URI エンコーディング</title>
-      <link>https://example.com/posts/2019-11-10-encodeuricomponent/</link>
+      <link>https://www.takuzen.me/hugo-theme-cactus/posts/2019-11-10-encodeuricomponent/</link>
       <pubDate>Sun, 10 Nov 2019 09:00:00 +0000</pubDate>
       
-      <guid>https://example.com/posts/2019-11-10-encodeuricomponent/</guid>
+      <guid>https://www.takuzen.me/hugo-theme-cactus/posts/2019-11-10-encodeuricomponent/</guid>
       <description>まとめ encodeURI()とencodeURIComponent()はRFC 2396準拠である。 encodeURI() は完全な URI を表すのに必要な文字 (Reserved Characters) はエンコードしません。 また、予約されていないが &amp;ldquo;そのまま&amp;rdquo; URI に使用できる(Unreserved Marks) 文字をエンコードしません。 encodeURIComponent() は &amp;ldquo;Unreserved Marks&amp;rdquo; 文字をエンコードしません。
 var set1 = &amp;#34;;,/?:@&amp;amp;=+$#&amp;#34;; // Reserved Characters var set2 = &amp;#34;-_.!~*&amp;#39;()&amp;#34;; // Unreserved Marks  console.log(encodeURI(set1)); // ;,/?:@&amp;amp;=+$ console.log(encodeURI(set2)); // -_.!~*&amp;#39;()  console.log(encodeURIComponent(set1)); // %3B%2C%2F%3F%3A%40%26%3D%2B%24 console.log(encodeURIComponent(set2)); // -_.!~*&amp;#39;() rfc2396 appendix-A https://tools.ietf.org/html/rfc2396#appendix-A
 URI-reference = [ absoluteURI | relativeURI ] [ &amp;quot;#&amp;quot; fragment ]absoluteURI = scheme &amp;quot;:&amp;quot; ( hier_part | opaque_part )relativeURI = ( net_path | abs_path | rel_path ) [ &amp;quot;?</description>
@@ -25,10 +25,10 @@ URI-reference = [ absoluteURI | relativeURI ] [ &amp;quot;#&amp;quot; fragment ]
     
     <item>
       <title>JavaScript Comparison operation at a glance</title>
-      <link>https://example.com/posts/2019-03-28-javascript-comparison/</link>
+      <link>https://www.takuzen.me/hugo-theme-cactus/posts/2019-03-28-javascript-comparison/</link>
       <pubDate>Thu, 28 Mar 2019 09:00:00 +0000</pubDate>
       
-      <guid>https://example.com/posts/2019-03-28-javascript-comparison/</guid>
+      <guid>https://www.takuzen.me/hugo-theme-cactus/posts/2019-03-28-javascript-comparison/</guid>
       <description>When given a scenario like:
 console.log(null &amp;gt; -1) //true It produces true, which makes me think null is treated as 0. But when I run:
 console.log(null == 0) // false console.log(null &amp;gt; 0) // false console.log(null &amp;lt; 0) // false They all output false!
@@ -38,10 +38,10 @@ The comparison x == y, where x and y are values, produces true or false. Such a 
     
     <item>
       <title>Js tips I can&#39;t remember</title>
-      <link>https://example.com/posts/2019-03-22-js-tips/</link>
+      <link>https://www.takuzen.me/hugo-theme-cactus/posts/2019-03-22-js-tips/</link>
       <pubDate>Fri, 22 Mar 2019 09:00:00 +0000</pubDate>
       
-      <guid>https://example.com/posts/2019-03-22-js-tips/</guid>
+      <guid>https://www.takuzen.me/hugo-theme-cactus/posts/2019-03-22-js-tips/</guid>
       <description>&lt;h2 id=&#34;__proto__-vs-prototype&#34;&gt;&lt;code&gt;__proto__&lt;/code&gt; VS &lt;code&gt;prototype&lt;/code&gt;&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;code&gt;__proto__&lt;/code&gt; is the actual object that is used in the lookup chain to resolve methods and others. &lt;code&gt;prototype&lt;/code&gt; is the object that is used to build &lt;code&gt;__proto__&lt;/code&gt; when creating an object with &lt;code&gt;new&lt;/code&gt;.&lt;/p&gt;
@@ -57,20 +57,20 @@ The comparison x == y, where x and y are values, produces true or false. Such a 
     
     <item>
       <title>Bind specific arguments of a function</title>
-      <link>https://example.com/posts/2019-03-08-es6-bind-trick/</link>
+      <link>https://www.takuzen.me/hugo-theme-cactus/posts/2019-03-08-es6-bind-trick/</link>
       <pubDate>Fri, 08 Mar 2019 09:00:00 +0000</pubDate>
       
-      <guid>https://example.com/posts/2019-03-08-es6-bind-trick/</guid>
+      <guid>https://www.takuzen.me/hugo-theme-cactus/posts/2019-03-08-es6-bind-trick/</guid>
       <description>To bind specific (nth) arguments of a function, we can write a decorator instead of using Function.bind():
 function func(p1, p2, p3) { console.log(p1, p2, p3); } // the binding starts after however many are passed in. function decorator(...bound_args) { return function(...args) { return func(...args, ...bound_args); }; } // bind the last parameter let f = decorator(&amp;#34;3&amp;#34;); f(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;); // a b 3  // bind the last two parameter let f2 = decorator(&amp;#34;2&amp;#34;, &amp;#34;3&amp;#34;) f2(&amp;#34;a&amp;#34;); // a 2 3 Even if we want to bind just the nth argument, we can do as follows:</description>
     </item>
     
     <item>
       <title>Object.assign() with accessor descriptor</title>
-      <link>https://example.com/posts/2019-03-08-object-assign-with-accessor-descriptor/</link>
+      <link>https://www.takuzen.me/hugo-theme-cactus/posts/2019-03-08-object-assign-with-accessor-descriptor/</link>
       <pubDate>Fri, 08 Mar 2019 09:00:00 +0000</pubDate>
       
-      <guid>https://example.com/posts/2019-03-08-object-assign-with-accessor-descriptor/</guid>
+      <guid>https://www.takuzen.me/hugo-theme-cactus/posts/2019-03-08-object-assign-with-accessor-descriptor/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign#Copying_accessors&#34;&gt;MDN docs:&lt;/a&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The Object.assign() method only copies enumerable and own properties from a source object to a target object. It uses [[Get]] on the source and [[Set]] on the target, so it will invoke getters and setters. Therefore it assigns properties versus just copying or defining new properties. This may make it unsuitable for merging new properties into a prototype if the merge sources contain getters.&lt;/p&gt;
@@ -99,10 +99,10 @@ function func(p1, p2, p3) { console.log(p1, p2, p3); } // the binding starts aft
     
     <item>
       <title>VueのNavigation Guards</title>
-      <link>https://example.com/posts/2019-01-19-vue-navigation-guards/</link>
+      <link>https://www.takuzen.me/hugo-theme-cactus/posts/2019-01-19-vue-navigation-guards/</link>
       <pubDate>Fri, 25 Jan 2019 09:00:00 +0000</pubDate>
       
-      <guid>https://example.com/posts/2019-01-19-vue-navigation-guards/</guid>
+      <guid>https://www.takuzen.me/hugo-theme-cactus/posts/2019-01-19-vue-navigation-guards/</guid>
       <description>Navigation guards are provided by vue-router. Three ways to hook:
  globally per-route in-component  NOTE:
  Params or query changes won&amp;rsquo;t trigger enter/leave navigation guards. You can either watch the $route object to react to those changes, or use the beforeRouteUpdate in-component guard. Make sure to always call the next function, otherwise the hook will never be resolved.  Global const router = new VueRouter({ ... }) // Before Guards router.</description>
@@ -110,10 +110,10 @@ function func(p1, p2, p3) { console.log(p1, p2, p3); } // the binding starts aft
     
     <item>
       <title>ES6について</title>
-      <link>https://example.com/posts/2019-01-18-es6/</link>
+      <link>https://www.takuzen.me/hugo-theme-cactus/posts/2019-01-18-es6/</link>
       <pubDate>Fri, 18 Jan 2019 16:00:00 +0000</pubDate>
       
-      <guid>https://example.com/posts/2019-01-18-es6/</guid>
+      <guid>https://www.takuzen.me/hugo-theme-cactus/posts/2019-01-18-es6/</guid>
       <description>&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
 &lt;p&gt;&lt;a href=&#34;https://github.com/lukehoban/es6features#readme&#34;&gt;https://github.com/lukehoban/es6features#readme&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;http://help.wtf/es6&#34;&gt;http://help.wtf/es6&lt;/a&gt;&lt;/p&gt;
