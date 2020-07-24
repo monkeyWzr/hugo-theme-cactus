@@ -2,7 +2,29 @@
 
 A hugo theme for personal blog. Fork from hexo theme [cactus](https://github.com/probberechts/hexo-theme-cactus) created by @probberechts.
 
+Some works are still in progress. See [TODOS](#todos) below.
+
 ## Install
+
+1. clone cactus in your hugo site's `themes` folder.
+```
+git clone https://github.com/monkeyWzr/cactus.git
+```
+
+2. change your theme to cactus in your site config
+```toml
+# config.toml
+
+theme = "cactus"
+```
+
+3. config your site. See [Config] or a [complete config sample]()
+4. test your site
+```
+hugo server
+```
+
+5. publish your site in your prefered way. See hugo's doc: [Hosting & Deployment](https://gohugo.io/hosting-and-deployment/)
 
 ## Config
 
@@ -40,6 +62,13 @@ weight = 4
 ```
 
 ### Homepage settings
+
+* description: description will be displayed in the homepage.
+```toml
+[params]
+
+  description = "Hugo is a general-purpose website framework. Technically speaking, Hugo is a static site generator. Unlike systems that dynamically build a page with each visitor request, Hugo builds pages when you create or update your content. Since websites are viewed far more often than they are edited, Hugo is designed to provide an optimal viewing experience for your website’s end users and an ideal writing experience for website authors."
+```
 
 * Show only the 5 most recent posts (default)
 
@@ -134,6 +163,13 @@ Comments is disabled by default. Enable comments in your `.Site.Params`.
     # engine = "disqus" # in progress
 ```
 
+You can also enable/disable comments per post. in your posts' front matter, add:
+```toml
+comments: true
+```
+
+The site config is ignored when `comments` option exists in front matter.
+
 The default engine is disqus. **By now only disqus is supported in cactus.** I will add more options sooner or later. See [Comments Alternatives](https://gohugo.io/content-management/comments/#comments-alternatives)
 
 Before using disqus, you need to register and get your [disqus shortname](https://help.disqus.com/en/articles/1717111-what-s-a-shortname). Assign your shortname in `.Site.disqusShortname`, or cactus will use `.Site.Title` by default.
@@ -185,7 +221,22 @@ The rss link will be `https://example.com/index.xml` assuming your `baseURL` is 
 
 Please also check [Configure RSS](https://gohugo.io/templates/rss/#configure-rss)
 
-## TODO
+### Mathjax
+
+Cactus supports mathjax. Just add `mathjax` option in your site config:
+```toml
+[params]
+  # mathjax = true  # not required
+```
+
+You can also enable/disable mathjax per post. In your posts' front matter, add:
+```toml
+mathjax: true # or false
+```
+
+The site config will be ignored when `mathjax` option exists in front matter.
+
+## TODOS
 
 - [ ] More comments engines
 - [x] RSS
@@ -194,6 +245,8 @@ Please also check [Configure RSS](https://gohugo.io/templates/rss/#configure-rss
 - [ ] Local Search
 - [ ] toc template
 - [ ] Customizable copyright year
+- [ ] gallery
+- [ ] expose [mathjax configuration](https://docs.mathjax.org/en/latest/web/configuration.html#web-configuration) 
 
 ## License
 
