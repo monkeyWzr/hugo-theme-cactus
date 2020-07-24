@@ -49,10 +49,11 @@
       {{ $showAllPostsOnHomePage = .Site.Params.ShowAllPostsOnHomePage }}
     {{ end }}
     {{ if $showAllPostsOnHomePage }}
+    {{ $dataFormat := .Site.Params.dateFormat | default "2006-01-02" }}
     <ul class="post-list">
       {{ range (sort .Paginator.Pages "Date" "desc") }}
         <li class="post-item">
-          <div class="meta"><time datetime="{{ time .Date }}" itemprop="datePublished">{{ .Date.Format .Site.Params.dateFormat }}</time></div>
+          <div class="meta"><time datetime="{{ time .Date }}" itemprop="datePublished">{{ .Date.Format $dataFormat }}</time></div>
           <span><a href="{{ .Permalink }}">{{ if .Title }} {{- .Title -}} {{ else }} {{- print "Untitled" -}}{{ end }}</a></span>
         </li>
       {{ end }}
@@ -68,7 +69,7 @@
       {{ end }}
       {{ range (first (.Scratch.Get "count") (sort .Site.RegularPages "Date" "desc")) }}
         <li class="post-item">
-          <div class="meta"><time datetime="{{ time .Date }}" itemprop="datePublished">{{ .Date.Format .Site.Params.dateFormat }}</time></div>
+          <div class="meta"><time datetime="{{ time .Date }}" itemprop="datePublished">{{ .Date.Format $dataFormat }}</time></div>
           <span><a href="{{ .Permalink }}">{{ if .Title }} {{- .Title -}} {{ else }} {{- print "Untitled" -}}{{ end }}</a></span>
         </li>
       {{ end }}
