@@ -1,7 +1,7 @@
 {{ if (not (isset .Site.Params "comments")) }}
   {{ .Scratch.Set "enable_comments" false }}
-{{ else if (isset . "comments") }}
-  {{ .Scratch.Set "enable_comments" .Comments }}
+{{ else if (isset .Params "comments") }}
+  {{ .Scratch.Set "enable_comments" .Params.comments }}
 {{ else if (isset .Site.Params.Comments "enabled") }}
   {{ .Scratch.Set "enable_comments" .Site.Params.Comments.Enabled }}
 {{ else }}
@@ -9,7 +9,6 @@
 {{ end }}
 
 {{ $enable_comments := .Scratch.Get "enable_comments" }}
-{{print $enable_comments }}
 {{ if $enable_comments }}
   {{ if (or (not (isset .Site.Params.Comments "engine")) (eq .Site.Params.Comments.Engine "disqus")) }}
     <div class="blog-post-comments">
