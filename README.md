@@ -8,9 +8,9 @@ Some works are still in progress. See [TODOS](#todos) below.
 
 ## Install
 
-1. clone cactus in your hugo site's `themes` folder.
+1. clone cactus to your hugo site's `themes` folder.
 ```
-git clone https://github.com/monkeyWzr/cactus.git
+git clone https://github.com/monkeyWzr/hugo-theme-cactus.git themes\cactus
 ```
 
 2. change your theme to cactus in your site config
@@ -70,6 +70,13 @@ weight = 4
 [params]
 
   description = "Hugo is a general-purpose website framework. Technically speaking, Hugo is a static site generator. Unlike systems that dynamically build a page with each visitor request, Hugo builds pages when you create or update your content. Since websites are viewed far more often than they are edited, Hugo is designed to provide an optimal viewing experience for your website’s end users and an ideal writing experience for website authors."
+```
+
+* set your main section (used as the link for the "writings" title on the homepage)
+
+```toml
+[params]
+  mainSection = "posts"
 ```
 
 * Show only the 5 most recent posts (default)
