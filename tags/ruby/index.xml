@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ruby on Cactus theme example</title>
-    <link>https://www.takuzen.me/cactus/tags/ruby/</link>
+    <link>https://www.takuzen.me/hugo-theme-cactus/tags/ruby/</link>
     <description>Recent content in ruby on Cactus theme example</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>You</copyright>
     <lastBuildDate>Thu, 08 Dec 2016 22:54:49 +0000</lastBuildDate>
     
-	<atom:link href="https://www.takuzen.me/cactus/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://www.takuzen.me/hugo-theme-cactus/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>ruby学习笔记</title>
-      <link>https://www.takuzen.me/cactus/posts/2016-12-08-ruby-notes/</link>
+      <link>https://www.takuzen.me/hugo-theme-cactus/posts/2016-12-08-ruby-notes/</link>
       <pubDate>Thu, 08 Dec 2016 22:54:49 +0000</pubDate>
       
-      <guid>https://www.takuzen.me/cactus/posts/2016-12-08-ruby-notes/</guid>
+      <guid>https://www.takuzen.me/hugo-theme-cactus/posts/2016-12-08-ruby-notes/</guid>
       <description>regular expressions =~是用于正则表达式的匹配操作符。返回匹配到的字符串位置或nil。
 &amp;#34;abcdef&amp;#34; =~ /d/ # return 3 &amp;#34;aaaaaa&amp;#34; =~ /d/ # return nil !和? The exclamation point (!, sometimes pronounced aloud as &amp;ldquo;bang!&amp;quot;) indicates something potentially destructive, that is to say, something that can change the value of what it touches.
 ruby&amp;gt; s1 = &amp;quot;forth&amp;quot;&amp;quot;forth&amp;quot;ruby&amp;gt; s1.chop! # This changes s1.&amp;quot;fort&amp;quot;ruby&amp;gt; s2 = s1.chop # This puts a changed copy in s2,&amp;quot;for&amp;quot;ruby&amp;gt; s1 # .</description>
