@@ -20,7 +20,7 @@ git clone https://github.com/monkeyWzr/hugo-theme-cactus.git themes\cactus
 theme = "cactus"
 ```
 
-3. config your site. See [Config] or a [complete config sample]()
+3. config your site. See [Config] or a [complete config sample](exampleSite/config.toml)
 4. test your site
 ```
 hugo server
