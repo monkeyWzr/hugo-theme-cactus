@@ -10,7 +10,7 @@ Some works are still in progress. See [TODOS](#todos) below.
 
 1. clone cactus to your hugo site's `themes` folder.
 ```
-git clone https://github.com/monkeyWzr/hugo-theme-cactus.git themes\cactus
+git clone https://github.com/monkeyWzr/hugo-theme-cactus.git themes/cactus
 ```
 
 2. change your theme to cactus in your site config
