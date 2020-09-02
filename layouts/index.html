@@ -15,6 +15,10 @@
         <a class="icon" target="_blank" rel="noopener" href="{{ $elem.link }}">
           <i class="fas fa-rss"></i>
         </a>
+        {{ else if eq $elem.name "scholar" }}
+        <a class="icon" target="_blank" rel="noopener" href="{{ $elem.link }}">
+          <i class="fas fa-graduation-cap"></i>
+        </a>
         {{ else }}
         <a class="icon" target="_blank" rel="noopener" href="{{ $elem.link }}">
           <i class="fab fa-{{ lower $elem.name }}"></i>
