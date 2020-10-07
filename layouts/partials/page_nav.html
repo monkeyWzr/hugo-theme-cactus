@@ -15,14 +15,14 @@
       <ul>
         {{ if .Prev }}
         <li>
-          <a class="icon" href=" {{ .Prev.Permalink }}">
+          <a class="icon" href=" {{ .Prev.RelPermalink }}">
             <i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i>
           </a>
         </li>
         {{ end }}
         {{ if .Next }}
         <li>
-          <a class="icon" href="{{ .Next.Permalink }}">
+          <a class="icon" href="{{ .Next.RelPermalink }}">
             <i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i>
           </a>
         </li>
