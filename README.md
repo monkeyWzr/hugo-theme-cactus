@@ -134,7 +134,7 @@ for example, `data/projects.json`:
 }
 ```
 
-## Social media links
+### Social media links
 
 ```toml
 [[params.social]]
@@ -244,6 +244,14 @@ mathjax: true # or false
 ```
 
 The site config will be ignored when `mathjax` option exists in front matter.
+
+### Archive 
+Pagination on posts archive can be disabled to show all posts in chronological order
+
+```toml
+[params]
+  showAllPostsArchive = true # or false (default)
+```
 
 ## TODOS
 
