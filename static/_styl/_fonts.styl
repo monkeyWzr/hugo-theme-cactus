@@ -6,4 +6,10 @@
 @font-face
   font-style: normal
   font-family: "JetBrains Mono"
-  src: local("JetBrains Mono"), url("../lib/JetBrainsMono/ttf/JetBrainsMono-Regular.ttf") format("truetype")
+  font-display: swap;
+  font-weight: 400;
+  src: local("JetBrains Mono"), local("JetBrains-Mono"), 
+  		url("/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2") format("woff2"),
+  		url("/lib/JetBrainsMono/web/woff/JetBrainsMono-Regular.woff") format("woff"), 
+  		url("/lib/JetBrainsMono/web/eot/JetBrainsMono-Regular.eot") format("embedded-opentype"), 
+  		url("/lib/JetBrainsMono/ttf/JetBrainsMono-Regular.ttf") format("truetype");
