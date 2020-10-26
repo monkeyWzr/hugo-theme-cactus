@@ -189,7 +189,7 @@ disqusShortname = "wzr" # cactus will use site title if not set
 
 ### highlight
 
-Use hugo's bulit-in [syntax highlighting](https://gohugo.io/getting-started/configuration-markup#highlight).
+Use hugo's built-in [syntax highlighting](https://gohugo.io/getting-started/configuration-markup#highlight).
 
 default config:
 
