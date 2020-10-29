@@ -34,7 +34,7 @@
         <div class="article-category">
             <i class="fas fa-archive"></i>
             {{ range $index, $value := .Params.categories }}
-            {{ if gt $index 1 }} {{ print ", " }} {{ end }}
+            {{ if gt $index 0 }} {{ print ", " }} {{ end }}
             <a class="category-link" href="{{ "/categories/" | relLangURL }}{{ $value | urlize }}">{{ $value }}</a>
             {{ end }}
         </div>
@@ -43,10 +43,10 @@
         <div class="article-tag">
             <i class="fas fa-tag"></i>
             {{ range $index, $value := .Params.tags }}
-            {{ if gt $index 1 }} {{ print ", " }} {{ end }}
+            {{ if gt $index 0 }} {{ print ", " }} {{ end }}
             <a class="tag-link" href="{{ "/tags/" | relLangURL }}{{ $value | urlize }}" rel="tag">{{ $value }}</a>
             {{ end }}
-        </div> 
+        </div>
         {{ end }}
       </div>
     </header>
