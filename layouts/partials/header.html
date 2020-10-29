@@ -1,7 +1,7 @@
 <header id="header">
   <a href="{{ .Site.BaseURL }}">
   {{ if (isset .Site.Params "gravatar") }}
-    <div id="logo" style="background-image: url(https://www.gravatar.com/avatar/{{ md5 .Site.param.gravatar }}?s=100&d=identicon)"></div>
+    <div id="logo" style="background-image: url(https://www.gravatar.com/avatar/{{ md5 .Site.Params.gravatar }}?s=100&d=identicon)"></div>
   {{ else if (isset .Site.Params "logo") }}
     <div id="logo" style="background-image: url({{ .Site.Params.logo | absURL }})"></div>
   {{ else }}
@@ -16,10 +16,10 @@
       <li class="icon">
         <a href="#"><i class="fas fa-bars fa-2x"></i></a>
       </li>
-      {{ range .Site.Menus.main }} 
+      {{ range .Site.Menus.main }}
         <li><a href="{{ .URL }}">{{ .Name }}</a></li>
       {{ end }}
     </ul>
   </div>
 </header>
-  
+
