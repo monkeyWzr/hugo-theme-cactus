@@ -38,6 +38,16 @@ hugo server
   colortheme = "white" # dark, light, white, or classic
 ```
 
+### Custom CSS
+
+```toml
+[params]
+  css = ["css/custom.css"]
+```
+
+You can add multiple custom stylesheets which will be loaded after the main theme css.
+For example, the above line will load the CSS-file placed at `/static/css/custom.css`.
+
 ### Navigation
 
 ```toml
