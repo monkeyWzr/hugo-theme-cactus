@@ -37,7 +37,6 @@
   </section>
 
   <section id="writing">
-    <!-- TODO: use built in mainSections parameter https://gohugo.io/functions/where/#mainsections -->
     <span class="h1"><a href="{{ .Site.Params.mainSection | absURL }}">Writings</a></span>
     {{ if (and (and (isset .Site.Params "tagsoverview") (eq .Site.Params.tagsOverview true)) (gt (len .Site.Taxonomies.tags) 0)) }}
     <span class="h2">Topics</span>
@@ -57,9 +56,10 @@
       {{ $showAllPostsOnHomePage = .Site.Params.ShowAllPostsOnHomePage }}
     {{ end }}
     {{ $dataFormat := .Site.Params.dateFormat | default "2006-01-02" }}
+    {{ $mainPosts := (sort ( where site.RegularPages "Type" "in" site.Params.mainSections ) "Date" "desc") }}
     {{ if $showAllPostsOnHomePage }}
     <ul class="post-list">
-      {{ range (sort .Paginator.Pages "Date" "desc") }}
+      {{ range (.Paginate $mainPosts).Pages }}
         <li class="post-item">
           <div class="meta"><time datetime="{{ time .Date }}" itemprop="datePublished">{{ .Date.Format $dataFormat }}</time></div>
           <span><a href="{{ .Permalink }}">{{ if .Title }} {{- .Title -}} {{ else }} {{- print "Untitled" -}}{{ end }}</a></span>
@@ -75,7 +75,7 @@
       {{ if isset .Site.Params "postsonhomepage" }}
         {{ .Scratch.Set "count" .Site.Params.postsOnHomePage }}
       {{ end }}
-      {{ range (first (.Scratch.Get "count") (sort .Site.RegularPages "Date" "desc")) }}
+      {{ range (first (.Scratch.Get "count") $mainPosts) }}
         <li class="post-item">
           <div class="meta"><time datetime="{{ time .Date }}" itemprop="datePublished">{{ .Date.Format $dataFormat }}</time></div>
           <span><a href="{{ .Permalink }}">{{ if .Title }} {{- .Title -}} {{ else }} {{- print "Untitled" -}}{{ end }}</a></span>
