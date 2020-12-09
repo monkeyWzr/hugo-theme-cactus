@@ -38,6 +38,7 @@
 
   <section id="writing">
     <span class="h1"><a href="{{ .Site.Params.mainSection | absURL }}">Writings</a></span>
+    {{ if ne (len .Site.Taxonomies) 0 }}
     {{ if (and (and (isset .Site.Params "tagsoverview") (eq .Site.Params.tagsOverview true)) (gt (len .Site.Taxonomies.tags) 0)) }}
     <span class="h2">Topics</span>
     <span class="widget tagcloud">
@@ -49,6 +50,7 @@
       {{ end }}
     </span>
     <span class="h2">Most recent</span>
+    {{ end }}
     {{ end }}
 
     {{ $showAllPostsOnHomePage := false }}
