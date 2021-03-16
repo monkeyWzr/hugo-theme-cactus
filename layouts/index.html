@@ -93,7 +93,7 @@
   {{ end }}
   {{ if $showProjectsList }}
     {{ $projectsUrl := "#" }}
-    {{ if isset .Site.Params "projectsUrl" }}
+    {{ if isset .Site.Params "projectsurl" }}
       {{ $projectsUrl = .Site.Params.projectsUrl }}
     {{ end }}
   <section id="projects">
