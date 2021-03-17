@@ -1,7 +1,13 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>{{ if .IsPage }} {{ .Title }} | {{ end }}{{ .Site.Title }}</title>
+    <title>
+    {{ if .Params.seoTitle }}
+    {{ .Params.seoTitle }} |
+    {{ else if .Title }}
+    {{ .Title }} |
+    {{ end }}
+    {{ .Site.Title }}</title>
   {{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="all,follow">
