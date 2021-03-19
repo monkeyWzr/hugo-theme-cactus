@@ -8,19 +8,19 @@
       {{ $length := (len .Site.Params.social) }}
       {{ range $index, $elem := .Site.Params.social}}
       {{ if eq $elem.name "email" }}
-        <a class="icon" target="_blank" rel="noopener" href="mailto:{{ $elem.link }}">
+        <a class="icon" target="_blank" rel="noopener" href="mailto:{{ $elem.link }}" aria-label="Email">
           <i class="fas fa-envelope"></i>
         </a>
         {{ else if eq $elem.name "rss" }}
-        <a class="icon" target="_blank" rel="noopener" href="{{ $elem.link }}">
+        <a class="icon" target="_blank" rel="noopener" href="{{ $elem.link }}" aria-label="RSS">
           <i class="fas fa-rss"></i>
         </a>
         {{ else if eq $elem.name "scholar" }}
-        <a class="icon" target="_blank" rel="noopener" href="{{ $elem.link }}">
+        <a class="icon" target="_blank" rel="noopener" href="{{ $elem.link }}" aria-label="Google Scholar">
           <i class="fas fa-graduation-cap"></i>
         </a>
         {{ else }}
-        <a class="icon" target="_blank" rel="noopener" href="{{ $elem.link }}">
+        <a class="icon" target="_blank" rel="noopener" href="{{ $elem.link }}" aria-label="{{$elem.name}}">
           <i class="fab fa-{{ lower $elem.name }}"></i>
         </a>
         {{ end }}
