@@ -39,6 +39,14 @@
             {{ end }}
         </div>
         {{ end }}
+        {{ $showReadTime := .Site.Params.showReadTime | default true }}
+        {{if $showReadTime}}
+        <div class="article-read-time">
+          <i class="far fa-clock"></i>
+          {{ $readTime := math.Round (div (countwords .Content) 220.0) }}
+          {{ $readTime }} minute read
+        </div>
+        {{ end }}
         {{ if gt .Params.tags 0 }}
         <div class="article-tag">
             <i class="fas fa-tag"></i>
