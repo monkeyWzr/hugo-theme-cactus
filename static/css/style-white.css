@@ -1106,6 +1106,9 @@
     letter-spacing: 0.01em;
     font-weight: 700;
   }
+  article header .article-read-time {
+    display: inline;
+  }
   article header .postdate {
     display: inline;
   }
@@ -1223,6 +1226,7 @@
     .article-category {
       display: inline;
     }
+    .article-read-time:before,
     .article-tag:before,
     .article-category:before {
       content: "|";
