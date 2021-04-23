@@ -104,7 +104,7 @@ weight = 4
   postsOnHomePage = 5 # this option will be ignored
 ```
 
-* show tagsoverview (defalut) or not
+* show tagsoverview (default) or not
 * 
 ```toml
 [params]
