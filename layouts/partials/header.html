@@ -5,7 +5,7 @@
   {{ else if (isset .Site.Params "logo") }}
     <div id="logo" style="background-image: url({{ .Site.Params.logo | absURL }})"></div>
   {{ else }}
-    <div id="logo" style="background-image: url({{ "images/logo.png" | absURL }})"></div>
+    <div id="logo" style="background-image: url({{ "images/logo.webp" | absURL }})"></div>
   {{ end}}
   <div id="title">
     <h1>{{ .Site.Title }}</h1>
