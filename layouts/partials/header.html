@@ -14,7 +14,7 @@
   <div id="nav">
     <ul>
       <li class="icon">
-        <a href="#"><i class="fas fa-bars fa-2x"></i></a>
+        <a href="#" aria-label="Menu"><i class="fas fa-bars fa-2x" aria-hidden="true"></i></a>
       </li>
       {{ range .Site.Menus.main }}
         <li><a href="{{ .URL }}">{{ .Name }}</a></li>
