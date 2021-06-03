@@ -38,7 +38,7 @@
   </section>
 
   <section id="writing">
-    <span class="h1"><a href="{{ .Site.Params.mainSection | absURL }}">Writings</a></span>
+    <span class="h1"><a href="{{ .Site.Params.mainSection | absURL }}">{{ .Site.Params.mainSectionTitle | default "Writings" }}</a></span>
     {{ if (and (and (isset .Site.Params "tagsoverview") (eq .Site.Params.tagsOverview true)) (gt (len .Site.Taxonomies.tags) 0)) }}
     <span class="h2">Topics</span>
     <span class="widget tagcloud">

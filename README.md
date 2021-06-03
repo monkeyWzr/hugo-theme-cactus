@@ -89,6 +89,13 @@ weight = 4
   mainSection = "posts"
 ```
 
+* change the default main section title from Writings, to something else:
+
+```toml
+[params]
+  mainSectionTitle = "Blog"
+```
+
 * Show only the 5 most recent posts (default)
 
 ```toml
