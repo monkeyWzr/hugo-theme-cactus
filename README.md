@@ -75,7 +75,7 @@ weight = 4
 
 ### Homepage settings
 
-* description: description will be displayed in the homepage.
+* description: description will be displayed in the homepage. Markdown syntax is supported in the description string.
 ```toml
 [params]
 
