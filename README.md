@@ -126,7 +126,7 @@ weight = 4
   projectsUrl = "https://github.com/monkeyWzr"
 ```
 
-Projects section will not be shown if no data file detecSee [Projects list](#projects-list) below.
+Projects section will not be shown if no data file is detected. See [Projects list](#projects-list) below.
 
 ### Projects list
 
