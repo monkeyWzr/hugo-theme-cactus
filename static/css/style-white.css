@@ -1499,7 +1499,6 @@ article .content .caption {
 pre {
   overflow-x: auto;
   padding: 10px 15px;
-  padding-bottom: 0;
   border: 1px dotted #666;
   border-radius: 4px;
   font-size: 13px;
@@ -1518,4 +1517,8 @@ code {
   border-radius: 2px;
   -webkit-border-radius: 2px;
   font-family: "JetBrains Mono", monospace;
+}
+.highlight pre {
+  border: none;
+  background: none;
 }
