@@ -123,8 +123,6 @@ body
 @import "_partial/tags"
 @import "_partial/tooltip"
 @import "_partial/categories"
-// Code
-// @import "_highlight/" + $highlight
 
 pre
   overflow-x: auto
@@ -149,64 +147,3 @@ code
   -webkit-border-radius: 2px
   font-family: $font-family-mono
 
-.highlight
-  overflow-x: auto
-  margin: 1rem 0
-  padding: 10px 15px
-  border-radius: 4px
-  background: $color-background-code
-  font-family: $font-family-mono
-  // color: $color-accent-3
-  -webkit-border-radius: 4px
-
-  figcaption
-    margin: -5px 0 5px
-    color: $color-meta-code
-    font-size: .9em
-    zoom: 1
-
-    a
-      float: right
-      color: $color-meta-code
-      font-style: italic
-      font-size: .8em
-
-      underline(10px, $color-link)
-
-    a:hover
-      color: lighten($color-meta-code, 20%)
-
-    &:before, content: ""
-      display: table
-
-    &:after
-      clear: both
-
-  &:hover 
-    .btn-copy
-      opacity: 1
-
-  .btn-copy
-    font-size: 1.2rem
-    position: absolute
-    right: 20px
-    opacity: 0
-    transition: opacity 0.2s ease-in
-    &:hover
-      color: $color-accent-1
-
-  pre
-    margin: 0
-    padding: 0
-    border: none
-    background: none
-
-  table
-    width: auto
-
-  td.gutter
-    text-align: right
-    opacity: .2
-
-  .line
-    height: 22px
