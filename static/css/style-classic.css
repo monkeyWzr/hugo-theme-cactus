@@ -707,7 +707,6 @@ body {
   list-style-image: none;
   list-style-position: outside;
   list-style-type: none;
-  list-style-type: none;
   padding-inline-start: 40px;
 }
 #header-post nav ul li {
@@ -1500,7 +1499,6 @@ article .content .caption {
 pre {
   overflow-x: auto;
   padding: 10px 15px;
-  padding-bottom: 0;
   border: 1px dotted #666;
   border-radius: 4px;
   font-size: 13px;
@@ -1520,67 +1518,7 @@ code {
   -webkit-border-radius: 2px;
   font-family: "JetBrains Mono", monospace;
 }
-.highlight {
-  overflow-x: auto;
-  margin: 1rem 0;
-  padding: 10px 15px;
-  border-radius: 4px;
-  background: #f5f5f5;
-  font-family: "JetBrains Mono", monospace;
-  -webkit-border-radius: 4px;
-}
-.highlight figcaption {
-  margin: -5px 0 5px;
-  color: #757575;
-  font-size: 0.9em;
-  zoom: 1;
-}
-.highlight figcaption a {
-  float: right;
-  color: #757575;
-  font-style: italic;
-  font-size: 0.8em;
-  background-image: linear-gradient(transparent, transparent 10px, rgba(86,124,119,0.4) 10px, rgba(86,124,119,0.4));
-  background-position: bottom;
-  background-size: 100% 6px;
-  background-repeat: repeat-x;
-}
-.highlight figcaption a:hover {
-  color: #919191;
-}
-.highlight figcaption:before,
-.highlight figcaption content: "" {
-  display: table;
-}
-.highlight figcaption:after {
-  clear: both;
-}
-.highlight:hover .btn-copy {
-  opacity: 1;
-}
-.highlight .btn-copy {
-  font-size: 1.2rem;
-  position: absolute;
-  right: 20px;
-  opacity: 0;
-  transition: opacity 0.2s ease-in;
-}
-.highlight .btn-copy:hover {
-  color: #cc2a41;
-}
 .highlight pre {
-  margin: 0;
-  padding: 0;
   border: none;
   background: none;
-}
-.highlight table {
-  width: auto;
-}
-.highlight td.gutter {
-  text-align: right;
-  opacity: 0.2;
-}
-.highlight .line {
-  height: 22px;
 }
