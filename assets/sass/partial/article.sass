@@ -24,21 +24,22 @@ article
       display: inline
 
   .content
-    h2:before
-      position: absolute
-      top: -4px
-      left: -1rem
-      color: $color-accent-1
-      content: "#"
-      font-weight: bold
-      font-size: 1.2rem
+    h2
+      &:before
+        position: absolute
+        top: -4px
+        left: -1rem
+        color: $color-accent-1
+        content: "#"
+        font-weight: bold
+        font-size: 1.2rem
 
-    img
-    video
-      display: block
-      margin: auto
-      max-width: 100%
-      height: auto
+  .content img,
+  .content video
+    display: block
+    margin: auto
+    max-width: 100%
+    height: auto
 
     /* http://webdesignerwall.com/tutorials/css-elastic-videos */
     .video-container
@@ -130,6 +131,7 @@ article
     @include underline(10px, $color-link)
 
 @media (min-width: 480px)
+  .article-read-time,
   .article-tag,
   .article-category
     display: inline

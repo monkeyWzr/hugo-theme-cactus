@@ -1,7 +1,7 @@
 baseURL = "https://example.com"
 languageCode = "en-us"
 title = "Cactus theme example"
-theme = "cactus"
+theme = "hugo-theme-cactus"
 copyright = "You" # cactus will use title if copyright is not set
 disqusShortname = "example" # Used when comments is enabled. Cactus will use site title if not set
 # googleAnalytics = "UA-1234-5"
@@ -35,6 +35,16 @@ weight = 4
     endLevel = 4
     ordered = false
     startLevel = 2
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = true
+    lineNumbersInTable = true
+    noClasses = true
+    style = "dracula"
+    tabWidth = 4
 
 [params]
 
@@ -55,8 +65,8 @@ weight = 4
   dateFormat = "2006-01-02" # default
 
   # Post page settings
-  show_updated = false # default
-  showReadTime = false # default
+  show_updated = true # default
+  showReadTime = true # default
 
   [params.comments]
     enabled = false # default
