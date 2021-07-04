@@ -23,11 +23,11 @@ jobs:
           # extended: true
 
       - name: Build
-        run: cd exampleSite && hugo --minify --themesDir ../..
+        run: cd cactus/exampleSite && hugo --minify --themesDir ../..
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3.7.3
         if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          publish_dir: cactus/exampleSite/public
