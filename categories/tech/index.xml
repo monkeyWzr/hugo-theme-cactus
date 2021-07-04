@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>tech on Cactus theme example</title><link>https://example.com/categories/tech/</link><description>Recent content in tech on Cactus theme example</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>You</copyright><lastBuildDate>Sun, 27 Jun 2021 09:00:00 +0000</lastBuildDate><atom:link href="https://example.com/categories/tech/index.xml" rel="self" type="application/rss+xml"/><item><title>Code Block Test</title><link>https://example.com/posts/code-block-test/</link><pubDate>Sun, 27 Jun 2021 09:00:00 +0000</pubDate><guid>https://example.com/posts/code-block-test/</guid><description>String
+Using indents:
+text text text Fenced code block:
+text text &amp;lt;tag&amp;gt; Fenced code block with language:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 // Java public final class String implements java.</description></item></channel></rss>
