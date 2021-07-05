@@ -28,10 +28,10 @@ text
 <tag>
 ```
 
-Fenced code block with language:
+Fenced code block with language (lineNumbersInTable = false):
 
 ```Java
-// Java
+// JavaJavaJavaJavaJavaJavaJavaJavaJavaJavaJavaJavaJavaJavaJavaJavaJavaJavaJavaJavaJavaJavaJavaJavaJavaJavaJavaJavaJavaJava
 public final class String
     implements java.io.Serializable, Comparable<String>, CharSequence
 {
@@ -98,7 +98,7 @@ public final class String
 }
 ```
 
-Using hugo's `highlight` [shortcode]([highlight](https://gohugo.io/content-management/syntax-highlighting/#highlight-shortcode)):
+Using hugo's `highlight` [shortcode]([highlight](https://gohugo.io/content-management/syntax-highlighting/#highlight-shortcode)) (lineNumbersInTable = true):
 
 {{< highlight typescript "linenos=table, hl_lines=8 18-21" >}}
 // TypeScript
@@ -123,3 +123,38 @@ type ModifiableUser = {
     -readonly [K in keyof User]: User[K]
 }
 {{< /highlight >}}
+
+Without line number
+
+{{< highlight javascript "linenos=false" >}}
+(() => {
+
+  function createCopyButton(codeNode) {
+    const copyBtn = document.createElement('button')
+    copyBtn.className = 'code-copy-btn'
+    copyBtn.type = 'button'
+    copyBtn.innerText = 'copy'
+    copyBtn.parentElement = codeNode.parentElement
+
+    let resetTimer
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(codeNode.innerText).then(() => {
+        copyBtn.innerText = 'copied!'
+      }).then(() => {
+        clearTimeout(resetTimer)
+        resetTimer = setTimeout(() => {
+          copyBtn.innerText = 'copy'
+        }, 1000)
+      })
+    })
+
+    return copyBtn
+  }
+
+  document.querySelectorAll('pre > code').forEach((codeNode) => {
+    const copyBtn = createCopyButton(codeNode);
+    codeNode.parentNode.insertBefore(copyBtn, codeNode)
+  })
+
+})()
+{{< / highlight >}}
