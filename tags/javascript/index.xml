@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>JavaScript on Cactus theme example</title><link>https://www.takuzen.me/hugo-theme-cactus/tags/javascript/</link><description>Recent content in JavaScript on Cactus theme example</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>You</copyright><lastBuildDate>Sun, 10 Nov 2019 09:00:00 +0000</lastBuildDate><atom:link href="https://www.takuzen.me/hugo-theme-cactus/tags/javascript/index.xml" rel="self" type="application/rss+xml"/><item><title>JavaScript URI エンコーディング</title><link>https://www.takuzen.me/hugo-theme-cactus/posts/2019-11-10-encodeuricomponent/</link><pubDate>Sun, 10 Nov 2019 09:00:00 +0000</pubDate><guid>https://www.takuzen.me/hugo-theme-cactus/posts/2019-11-10-encodeuricomponent/</guid><description>まとめ encodeURI()とencodeURIComponent()はRFC 2396準拠である。 encodeURI() は完全な URI を表すのに必要な文字 (Reserved Characters) はエンコードしません。 また、予約されていないが &amp;ldquo;そのまま&amp;rdquo; URI に使用できる(Unreserved Marks) 文字をエンコードしません。 encodeURIComponent() は &amp;ldquo;Unreserved Marks&amp;rdquo; 文字をエンコードしません。
-1 2 3 4 5 6 7 8 var set1 = &amp;#34;;,/?:@&amp;amp;=+$#&amp;#34;; // Reserved Characters var set2 = &amp;#34;-_.!~*&amp;#39;()&amp;#34;; // Unreserved Marks console.log(encodeURI(set1)); // ;,/?:@&amp;amp;=+$ console.log(encodeURI(set2)); // -_.!~*&amp;#39;() console.log(encodeURIComponent(set1)); // %3B%2C%2F%3F%3A%40%26%3D%2B%24 console.log(encodeURIComponent(set2)); // -_.!~*&amp;#39;() rfc2396 appendix-A https://tools.ietf.org/html/rfc2396#appendix-A
+1var set1 = &amp;#34;;,/?:@&amp;amp;=+$#&amp;#34;; // Reserved Characters 2var set2 = &amp;#34;-_.!~*&amp;#39;()&amp;#34;; // Unreserved Marks 3 4console.log(encodeURI(set1)); // ;,/?:@&amp;amp;=+$ 5console.log(encodeURI(set2)); // -_.!~*&amp;#39;() 6 7console.log(encodeURIComponent(set1)); // %3B%2C%2F%3F%3A%40%26%3D%2B%24 8console.log(encodeURIComponent(set2)); // -_.!~*&amp;#39;() rfc2396 appendix-A https://tools.ietf.org/html/rfc2396#appendix-A
 URI-reference = [ absoluteURI | relativeURI ] [ &amp;quot;#&amp;quot; fragment ] absoluteURI = scheme &amp;quot;:&amp;quot; ( hier_part | opaque_part ) relativeURI = ( net_path | abs_path | rel_path ) [ &amp;quot;?</description></item><item><title>JavaScript Comparison operation at a glance</title><link>https://www.takuzen.me/hugo-theme-cactus/posts/2019-03-28-javascript-comparison/</link><pubDate>Thu, 28 Mar 2019 09:00:00 +0000</pubDate><guid>https://www.takuzen.me/hugo-theme-cactus/posts/2019-03-28-javascript-comparison/</guid><description>When given a scenario like:
-1 console.log(null &amp;gt; -1) //true It produces true, which makes me think null is treated as 0. But when I run:
-1 2 3 console.log(null == 0) // false console.log(null &amp;gt; 0) // false console.log(null &amp;lt; 0) // false They all output false!
+1console.log(null &amp;gt; -1) //true It produces true, which makes me think null is treated as 0. But when I run:
+1console.log(null == 0) // false 2console.log(null &amp;gt; 0) // false 3console.log(null &amp;lt; 0) // false They all output false!
 I googled a lot and finally found answers in Ecma-262 Specification.
-The comparison x == y, where x and y are values, produces true or false.</description></item><item><title>Js tips I can't remember</title><link>https://www.takuzen.me/hugo-theme-cactus/posts/2019-03-22-js-tips/</link><pubDate>Fri, 22 Mar 2019 09:00:00 +0000</pubDate><guid>https://www.takuzen.me/hugo-theme-cactus/posts/2019-03-22-js-tips/</guid><description>&lt;h2 id="__proto__-vs-prototype">&lt;code>__proto__&lt;/code> VS &lt;code>prototype&lt;/code>&lt;/h2>
+The comparison x == y, where x and y are values, produces true or false. Such a comparison is performed as follows:</description></item><item><title>Js tips I can't remember</title><link>https://www.takuzen.me/hugo-theme-cactus/posts/2019-03-22-js-tips/</link><pubDate>Fri, 22 Mar 2019 09:00:00 +0000</pubDate><guid>https://www.takuzen.me/hugo-theme-cactus/posts/2019-03-22-js-tips/</guid><description>&lt;h2 id="__proto__-vs-prototype">&lt;code>__proto__&lt;/code> VS &lt;code>prototype&lt;/code>&lt;/h2>
 &lt;blockquote>
 &lt;p>&lt;code>__proto__&lt;/code> is the actual object that is used in the lookup chain to resolve methods and others. &lt;code>prototype&lt;/code> is the object that is used to build &lt;code>__proto__&lt;/code> when creating an object with &lt;code>new&lt;/code>.&lt;/p>
 &lt;/blockquote>
@@ -12,99 +12,47 @@ The comparison x == y, where x and y are values, produces true or false.</descri
 &lt;p>The &amp;ldquo;cool kids&amp;rdquo; in JavaScript would generally pronounce &lt;code>__proto__&lt;/code> as &amp;ldquo;&lt;strong>dunder proto&lt;/strong>&amp;rdquo;.&lt;/p>
 &lt;/blockquote>
 &lt;p>&lt;a href="https://stackoverflow.com/questions/9959727/proto-vs-prototype-in-javascript">https://stackoverflow.com/questions/9959727/proto-vs-prototype-in-javascript&lt;/a>&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">( &lt;span style="color:#ff79c6">new&lt;/span> Foo ).&lt;span style="color:#bd93f9">__&lt;/span>proto__ &lt;span style="color:#ff79c6">===&lt;/span> Foo.prototype; &lt;span style="color:#6272a4">// true
-&lt;/span>&lt;span style="color:#6272a4">&lt;/span>( &lt;span style="color:#ff79c6">new&lt;/span> Foo ).prototype &lt;span style="color:#ff79c6">===&lt;/span> &lt;span style="color:#ff79c6">undefined&lt;/span>; &lt;span style="color:#6272a4">// true
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div></description></item><item><title>Bind specific arguments of a function</title><link>https://www.takuzen.me/hugo-theme-cactus/posts/2019-03-08-es6-bind-trick/</link><pubDate>Fri, 08 Mar 2019 09:00:00 +0000</pubDate><guid>https://www.takuzen.me/hugo-theme-cactus/posts/2019-03-08-es6-bind-trick/</guid><description>To bind specific (nth) arguments of a function, we can write a decorator instead of using Function.bind():
-1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 function func(p1, p2, p3) { console.log(p1, p2, p3); } // the binding starts after however many are passed in. function decorator(...bound_args) { return function(...args) { return func(...args, ...bound_args); }; } // bind the last parameter let f = decorator(&amp;#34;3&amp;#34;); f(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;); // a b 3 // bind the last two parameter let f2 = decorator(&amp;#34;2&amp;#34;, &amp;#34;3&amp;#34;) f2(&amp;#34;a&amp;#34;); // a 2 3 Even if we want to bind just the nth argument, we can do as follows:</description></item><item><title>Object.assign() with accessor descriptor</title><link>https://www.takuzen.me/hugo-theme-cactus/posts/2019-03-08-object-assign-with-accessor-descriptor/</link><pubDate>Fri, 08 Mar 2019 09:00:00 +0000</pubDate><guid>https://www.takuzen.me/hugo-theme-cactus/posts/2019-03-08-object-assign-with-accessor-descriptor/</guid><description>&lt;p>&lt;a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign#Copying_accessors">MDN docs:&lt;/a>&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1&lt;/span>( &lt;span style="color:#ff79c6">new&lt;/span> Foo ).&lt;span style="color:#bd93f9">__&lt;/span>proto__ &lt;span style="color:#ff79c6">===&lt;/span> Foo.prototype; &lt;span style="color:#6272a4">// true
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2&lt;/span>&lt;span style="color:#6272a4">&lt;/span>( &lt;span style="color:#ff79c6">new&lt;/span> Foo ).prototype &lt;span style="color:#ff79c6">===&lt;/span> &lt;span style="color:#ff79c6">undefined&lt;/span>; &lt;span style="color:#6272a4">// true
+&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Bind specific arguments of a function</title><link>https://www.takuzen.me/hugo-theme-cactus/posts/2019-03-08-es6-bind-trick/</link><pubDate>Fri, 08 Mar 2019 09:00:00 +0000</pubDate><guid>https://www.takuzen.me/hugo-theme-cactus/posts/2019-03-08-es6-bind-trick/</guid><description>To bind specific (nth) arguments of a function, we can write a decorator instead of using Function.bind():
+1function func(p1, p2, p3) { 2 console.log(p1, p2, p3); 3} 4// the binding starts after however many are passed in. 5function decorator(...bound_args) { 6 return function(...args) { 7 return func(...args, ...bound_args); 8 }; 9} 10 11// bind the last parameter 12let f = decorator(&amp;#34;3&amp;#34;); 13f(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;); // a b 3 14 15// bind the last two parameter 16let f2 = decorator(&amp;#34;2&amp;#34;, &amp;#34;3&amp;#34;) 17f2(&amp;#34;a&amp;#34;); // a 2 3 Even if we want to bind just the nth argument, we can do as follows:</description></item><item><title>Object.assign() with accessor descriptor</title><link>https://www.takuzen.me/hugo-theme-cactus/posts/2019-03-08-object-assign-with-accessor-descriptor/</link><pubDate>Fri, 08 Mar 2019 09:00:00 +0000</pubDate><guid>https://www.takuzen.me/hugo-theme-cactus/posts/2019-03-08-object-assign-with-accessor-descriptor/</guid><description>&lt;p>&lt;a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign#Copying_accessors">MDN docs:&lt;/a>&lt;/p>
 &lt;blockquote>
 &lt;p>The Object.assign() method only copies enumerable and own properties from a source object to a target object. It uses [[Get]] on the source and [[Set]] on the target, so it will invoke getters and setters. Therefore it assigns properties versus just copying or defining new properties. This may make it unsuitable for merging new properties into a prototype if the merge sources contain getters.&lt;/p>
 &lt;/blockquote>
 &lt;p>For example&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-js" data-lang="js">&lt;span style="color:#ff79c6">class&lt;/span> Cat {
-constructor(name) {
-&lt;span style="color:#ff79c6">this&lt;/span>.&lt;span style="color:#bd93f9">_&lt;/span>name &lt;span style="color:#ff79c6">=&lt;/span> name;
-}
-get name() {
-&lt;span style="color:#ff79c6">return&lt;/span> &lt;span style="color:#ff79c6">this&lt;/span>.&lt;span style="color:#bd93f9">_&lt;/span>name;
-}
-set name(value) {
-&lt;span style="color:#ff79c6">this&lt;/span>.&lt;span style="color:#bd93f9">_&lt;/span>name &lt;span style="color:#ff79c6">=&lt;/span> value;
-}
-}
-&lt;span style="color:#8be9fd;font-style:italic">let&lt;/span> nyannko &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#ff79c6">new&lt;/span> Cat(&lt;span style="color:#f1fa8c">&amp;#34;nyannko&amp;#34;&lt;/span>);
-&lt;span style="color:#8be9fd;font-style:italic">let&lt;/span> copy &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">Object&lt;/span>.assign({}, nyannko)
-console.log(nyannko.name) &lt;span style="color:#6272a4">// nyannko
-&lt;/span>&lt;span style="color:#6272a4">&lt;/span>console.log(copy.name) &lt;span style="color:#6272a4">// undefined
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>The &lt;code>name&lt;/code> property is lost.&lt;/p></description></item><item><title>VueのNavigation Guards</title><link>https://www.takuzen.me/hugo-theme-cactus/posts/2019-01-19-vue-navigation-guards/</link><pubDate>Fri, 25 Jan 2019 09:00:00 +0000</pubDate><guid>https://www.takuzen.me/hugo-theme-cactus/posts/2019-01-19-vue-navigation-guards/</guid><description>Navigation guards are provided by vue-router. Three ways to hook:
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-js" data-lang="js">&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1&lt;/span>&lt;span style="color:#ff79c6">class&lt;/span> Cat {
+&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2&lt;/span> constructor(name) {
+&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3&lt;/span> &lt;span style="color:#ff79c6">this&lt;/span>.&lt;span style="color:#bd93f9">_&lt;/span>name &lt;span style="color:#ff79c6">=&lt;/span> name;
+&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4&lt;/span> }
+&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5&lt;/span>
+&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6&lt;/span> get name() {
+&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7&lt;/span> &lt;span style="color:#ff79c6">return&lt;/span> &lt;span style="color:#ff79c6">this&lt;/span>.&lt;span style="color:#bd93f9">_&lt;/span>name;
+&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8&lt;/span> }
+&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9&lt;/span> set name(value) {
+&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10&lt;/span> &lt;span style="color:#ff79c6">this&lt;/span>.&lt;span style="color:#bd93f9">_&lt;/span>name &lt;span style="color:#ff79c6">=&lt;/span> value;
+&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11&lt;/span> }
+&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12&lt;/span>}
+&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13&lt;/span>
+&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">let&lt;/span> nyannko &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#ff79c6">new&lt;/span> Cat(&lt;span style="color:#f1fa8c">&amp;#34;nyannko&amp;#34;&lt;/span>);
+&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">let&lt;/span> copy &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">Object&lt;/span>.assign({}, nyannko)
+&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16&lt;/span>
+&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17&lt;/span>console.log(nyannko.name) &lt;span style="color:#6272a4">// nyannko
+&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18&lt;/span>&lt;span style="color:#6272a4">&lt;/span>console.log(copy.name) &lt;span style="color:#6272a4">// undefined
+&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>The &lt;code>name&lt;/code> property is lost.&lt;/p></description></item><item><title>VueのNavigation Guards</title><link>https://www.takuzen.me/hugo-theme-cactus/posts/2019-01-19-vue-navigation-guards/</link><pubDate>Fri, 25 Jan 2019 09:00:00 +0000</pubDate><guid>https://www.takuzen.me/hugo-theme-cactus/posts/2019-01-19-vue-navigation-guards/</guid><description>Navigation guards are provided by vue-router. Three ways to hook:
 globally per-route in-component NOTE:
-Params or query changes won&amp;rsquo;t trigger enter/leave navigation guards. You can either watch the $route object to react to those changes, or use the beforeRouteUpdate in-component guard. Make sure to always call the next function, otherwise the hook will never be resolved. Global 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 const router = new VueRouter({ .</description></item><item><title>ES6について</title><link>https://www.takuzen.me/hugo-theme-cactus/posts/2019-01-18-es6/</link><pubDate>Fri, 18 Jan 2019 16:00:00 +0000</pubDate><guid>https://www.takuzen.me/hugo-theme-cactus/posts/2019-01-18-es6/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
+Params or query changes won&amp;rsquo;t trigger enter/leave navigation guards. You can either watch the $route object to react to those changes, or use the beforeRouteUpdate in-component guard. Make sure to always call the next function, otherwise the hook will never be resolved. Global 1const router = new VueRouter({ ... }) 2 3// Before Guards 4router.</description></item><item><title>ES6について</title><link>https://www.takuzen.me/hugo-theme-cactus/posts/2019-01-18-es6/</link><pubDate>Fri, 18 Jan 2019 16:00:00 +0000</pubDate><guid>https://www.takuzen.me/hugo-theme-cactus/posts/2019-01-18-es6/</guid><description>&lt;h2 id="overview">Overview&lt;/h2>
 &lt;p>&lt;a href="https://github.com/lukehoban/es6features#readme">https://github.com/lukehoban/es6features#readme&lt;/a>&lt;/p>
 &lt;p>&lt;a href="http://help.wtf/es6">http://help.wtf/es6&lt;/a>&lt;/p>
 &lt;p>&lt;a href="http://es6-features.org">http://es6-features.org&lt;/a>&lt;/p>
 &lt;h2 id="string">String&lt;/h2>
 &lt;h3 id="stringx-is-deprecated-use-stringprototypex-instead">String.x is deprecated; use String.prototype.x instead.&lt;/h3>
 &lt;p>非推奨の構文:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Javascript" data-lang="Javascript">&lt;span style="color:#8be9fd;font-style:italic">var&lt;/span> num &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#bd93f9">15&lt;/span>;
-&lt;span style="color:#8be9fd;font-style:italic">String&lt;/span>.replace(num, &lt;span style="color:#f1fa8c">/5/&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;2&amp;#39;&lt;/span>);
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;p>標準の構文:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Javascript" data-lang="Javascript">&lt;span style="color:#8be9fd;font-style:italic">var&lt;/span> num &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#bd93f9">15&lt;/span>;
-&lt;span style="color:#8be9fd;font-style:italic">String&lt;/span>(num).replace(&lt;span style="color:#f1fa8c">/5/&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;2&amp;#39;&lt;/span>);
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div>&lt;h3 id="template-literal">Template literal&lt;/h3>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Javascript" data-lang="Javascript">&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">var&lt;/span> num &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#bd93f9">15&lt;/span>;
+&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">String&lt;/span>.replace(num, &lt;span style="color:#f1fa8c">/5/&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;2&amp;#39;&lt;/span>);
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>標準の構文:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Javascript" data-lang="Javascript">&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">var&lt;/span> num &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#bd93f9">15&lt;/span>;
+&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">String&lt;/span>(num).replace(&lt;span style="color:#f1fa8c">/5/&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;2&amp;#39;&lt;/span>);
+&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="template-literal">Template literal&lt;/h3>
 &lt;p>Nesting templates:&lt;/p>
-&lt;div class="highlight">&lt;div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-&lt;table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;">&lt;tr>&lt;td style="vertical-align:top;padding:0;margin:0;border:0;">
-&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code>&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
-&lt;td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Javascript" data-lang="Javascript">&lt;span style="color:#ff79c6">const&lt;/span> classes &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#f1fa8c">`header &lt;/span>&lt;span style="color:#f1fa8c">${&lt;/span> isLargeScreen() &lt;span style="color:#ff79c6">?&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;&amp;#39;&lt;/span> &lt;span style="color:#ff79c6">:&lt;/span> &lt;span style="color:#f1fa8c">`icon-&lt;/span>&lt;span style="color:#f1fa8c">${&lt;/span>item.isCollapsed &lt;span style="color:#ff79c6">?&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;expander&amp;#39;&lt;/span> &lt;span style="color:#ff79c6">:&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;collapser&amp;#39;&lt;/span>&lt;span style="color:#f1fa8c">}&lt;/span>&lt;span style="color:#f1fa8c">`&lt;/span> &lt;span style="color:#f1fa8c">}&lt;/span>&lt;span style="color:#f1fa8c">`&lt;/span>;
-&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
-&lt;/div>
-&lt;/div></description></item></channel></rss>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Javascript" data-lang="Javascript">&lt;span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1&lt;/span>&lt;span style="color:#ff79c6">const&lt;/span> classes &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#f1fa8c">`header &lt;/span>&lt;span style="color:#f1fa8c">${&lt;/span> isLargeScreen() &lt;span style="color:#ff79c6">?&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;&amp;#39;&lt;/span> &lt;span style="color:#ff79c6">:&lt;/span> &lt;span style="color:#f1fa8c">`icon-&lt;/span>&lt;span style="color:#f1fa8c">${&lt;/span>item.isCollapsed &lt;span style="color:#ff79c6">?&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;expander&amp;#39;&lt;/span> &lt;span style="color:#ff79c6">:&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;collapser&amp;#39;&lt;/span>&lt;span style="color:#f1fa8c">}&lt;/span>&lt;span style="color:#f1fa8c">`&lt;/span> &lt;span style="color:#f1fa8c">}&lt;/span>&lt;span style="color:#f1fa8c">`&lt;/span>;
+&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>
