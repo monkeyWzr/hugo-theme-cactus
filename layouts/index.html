@@ -87,10 +87,10 @@
   </section>
 
   {{ $showProjectsList := false }}
-  {{ if .Site.Data.projects }}
+  {{ if (isset .Site.Params "showprojectslist") }}
+    {{ $showProjectsList = .Site.Params.showProjectsList }}
+  {{ else if .Site.Data.projects }}
     {{ $showProjectsList = true }}
-  {{ else if (isset .Site.Params "showProjectsList") }}
-    {{ $showProjectsList = .Site.Params.ShowProjectsList }}
   {{ end }}
   {{ if $showProjectsList }}
     {{ $projectsUrl := "#" }}
