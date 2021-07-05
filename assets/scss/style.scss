@@ -150,13 +150,38 @@ body {
 
 pre {
   overflow-x: auto;
-  padding: 10px 15px;
+  padding: 15px 15px 10px 15px;
   border: 1px dotted $color-border;
-  border-radius: 4px;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
   font-size: 13px;
   font-family: $font-family-mono;
   line-height: 22px;
-  -webkit-border-radius: 4px;
+  position: relative;
+
+  .code-copy-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0;
+    border-radius: 0 2px;
+    padding: 0;
+    font-family: "JetBrains Mono", monospace;
+    font-weight: 800;
+    font-size: 0.9em;
+    line-height: 1.7;
+    color: #fff;
+    background-color: #8c8c8c;
+    min-width: 60px;
+    text-align: center;
+    cursor: pointer;
+    letter-spacing: 0em;
+  }
+
+  .code-copy-btn:hover {
+    background-color: #666;
+    color: #2bbc8a;
+  }
 
   code {
     display: block;
@@ -164,15 +189,43 @@ pre {
     border: none;
   }
 }
+
 code {
+  font-family: $font-family-mono;
   padding: 0 5px;
   border: 1px dotted $color-border;
   border-radius: 2px;
   -webkit-border-radius: 2px;
 }
+
 .highlight {
+
+  & > div {
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+  }
+
   pre {
     border: none;
     background: none;
+  }
+
+  table {
+
+    pre {
+      margin-top: 0;
+    }
+
+    td:first-child {
+      pre {
+        padding-right: 0;
+      }
+    }
+
+    td:last-child {
+      pre {
+        padding-left: 0;
+      }
+    }
   }
 }
