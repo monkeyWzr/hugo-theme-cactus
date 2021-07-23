@@ -226,11 +226,16 @@ default config:
 
 ### Analytics
 
-Cactus uses hugo's bulit in [analytics templates](https://gohugo.io/templates/internal#google-analytics)
-Add you tracking id in your site config. By default cactus uses synchronous tracking code. You can switch to asynchronous tracking by set `googleAnalyticsAsync` to `true`.
+Cactus uses hugo's bulit in analytics templates. Check [hugo's documents](https://gohugo.io/templates/internal#google-analytics) for details.
 
+Set you tracking id in your site config.
 ```toml
-googleAnalytics = "UA-123-45"
+googleAnalytics = "UA-XXXXXXXX-XX" # or G-XXXXXXXX if you are using Google Analytics v4 (gtag.js)
+```
+
+If you are using Google Analytics v3 (analytics.js), you can switch to asynchronous tracking by set `params.googleAnalyticsAsync` to `true`.
+```toml
+[params]
 googleAnalyticsAsync = true # not required
 ```
 
