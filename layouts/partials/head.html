@@ -9,6 +9,9 @@
   <link rel = 'canonical' href = '{{ .Permalink }}'>
   {{ with .Site.Params.description }}<meta name="description" content="{{ . }}">{{ end }}
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{ if and (or (eq .Kind "section") (eq .Kind "taxonomy") (eq .Kind "term")) (.Site.Params.noindexArchive)}}
+    <meta name="robots" content="noindex">
+  {{ end }}
   {{ template "_internal/opengraph.html" . }}
   {{ template "_internal/twitter_cards.html" . }}
   {{ .Scratch.Set "colortheme" "white"}}
