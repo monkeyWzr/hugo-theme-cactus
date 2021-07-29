@@ -35,6 +35,16 @@ weight = 4
     endLevel = 4
     ordered = false
     startLevel = 2
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = true
+    lineNumbersInTable = false
+    noClasses = true
+    style = "dracula"
+    tabWidth = 4
 
 [params]
 
@@ -56,7 +66,8 @@ weight = 4
   dateFormat = "2006-01-02" # default
 
   # Post page settings
-  show_updated = false # default
+  show_updated = true # default
+  showReadTime = true # default
 
   [params.comments]
     enabled = false # default

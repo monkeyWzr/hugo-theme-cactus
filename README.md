@@ -38,6 +38,16 @@ hugo server
   colortheme = "white" # dark, light, white, or classic
 ```
 
+### Custom CSS
+
+```toml
+[params]
+  css = ["css/custom.css"]
+```
+
+You can add multiple custom stylesheets which will be loaded after the main theme css.
+For example, the above line will load the CSS-file placed at `/static/css/custom.css`.
+
 ### Navigation
 
 ```toml
@@ -65,7 +75,7 @@ weight = 4
 
 ### Homepage settings
 
-* description: description will be displayed in the homepage.
+* description: description will be displayed in the homepage. Markdown syntax is supported in the description string.
 ```toml
 [params]
 
@@ -77,6 +87,13 @@ weight = 4
 ```toml
 [params]
   mainSection = "posts"
+```
+
+* change the default main section title from Writings, to something else:
+
+```toml
+[params]
+  mainSectionTitle = "Blog"
 ```
 
 * Show only the 5 most recent posts (default)
@@ -94,7 +111,7 @@ weight = 4
   postsOnHomePage = 5 # this option will be ignored
 ```
 
-* show tagsoverview (defalut) or not
+* show tagsoverview (default) or not
 * 
 ```toml
 [params]
@@ -109,7 +126,7 @@ weight = 4
   projectsUrl = "https://github.com/monkeyWzr"
 ```
 
-Projects section will not be shown if no data file detecSee [Projects list](#projects-list) below.
+Projects section will not be shown if no data file is detected. See [Projects list](#projects-list) below.
 
 ### Projects list
 
@@ -189,7 +206,7 @@ disqusShortname = "wzr" # cactus will use site title if not set
 
 ### highlight
 
-Use hugo's bulit-in [syntax highlighting](https://gohugo.io/getting-started/configuration-markup#highlight).
+Use hugo's built-in [syntax highlighting](https://gohugo.io/getting-started/configuration-markup#highlight).
 
 default config:
 
@@ -209,11 +226,16 @@ default config:
 
 ### Analytics
 
-Cactus uses hugo's bulit in [analytics templates](https://gohugo.io/templates/internal#google-analytics)
-Add you tracking id in your site config. By default cactus uses synchronous tracking code. You can switch to asynchronous tracking by set `googleAnalyticsAsync` to `true`.
+Cactus uses hugo's bulit in analytics templates. Check [hugo's documents](https://gohugo.io/templates/internal#google-analytics) for details.
 
+Set you tracking id in your site config.
 ```toml
-googleAnalytics = "UA-123-45"
+googleAnalytics = "UA-XXXXXXXX-XX" # or G-XXXXXXXX if you are using Google Analytics v4 (gtag.js)
+```
+
+If you are using Google Analytics v3 (analytics.js), you can switch to asynchronous tracking by set `params.googleAnalyticsAsync` to `true`.
+```toml
+[params]
 googleAnalyticsAsync = true # not required
 ```
 
