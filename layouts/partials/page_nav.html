@@ -48,8 +48,10 @@
       {{ .Scratch.Set "icon_class_name" ""}}
       {{ partial "share.html" . }}
     </div>
+    {{ if not .Site.Params.tocInline }}
     <div id="toc">
       {{ .TableOfContents }}
     </div>
+    {{ end }}
   </span>
 </div>
