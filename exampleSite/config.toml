@@ -70,8 +70,16 @@ weight = 4
   showReadTime = true # default
 
   [params.comments]
-    enabled = false # default
-    engine = "disqus" # more supported engines will be added.
+    enabled = false                   # default
+    engine = "disqus"                 # valid: disqus | remark42 | ... more to come
+
+  [params.remark42]                   # only needed for remark42 commenting
+    site_id = "changeme"              # REQUIRED
+    url = "https://my.remark42.url"   # REQUIRED
+    #locale = "en"                     # select locale
+    #max_comments = 15                 # display that many comments
+    #simple_view = false               # enable simple view (no noticable effect?)
+    #theme = "light"                   # "light" | "dark"
 
   # the value of name should be an valid font awesome icon name (brands type)
   # https://fontawesome.com/icons?d=gallery&s=brands
