@@ -9,9 +9,11 @@
       </ul>
     </div>
 
+    {{ if not .Site.Params.tocInline }}
     <div id="toc-footer" style="display: none">
       {{ .TableOfContents }}
     </div>
+    {{ end }}
 
     <div id="share-footer" style="display: none">
       {{ .Scratch.Set "icon_class_name" "fa-lg" }}
@@ -22,8 +24,10 @@
       <!-- TODO: rewrite the toggle function. hide the others when one menu is displayed -->
         <a id="menu-toggle" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;" aria-label="Menu">
           <i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        {{ if not .Site.Params.tocInline }}
         <a id="toc-toggle" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;" aria-label="TOC">
           <i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        {{ end }}
         <a id="share-toggle" class="icon" href="#" onclick="$('#share-footer').toggle();return false;" aria-label="Share">
           <i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> share</a>
         <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" aria-label="Top of Page">

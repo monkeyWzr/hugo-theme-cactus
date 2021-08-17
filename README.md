@@ -118,6 +118,13 @@ weight = 4
   tagsOverview = true
 ```
 
+* display the table of contents inline on blog posts, rather than as part of the navigation menu:
+
+```toml
+[params]
+  tocInline = true
+```
+
 * show projects list (default) or not.
 
 ```toml
