@@ -70,8 +70,12 @@ weight = 4
   showReadTime = true # default
 
   [params.comments]
-    enabled = false # default
-    engine = "disqus" # more supported engines will be added.
+    enabled = true # default
+    engine = "utterances" # only disqus and utterances is supported
+    [params.comments.utterances]
+      repo = "<user>/<repo_name>"
+      label = "hugo-site"
+      theme = "github-light"
 
   # the value of name should be an valid font awesome icon name (brands type)
   # https://fontawesome.com/icons?d=gallery&s=brands
