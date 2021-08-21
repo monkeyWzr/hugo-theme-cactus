@@ -14,13 +14,13 @@
     <div class="blog-post-comments">
         <div id="disqus_thread">
           <script type="text/javascript">
-          
+
           (function() {
               // Don't ever inject Disqus on localhost--it creates unwanted
               // discussions from 'localhost:1313' on your Disqus account...
               // if (window.location.hostname == "localhost")
               //     return;
-          
+
               var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
               var disqus_shortname = '{{ if .Site.DisqusShortname }}{{ .Site.DisqusShortname }}{{ else }}{{ .Site.Title }}{{ end }}';
               dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
@@ -31,6 +31,15 @@
           <a href="https://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
         </div>
     </div>
-
+  {{ else if (or (not (isset .Site.Params.Comments "engine")) (eq .Site.Params.Comments.Engine "utteranc")) }}
+    <div class="blog-post-comments">
+      <script src="https://utteranc.es/client.js"
+              repo="{{ .Site.Params.Comments.Repo }}"
+              issue-term="{{ .Site.Params.Comments.IssueTerm | default "title"}}"
+              theme="{{ .Site.Params.Comments.Theme | default "github-light"}}"
+              crossorigin="anonymous"
+              async>
+      </script>
+    </div>
   {{ end }}
 {{ end }}
