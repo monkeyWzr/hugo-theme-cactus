@@ -1,13 +1,13 @@
 // Fonts
-$font-family-body: "JetBrains Mono", monospace;
-$font-family-mono: "JetBrains Mono", monospace;
-$font-family-tt: "Inconsolata", monospace;
-$font-size: 14px;
-$line-height: 1.725;
-$page-width: 48rem;
+$font-family-body: "JetBrains Mono", monospace !default;
+$font-family-mono: "JetBrains Mono", monospace !default;
+$font-family-tt: "Inconsolata", monospace !default;
+$font-size: 14px !default;
+$line-height: 1.725 !default;
+$page-width: 48rem !default;
 // Logo
-$logo-width: 50px;
-$logo-height: 50px;
-$logo-grayout: true;
+$logo-width: 50px !default;
+$logo-height: 50px !default;
+$logo-grayout: true !default;
 // Colors
 $colors: "dark" // white dark light classic
