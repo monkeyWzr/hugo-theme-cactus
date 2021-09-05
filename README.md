@@ -178,12 +178,14 @@ The `name` key expects the name of a [Font Awesome icon](https://fontawesome.com
 
 ### Copyright
 
-Assign your copy right to `.Site.Copyright`. Cactus will append current year to the head.
-
-TODO: Customizable copyright year
+Assign your copy right to `.Site.Params.Copyright.Name`.
 
 ```toml
-copyright = "Zeran Wu" # cactus theme will use site title if copyright is not set
+[params.copyright]
+  enabled = true # default
+  name = "Zeran Wu" # cactus will use title if copyright is not set
+  startYear = 2020 # if not provided, will use current year.
+  endYear = 2021 # if not provided, will use current year.
 ```
 
 ### Comments
@@ -290,7 +292,7 @@ Pagination on posts archive can be disabled to show all posts in chronological o
 - [x] Analytics
 - [ ] Local Search
 - [ ] toc template
-- [ ] Customizable copyright year
+- [x] Customizable copyright year
 - [ ] gallery
 - [ ] expose [mathjax configuration](https://docs.mathjax.org/en/latest/web/configuration.html#web-configuration) 
 

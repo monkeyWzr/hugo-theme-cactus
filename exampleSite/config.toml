@@ -2,7 +2,7 @@ baseURL = "https://example.com"
 languageCode = "en-us"
 title = "Cactus theme example"
 theme = "cactus"
-copyright = "You" # cactus will use title if copyright is not set
+copyright = "You" # deprecated, please use params.copyright
 disqusShortname = "example" # Used when comments is enabled. Cactus will use site title if not set
 # googleAnalytics = "UA-1234-5"
 
@@ -81,6 +81,14 @@ weight = 4
       #serverUrl = "" # Defaults to https://matrix.cactus.chat:8448 (Cactus Chat public server)
       #serverName = "" # Defaults to cactus.chat
 
+  # Customize the copyright years
+  # Note: if startYear/endYear not provided, will use current year.
+  [params.copyright]
+    enabled = true # default
+    name = "You" # cactus will use title if copyright is not set
+    startYear = 2021
+    endYear = 2021
+    
   # the value of name should be an valid font awesome icon name (brands type)
   # https://fontawesome.com/icons?d=gallery&s=brands
   [[params.social]]

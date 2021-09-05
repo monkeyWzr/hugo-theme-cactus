@@ -1,7 +1,17 @@
 <footer id="footer">
   <div class="footer-left">
-    Copyright  &copy; {{ now.Format "2006" }} {{ if .Site.Copyright }} {{ print .Site.Copyright | markdownify }} {{ else }} {{ print .Site.Title }} {{ end }}
+    {{ $copyrightEnabled := true }}
+    {{ if (isset .Site.Params "copyright") }}
+      {{ $copyrightEnabled = .Site.Params.Copyright.Enabled | default false }}
+    {{ end }}
+    {{ if $copyrightEnabled }}
+    {{ $startYear := .Site.Params.Copyright.StartYear | default (now.Format "2006") }}
+    {{ $endYear := .Site.Params.Copyright.EndYear | default (now.Format "2006") }}
+    Copyright  &copy; 
+    {{ if (eq $startYear $endYear) }} {{ $startYear }} {{ else }} {{ $startYear }}-{{ $endYear }} {{ end }} {{ if .Site.Params.Copyright.Name }} {{ print .Site.Params.Copyright.Name | markdownify }} {{ else }} {{ print .Site.Title }} {{ end }}
+  {{ end }}
   </div>
+
   <div class="footer-right">
     <nav>
       <ul>
