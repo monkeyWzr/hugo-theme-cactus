@@ -17,6 +17,8 @@
       {{ partial "comments/utterances.html" . }}
     {{ else if eq .Site.Params.Comments.Engine "cactus_comments" }}
       {{ partial "comments/cactus_comments.html" . }}
+    {{ else if eq .Site.Params.Comments.Engine "remark42" }}
+      {{ partial "comments/remark42_comments.html" . }}
     {{ end }}
   </div>
 {{ end }}
