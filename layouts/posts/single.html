@@ -38,7 +38,7 @@
           {{ $readTime }} minute read
         </div>
         {{ end }}
-        {{ if gt .Params.categories 0 }}
+        {{ if (and (isset .Site.Taxonomies "categories") (gt .Params.categories 0)) }}
         <div class="article-category">
             <i class="fas fa-archive"></i>
             {{ range $index, $value := .Params.categories }}
@@ -47,7 +47,7 @@
             {{ end }}
         </div>
         {{ end }}
-        {{ if gt .Params.tags 0 }}
+        {{ if (and (isset .Site.Taxonomies "tags") (gt .Params.tags 0)) }}
         <div class="article-tag">
             <i class="fas fa-tag"></i>
             {{ range $index, $value := .Params.tags }}

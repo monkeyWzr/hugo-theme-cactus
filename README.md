@@ -106,6 +106,8 @@ weight = 4
 * show all posts
 
 ```toml
+paginate = 15 # 15 posts per page
+
 [params]
   showAllPostsOnHomePage = true
   postsOnHomePage = 5 # this option will be ignored
