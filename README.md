@@ -75,7 +75,7 @@ weight = 4
 
 ### Homepage settings
 
-* description: description will be displayed in the homepage.
+* description: description will be displayed in the homepage. Markdown syntax is supported in the description string.
 ```toml
 [params]
 
@@ -87,6 +87,13 @@ weight = 4
 ```toml
 [params]
   mainSection = "posts"
+```
+
+* change the default main section title from Writings, to something else:
+
+```toml
+[params]
+  mainSectionTitle = "Blog"
 ```
 
 * Show only the 5 most recent posts (default)
@@ -106,11 +113,18 @@ paginate = 15 # 15 posts per page
   postsOnHomePage = 5 # this option will be ignored
 ```
 
-* show tagsoverview (defalut) or not
+* show tagsoverview (default) or not
 * 
 ```toml
 [params]
   tagsOverview = true
+```
+
+* display the table of contents inline on blog posts, rather than as part of the navigation menu:
+
+```toml
+[params]
+  tocInline = true
 ```
 
 * show projects list (default) or not.
@@ -121,7 +135,7 @@ paginate = 15 # 15 posts per page
   projectsUrl = "https://github.com/monkeyWzr"
 ```
 
-Projects section will not be shown if no data file detecSee [Projects list](#projects-list) below.
+Projects section will not be shown if no data file is detected. See [Projects list](#projects-list) below.
 
 ### Projects list
 
@@ -146,7 +160,7 @@ for example, `data/projects.json`:
 }
 ```
 
-## Social media links
+### Social media links
 
 ```toml
 [[params.social]]
@@ -221,11 +235,16 @@ default config:
 
 ### Analytics
 
-Cactus uses hugo's bulit in [analytics templates](https://gohugo.io/templates/internal#google-analytics)
-Add you tracking id in your site config. By default cactus uses synchronous tracking code. You can switch to asynchronous tracking by set `googleAnalyticsAsync` to `true`.
+Cactus uses hugo's bulit in analytics templates. Check [hugo's documents](https://gohugo.io/templates/internal#google-analytics) for details.
 
+Set you tracking id in your site config.
 ```toml
-googleAnalytics = "UA-123-45"
+googleAnalytics = "UA-XXXXXXXX-XX" # or G-XXXXXXXX if you are using Google Analytics v4 (gtag.js)
+```
+
+If you are using Google Analytics v3 (analytics.js), you can switch to asynchronous tracking by set `params.googleAnalyticsAsync` to `true`.
+```toml
+[params]
 googleAnalyticsAsync = true # not required
 ```
 
@@ -256,6 +275,14 @@ mathjax: true # or false
 ```
 
 The site config will be ignored when `mathjax` option exists in front matter.
+
+### Archive 
+Pagination on posts archive can be disabled to show all posts in chronological order
+
+```toml
+[params]
+  showAllPostsArchive = true # or false (default)
+```
 
 ## TODOS
 

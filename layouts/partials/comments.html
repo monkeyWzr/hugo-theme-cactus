@@ -10,27 +10,13 @@
 
 {{ $enable_comments := .Scratch.Get "enable_comments" }}
 {{ if $enable_comments }}
-  {{ if (or (not (isset .Site.Params.Comments "engine")) (eq .Site.Params.Comments.Engine "disqus")) }}
-    <div class="blog-post-comments">
-        <div id="disqus_thread">
-          <script type="text/javascript">
-          
-          (function() {
-              // Don't ever inject Disqus on localhost--it creates unwanted
-              // discussions from 'localhost:1313' on your Disqus account...
-              // if (window.location.hostname == "localhost")
-              //     return;
-          
-              var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-              var disqus_shortname = '{{ if .Site.DisqusShortname }}{{ .Site.DisqusShortname }}{{ else }}{{ .Site.Title }}{{ end }}';
-              dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-              (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-          })();
-          </script>
-          <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-          <a href="https://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-        </div>
-    </div>
-
-  {{ end }}
+  <div class="blog-post-comments">
+    {{ if (or (not (isset .Site.Params.Comments "engine")) (eq .Site.Params.Comments.Engine "disqus")) }}
+      {{ partial "comments/disqus.html" . }}
+    {{ else if eq .Site.Params.Comments.Engine "utterances" }}
+      {{ partial "comments/utterances.html" . }}
+    {{ else if eq .Site.Params.Comments.Engine "cactus_comments" }}
+      {{ partial "comments/cactus_comments.html" . }}
+    {{ end }}
+  </div>
 {{ end }}

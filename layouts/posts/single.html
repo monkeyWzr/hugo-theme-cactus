@@ -30,6 +30,14 @@
             (Updated: <time datetime="{{ .Lastmod }}" itemprop="dateModified">{{ .Lastmod.Format $dataFormat }}</time>)
           {{ end }}
         </div>
+        {{ $showReadTime := .Site.Params.showReadTime | default false }}
+        {{if $showReadTime}}
+        <div class="article-read-time">
+          <i class="far fa-clock"></i>
+          {{ $readTime := math.Round (div (countwords .Content) 220.0) }}
+          {{ $readTime }} minute read
+        </div>
+        {{ end }}
         {{ if (and (isset .Site.Taxonomies "categories") (gt .Params.categories 0)) }}
         <div class="article-category">
             <i class="fas fa-archive"></i>
@@ -60,6 +68,11 @@
       {{ end }}
     </div>
   {{ end }}
+    {{ if .Site.Params.tocInline }}
+    <div id="toc">
+      {{ .TableOfContents }}
+    </div>
+    {{ end }}
     <div class="content" itemprop="articleBody">
       {{ .Content}}
     </div>
@@ -77,6 +90,9 @@
 <link rel="stylesheet" href={{ "/lib/font-awesome/css/all.min.css" | relURL }}>
 <script src={{ "/lib/jquery/jquery.min.js" | relURL }}></script>
 <script src={{ "/js/main.js" | relURL }}></script>
+{{ if not (isset site.Params "disablecopy") }}
+<script src={{ "js/code-copy.js"  | relURL }}></script>
+{{ end }}
 {{ $mathjax := false }}
 {{ if isset .Params "mathjax" }}
   {{ $mathjax = .Params.mathjax }}
