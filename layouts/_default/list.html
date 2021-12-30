@@ -23,7 +23,7 @@
     </li>
     {{ end }}
   </ul>
-  {{ if eq .Site.Params.showAllPostsArchive false }}
+  {{ if not .Site.Params.showAllPostsArchive}}
     {{ partial "pagination.html" . }}
   {{ end }}
 </div>
