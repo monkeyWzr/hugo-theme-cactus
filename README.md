@@ -8,6 +8,17 @@ Some works are still in progress. See [TODOS](#todos) below.
 
 ## Install
 
+### As Hugo module (preferred)
+
+```toml
+# config.toml
+theme = "github.com/flypenguin/hugo-theme-cactus"
+```
+
+Now continue with step 3 below.
+
+### As git submodule
+
 1. clone cactus to your hugo site's `themes` folder.
 ```
 git clone https://github.com/monkeyWzr/hugo-theme-cactus.git themes/cactus
