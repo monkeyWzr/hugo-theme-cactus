@@ -233,6 +233,8 @@ default config:
 
 ### Analytics
 
+#### Google Analytics
+
 Cactus uses hugo's bulit in analytics templates. Check [hugo's documents](https://gohugo.io/templates/internal#google-analytics) for details.
 
 Set you tracking id in your site config.
@@ -244,6 +246,28 @@ If you are using Google Analytics v3 (analytics.js), you can switch to asynchron
 ```toml
 [params]
 googleAnalyticsAsync = true # not required
+```
+
+#### Matomo
+
+Matomo can be configured by adding the [Hugo Matomo Module](https://github.com/holehan/hugo-component-matomo) and updating `config.toml` like this:
+
+```toml
+# in config.toml
+
+[[module.imports]]
+  path = 'github.com/holehan/hugo-components-matomo'
+
+[params]
+
+  # and add this line
+  [params.analytics.matomo]
+
+  # configure matomo settings, in detail described here:
+  # https://github.com/holehan/hugo-component-matomo
+  [params.matomo]
+    url = "https://example.org"
+    id = 1
 ```
 
 ### RSS
