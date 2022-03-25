@@ -205,7 +205,9 @@ comments: true
 
 The site config is ignored when `comments` option exists in front matter.
 
-The default engine is disqus. **By now only disqus is supported in cactus.** I will add more options sooner or later. See [Comments Alternatives](https://gohugo.io/content-management/comments/#comments-alternatives)
+#### Disqus notes
+
+The default engine is disqus.
 
 Before using disqus, you need to register and get your [disqus shortname](https://help.disqus.com/en/articles/1717111-what-s-a-shortname). Assign your shortname in `.Site.disqusShortname`, or cactus will use `.Site.Title` by default.
 
