@@ -1,0 +1,26 @@
+    <div id="remark42"></div>
+    <script type="text/javascript">
+        {{ `// docs see here: https://github.com/umputun/remark42#comments` | safeJS }}
+        var remark_config = {
+            host: {{ .Site.Params.comments.remark42.url | default "https://CHANGE.ME.IN.CONFIG.TOML" }},
+            site_id: {{ .Site.Params.comments.remark42.site_id | default "CHANGE ME IN CONFIG.TOML" }},
+            components: ['embed'],
+            url: {{ .Permalink }},
+            max_shown_comments: {{ .Site.Params.comments.remark42.max_comments | default 15 }},
+            theme: {{ .Site.Params.comments.remark42.theme | default "light" }},
+            page_title: {{ .Title }},
+            locale: {{ .Site.Params.comments.remark42.locale | default "en" }},
+            show_email_subscription: false,
+            simple_view: {{ .Site.Params.comments.remark42.simple_view | default false }}
+        };
+    </script>
+    <script>
+        ! function(e, n) {
+            for (var o = 0; o < e.length; o++) {
+                var r = n.createElement("script"),
+                    c = ".js",
+                    d = n.head || n.body;
+                "noModule" in r ? (r.type = "module", c = ".mjs") : r.async = !0, r.defer = !0, r.src = remark_config.host + "/web/" + e[o] + c, d.appendChild(r)
+            }
+        }(remark_config.components || ["embed"], document);
+    </script>

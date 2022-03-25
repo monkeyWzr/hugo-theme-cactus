@@ -194,7 +194,7 @@ Comments is disabled by default. Enable comments in your `.Site.Params`.
   [params.comments]
     enabled = true
     engine = "disqus" # default if unset
-                      # other options: disqus, utterances, cactus_comments
+                      # other options: disqus, utterances, cactus_comments, remark42
 ```
 
 You can also enable/disable comments per post. in your posts' front matter, add:
@@ -213,6 +213,18 @@ Before using disqus, you need to register and get your [disqus shortname](https:
 
 ```
 disqusShortname = "wzr" # cactus will use site title if not set
+```
+
+#### Remark42 configuration
+
+```toml
+  [params.comments.remark42]
+    site_id = "changeme"              # REQUIRED
+    url = "https://my.remark42.url"   # REQUIRED
+    #locale = "en"                     # select locale, default "en"
+    #max_comments = 15                 # display that many comments, default 15
+    #simple_view = false               # enable simple view (no noticable effect?)
+    #theme = "light"                   # "light" | "dark", default "light"
 ```
 
 ### highlight
