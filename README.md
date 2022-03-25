@@ -193,10 +193,12 @@ Comments is disabled by default. Enable comments in your `.Site.Params`.
 [params]
   [params.comments]
     enabled = true
-    # engine = "disqus" # in progress
+    engine = "disqus" # default if unset
+                      # other options: disqus, utterances, cactus_comments
 ```
 
 You can also enable/disable comments per post. in your posts' front matter, add:
+
 ```yaml
 comments: true
 ```
