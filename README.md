@@ -193,6 +193,7 @@ Comments is disabled by default. Enable comments in your `.Site.Params`.
 [params]
   [params.comments]
     enabled = true
+    insert_hr_line = false # inserts an <hr> element before comment block
     engine = "disqus" # default if unset
                       # other options: disqus, utterances, cactus_comments, remark42
 ```

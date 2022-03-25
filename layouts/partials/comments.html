@@ -1,5 +1,7 @@
 {{ $enable_comments := .Scratch.Get "enable_comments" }}
 {{ if $enable_comments -}}
+{{- if .Site.Params.Comments.insert_hr_line -}}<hr/>
+{{ end -}}
   <div class="blog-post-comments">
     {{ if (or (not (isset .Site.Params.Comments "engine")) (eq .Site.Params.Comments.Engine "disqus")) }}
       {{ partial "comments/disqus.html" . }}
