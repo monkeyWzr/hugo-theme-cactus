@@ -306,6 +306,17 @@ Pagination on posts archive can be disabled to show all posts in chronological o
   showAllPostsArchive = true # or false (default)
 ```
 
+### Page image gallery
+
+If you have images in your page bundle the theme will add them at the top of your page.
+You can disable this behavior in `config.toml`.
+
+```toml
+# config.toml
+[params]
+  disable_gallery = true
+```
+
 ## TODOS
 
 - [ ] More comments engines

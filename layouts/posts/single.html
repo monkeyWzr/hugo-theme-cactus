@@ -59,15 +59,17 @@
       </div>
     </header>
 
-  {{ with .Resources.ByType "image" }}
+    {{ if (or (not (isset .Site.Params "disable_gallery")) (not .Site.Params.disable_gallery)) -}}
+    {{ with .Resources.ByType "image" -}}
     <div class="article-gallery">
       {{ range $index, $value := . }}
       <a class="gallery-item" href="{{ .RelPermalink }}" rel="gallery_{{ $index }}">
-          <img src="{{ .RelPermalink }}" itemprop="image" />
+        <img src="{{ .RelPermalink }}" itemprop="image" />
       </a>
       {{ end }}
     </div>
-  {{ end }}
+    {{ end }}
+    {{- end }}
     {{ if .Site.Params.tocInline }}
     <div id="toc">
       {{ .TableOfContents }}
