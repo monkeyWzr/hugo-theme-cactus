@@ -59,7 +59,7 @@ $(document).ready(function() {
         var topDistance = menu.offset().top;
 
         // hide only the navigation links on desktop
-        if (!nav.is(":visible") && topDistance < 50) {
+        if (!nav.is(":visible") && topDistance < 88) {
           nav.show();
         } else if (nav.is(":visible") && topDistance > 100) {
           nav.hide();
@@ -67,7 +67,7 @@ $(document).ready(function() {
 
         // on tablet, hide the navigation icon as well and show a "scroll to top
         // icon" instead
-        if ( ! $( "#menu-icon" ).is(":visible") && topDistance < 50 ) {
+        if ( ! $( "#menu-icon" ).is(":visible") && topDistance < 88 ) {
           $("#menu-icon-tablet").show();
           $("#top-icon-tablet").hide();
         } else if (! $( "#menu-icon" ).is(":visible") && topDistance > 100) {
