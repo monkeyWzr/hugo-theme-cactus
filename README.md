@@ -8,6 +8,17 @@ Some works are still in progress. See [TODOS](#todos) below.
 
 ## Install
 
+### As Hugo module (preferred)
+
+```toml
+# config.toml
+theme = "github.com/flypenguin/hugo-theme-cactus"
+```
+
+Now continue with step 3 below.
+
+### As git submodule
+
 1. clone cactus to your hugo site's `themes` folder.
 ```
 git clone https://github.com/monkeyWzr/hugo-theme-cactus.git themes/cactus
@@ -193,22 +204,39 @@ Comments is disabled by default. Enable comments in your `.Site.Params`.
 [params]
   [params.comments]
     enabled = true
-    # engine = "disqus" # in progress
+    insert_hr_line = false # inserts an <hr> element before comment block
+    engine = "disqus" # default if unset
+                      # other options: disqus, utterances, cactus_comments, remark42
 ```
 
 You can also enable/disable comments per post. in your posts' front matter, add:
+
 ```yaml
 comments: true
 ```
 
 The site config is ignored when `comments` option exists in front matter.
 
-The default engine is disqus. **By now only disqus is supported in cactus.** I will add more options sooner or later. See [Comments Alternatives](https://gohugo.io/content-management/comments/#comments-alternatives)
+#### Disqus notes
+
+The default engine is disqus.
 
 Before using disqus, you need to register and get your [disqus shortname](https://help.disqus.com/en/articles/1717111-what-s-a-shortname). Assign your shortname in `.Site.disqusShortname`, or cactus will use `.Site.Title` by default.
 
 ```
 disqusShortname = "wzr" # cactus will use site title if not set
+```
+
+#### Remark42 configuration
+
+```toml
+  [params.comments.remark42]
+    site_id = "changeme"              # REQUIRED
+    url = "https://my.remark42.url"   # REQUIRED
+    #locale = "en"                     # select locale, default "en"
+    #max_comments = 15                 # display that many comments, default 15
+    #simple_view = false               # enable simple view (no noticable effect?)
+    #theme = "light"                   # "light" | "dark", default "light"
 ```
 
 ### highlight
@@ -233,6 +261,8 @@ default config:
 
 ### Analytics
 
+#### Google Analytics
+
 Cactus uses hugo's bulit in analytics templates. Check [hugo's documents](https://gohugo.io/templates/internal#google-analytics) for details.
 
 Set you tracking id in your site config.
@@ -244,6 +274,28 @@ If you are using Google Analytics v3 (analytics.js), you can switch to asynchron
 ```toml
 [params]
 googleAnalyticsAsync = true # not required
+```
+
+#### Matomo
+
+Matomo can be configured by adding the [Hugo Matomo Module](https://github.com/holehan/hugo-component-matomo) and updating `config.toml` like this:
+
+```toml
+# in config.toml
+
+[[module.imports]]
+  path = 'github.com/holehan/hugo-components-matomo'
+
+[params]
+
+  # and add this line
+  [params.analytics.matomo]
+
+  # configure matomo settings, in detail described here:
+  # https://github.com/holehan/hugo-component-matomo
+  [params.matomo]
+    url = "https://example.org"
+    id = 1
 ```
 
 ### RSS
@@ -280,6 +332,17 @@ Pagination on posts archive can be disabled to show all posts in chronological o
 ```toml
 [params]
   showAllPostsArchive = true # or false (default)
+```
+
+### Page image gallery
+
+If you have images in your page bundle the theme will add them at the top of your page.
+You can disable this behavior in `config.toml`.
+
+```toml
+# config.toml
+[params]
+  disable_gallery = true
 ```
 
 ## TODOS
