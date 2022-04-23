@@ -58,7 +58,7 @@
         {{ end }}
       </div>
     </header>
-  {{ if isset .Params.show_gallery }}
+  {{ if isset .Params "show_gallery" }}
     {{ with .Resources.ByType "image" }}
       <div class="article-gallery">
         {{ range $index, $value := . }}
