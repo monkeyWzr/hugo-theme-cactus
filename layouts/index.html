@@ -8,9 +8,8 @@
       {{ $length := (len .Site.Params.social) }}
       {{ range $index, $elem := .Site.Params.social}}
       {{ if eq $elem.name "email" }}
-        <a class="icon" target="_blank" rel="noopener" href="mailto:{{ $elem.link }}" aria-label="Email">
-          <i class="fas fa-envelope" aria-hidden="true"></i>
-        </a>
+        send me an 
+        <a target="_blank" rel="noopener" href="mailto:{{ $elem.link }}" aria-label="Email">e-mail</a>.
         {{ else if eq $elem.name "rss" }}
         <a class="icon" target="_blank" rel="noopener" href="{{ $elem.link }}" aria-label="RSS">
           <i class="fas fa-rss" aria-hidden="true"></i>
@@ -19,6 +18,9 @@
         <a class="icon" target="_blank" rel="noopener" href="{{ $elem.link }}" aria-label="Google Scholar">
           <i class="fas fa-graduation-cap" aria-hidden="true"></i>
         </a>
+        {{ else if eq $elem.name "twitter" }}
+        <a target="_blank" rel="noopener" href="{{ $elem.link }}" aria-label="Google Scholar">
+          Twitter</a>
         {{ else }}
         <a class="icon" target="_blank" rel="noopener" href="{{ $elem.link }}" aria-label="{{ $elem.name }}">
           <i class="fab fa-{{ lower $elem.name }}" aria-hidden="true"></i>
@@ -27,9 +29,9 @@
         {{ if (lt (add $index 2) $length) }}
           {{- print " , " -}}
         {{ else if (lt (add $index 1) $length) }}
-          {{- print " and " -}}
+          {{- print " or " -}}
         {{ else }}
-          {{- print "." -}}
+          {{/*  {{- print "." -}}  */}}
         {{ end }}
       {{ end }}
       </p>
