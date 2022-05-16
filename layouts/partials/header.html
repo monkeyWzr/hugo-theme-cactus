@@ -1,12 +1,5 @@
 <header id="header">
   <a href="{{ .Site.BaseURL }}">
-  {{ if (isset .Site.Params "gravatar") }}
-    <div id="logo" style="background-image: url(https://www.gravatar.com/avatar/{{ md5 .Site.Params.gravatar }}?s=100&d=identicon)"></div>
-  {{ else if (isset .Site.Params "logo") }}
-    <div id="logo" style="background-image: url({{ .Site.Params.logo | absURL }})"></div>
-  {{ else }}
-    <div id="logo" style="background-image: url({{ "images/logo.png" | absURL }})"></div>
-  {{ end}}
   <div id="title">
     <h1>{{ .Site.Title }}</h1>
   </div>

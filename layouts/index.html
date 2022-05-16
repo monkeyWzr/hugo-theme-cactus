@@ -4,7 +4,7 @@
     {{ .Site.Params.description | $.Page.RenderString }}
   {{ end }}
   {{ if isset .Site.Params "social" }}
-      <p>Find me on
+      <p style="text-align: center;">
       {{ $length := (len .Site.Params.social) }}
       {{ range $index, $elem := .Site.Params.social}}
       {{ if eq $elem.name "email" }}
@@ -24,13 +24,6 @@
           <i class="fab fa-{{ lower $elem.name }}" aria-hidden="true"></i>
         </a>
         {{ end }}
-        {{ if (lt (add $index 2) $length) }}
-          {{- print " , " -}}
-        {{ else if (lt (add $index 1) $length) }}
-          {{- print " and " -}}
-        {{ else }}
-          {{- print "." -}}
-        {{ end }}
       {{ end }}
       </p>
   {{ end }}
@@ -38,7 +31,7 @@
   </section>
 
   <section id="writing">
-    <span class="h1"><a href="{{ .Site.Params.mainSection | absURL }}">{{ .Site.Params.mainSectionTitle | default "Writings" }}</a></span>
+    <span class="h1"><a href="{{ .Site.Params.mainSection | absURL }}">{{ .Site.Params.mainSectionTitle | default "" }}</a></span>
     {{ if (and (and (isset .Site.Params "tagsoverview") (eq .Site.Params.tagsOverview true)) (gt (len .Site.Taxonomies.tags) 0)) }}
     <span class="h2">Topics</span>
     <span class="widget tagcloud">
