@@ -157,6 +157,7 @@ pre {
   position: relative;
 
   .code-copy-btn {
+    display: none;
     position: absolute;
     top: 0;
     right: 0;
@@ -176,8 +177,7 @@ pre {
   }
 
   .code-copy-btn:hover {
-    background-color: #666;
-    color: #2bbc8a;
+    color: #ff5a5f;
   }
 
   code {

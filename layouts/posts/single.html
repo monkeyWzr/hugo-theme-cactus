@@ -4,8 +4,6 @@
 <body class="max-width mx-auto px3 ltr">
   <div class="content index py4">
 
-  {{ partial "page_nav.html" . }}
-
   <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
     <header>
       <h1 class="posttitle" itemprop="name headline">
@@ -77,10 +75,6 @@
       {{ .Content}}
     </div>
   </article>
-
-  {{ partial "comments.html" . }}
-
-  {{ partial "page_nav_mobile.html" . }}
 
   {{ partial "footer.html" . }}
 
