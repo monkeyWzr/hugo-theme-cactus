@@ -135,6 +135,14 @@ weight = 4
 
 Projects section will not be shown if no data file is detected. See [Projects list](#projects-list) below.
 
+### Posts
+
+You can display the images in the page bundle as a gallery at the top of your post:
+
+```yaml
+show_gallery: true
+```
+
 ### Projects list
 
 Create your projects data file `data/projects.yaml|toml|json`. Hugo support yaml, toml and json formats.
