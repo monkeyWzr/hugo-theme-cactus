@@ -51,6 +51,7 @@ weight = 4
   colortheme = "white" # dark, light, white, or classic
   rss = true # generate rss feed. default value is false
   googleAnalyticsAsync = true # use asynchronous tracking. Synchronous tracking by default
+  GoatCounter = "" # Fill your site ID to enable GoatCounter Analytics
   showAllPostsArchive = false # default
 
   # Home page settings
