@@ -11,7 +11,7 @@
       <div class="tag-cloud-tags">
         {{ $AllRegularPagesCount := len .Site.RegularPages }}
         {{ range $elem := .Data.Terms.Alphabetical }}
-        <a style="font-size: {{ (add 0.8 (mul 15 (div (float $elem.Count) $AllRegularPagesCount))) }}rem;" href="{{ $elem.Page.Permalink }}">
+        <a style="font-size: {{ (add 0.8 (mul 15 (div (float $elem.Count) $AllRegularPagesCount))) }}rem;" href="{{ $elem.Page.RelPermalink }}">
           {{- .Page.Title -}}
         </a>
         {{ end }}
@@ -28,7 +28,7 @@
           <ul class="category-list">
             {{ range .Data.Terms.Alphabetical }}
             <li class="category-list-item">
-              <a class="category-list-link" href="{{ .Page.Permalink }}">{{ .Page.Title }}</a>
+              <a class="category-list-link" href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
               <span class="category-list-count">{{ .Count }}</span>
             </li>
             {{ end }}
