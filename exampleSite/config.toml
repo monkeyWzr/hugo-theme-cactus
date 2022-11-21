@@ -68,6 +68,7 @@ weight = 4
   # Post page settings
   show_updated = true # default
   showReadTime = true # default
+  tagsSeparator = ", " # default. Set to " " to hide tag separation.
 
   [params.comments]
     enabled = true # default
