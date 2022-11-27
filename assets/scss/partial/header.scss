@@ -101,11 +101,12 @@
       li {
         display: none;
         border-right: 0;
+        margin-right: 0;
       }
       li.icon {
         position: absolute;
         top: 77px;
-        right: 1rem;
+        right: 0;
         display: inline-block;
       }
     }
