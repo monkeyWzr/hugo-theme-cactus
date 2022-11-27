@@ -50,7 +50,6 @@
         {{ if gt .Params.tags 0 }}
         {{ $tagsSeparator := .Site.Params.tagsSeparator | default ", " }}
         <div class="article-tag">
-            <i class="fas fa-tag"></i>
             {{ range $index, $value := .Params.tags }}
             {{ if gt $index 0 }} {{ print $tagsSeparator }} {{ end }}
             <a class="tag-link" href="{{ "/tags/" | relLangURL }}{{ $value | urlize }}/" rel="tag">{{ $value }}</a>
