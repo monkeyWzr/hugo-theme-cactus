@@ -16,15 +16,28 @@
 }
 .tagcloud {
   a {
-    margin: 8px 0px;
     white-space: nowrap;
-    font-size: 20px; /* if data-count larger than 2 */
+    font-size: 25px; /* if data-count larger than 2 */
   }
   a[data-count="1"] {
-    font-size: 14px;
+    font-size: 15px;
   }
   a[data-count="2"] {
-    font-size: 16px;
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .tagcloud {
+    a {
+      line-height: 48px;
+      font-size: 40px;
+    }
+    a[data-count="1"] {
+      font-size: 20px;
+    }
+    a[data-count="2"] {
+      font-size: 32px;
+    }
   }
 }
 @media (min-width: 480px) {
