@@ -1,4 +1,7 @@
 <head>
+  {{ if .Site.Params.CSP }}
+  <meta http-equiv="Content-Security-Policy" content="{{ .Site.Params.CSP }}">
+  {{ end }}
   <link rel="preload" href="{{ "lib/font-awesome/webfonts/fa-brands-400.woff2" | relURL }}" as="font" type="font/woff2" crossorigin="anonymous">
   <link rel="preload" href="{{ "lib/font-awesome/webfonts/fa-regular-400.woff2" | relURL }}" as="font" type="font/woff2" crossorigin="anonymous">
   <link rel="preload" href="{{ "lib/font-awesome/webfonts/fa-solid-900.woff2" | relURL }}" as="font" type="font/woff2" crossorigin="anonymous">

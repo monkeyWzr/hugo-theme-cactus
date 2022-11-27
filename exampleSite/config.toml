@@ -70,6 +70,9 @@ weight = 4
   showReadTime = true # default
   tagsSeparator = ", " # default. Set to " " to hide tag separation.
 
+  # Content Security Policy
+  CSP = false # default. Set to "default-src 'self'; style-src 'self' 'unsafe-inline';" for the most restrictive which still works.
+
   [params.comments]
     enabled = true # default
     engine = "cactus_comments" # only disqus, utterances, and cactus_comments is supported
