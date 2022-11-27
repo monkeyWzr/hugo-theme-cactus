@@ -44,7 +44,7 @@
     <span class="widget tagcloud">
       {{ $AllRegularPagesCount := len .Site.RegularPages }}
       {{ range $elem := .Site.Taxonomies.tags.Alphabetical }}
-      <a style="font-size: {{ (add 0.7 (mul 5 (div (float $elem.Count) $AllRegularPagesCount))) }}rem;" href="{{ $elem.Page.Permalink }}">
+      <a data-count="{{ $elem.Count }}" data-total="{{ $AllRegularPagesCount }}" href="{{ $elem.Page.Permalink }}">
         {{- .Page.Title -}}
       </a>
       {{ end }}

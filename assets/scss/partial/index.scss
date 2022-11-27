@@ -14,6 +14,19 @@
     }
   }
 }
+.tagcloud {
+  a {
+    margin: 8px 0px;
+    white-space: nowrap;
+    font-size: 20px; /* if data-count larger than 2 */
+  }
+  a[data-count="1"] {
+    font-size: 14px;
+  }
+  a[data-count="2"] {
+    font-size: 16px;
+  }
+}
 @media (min-width: 480px) {
   .post-list {
     .post-item {
