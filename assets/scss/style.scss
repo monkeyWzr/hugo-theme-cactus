@@ -37,6 +37,20 @@ body {
 
   @extend $base-style !optional;
 }
+.font-icon {
+  svg {
+    width: 1em;
+    height: 1em;
+    vertical-align: -.125em;
+    fill: currentColor;
+  }
+}
+.font-icon-lg {
+  font-size: 1.33em;
+}
+.font-icon-2x {
+  font-size: 2em;
+}
 .content {
   position: relative;
   display: flex;
