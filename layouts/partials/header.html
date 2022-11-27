@@ -1,11 +1,11 @@
 <header id="header">
   <a href="{{ .Site.BaseURL }}">
   {{ if (isset .Site.Params "gravatar") }}
-    <img id="logo" src="https://www.gravatar.com/avatar/{{ md5 .Site.Params.gravatar }}?s=100&d=identicon">
+    <img id="logo" alt="Logo" src="https://www.gravatar.com/avatar/{{ md5 .Site.Params.gravatar }}?s=100&d=identicon">
   {{ else if (isset .Site.Params "logo") }}
-    <img id="logo" src="{{ .Site.Params.logo | absURL }}">
+    <img id="logo" alt="Logo" src="{{ .Site.Params.logo | absURL }}">
   {{ else }}
-    <img id="logo" src="{{ "images/logo.png" | absURL }}">
+    <img id="logo" alt="Logo" src="{{ "images/logo.png" | absURL }}">
   {{ end}}
   <div id="title">
     <h1>{{ .Site.Title }}</h1>
