@@ -84,9 +84,11 @@
   }
 }
 @media screen and (max-width: 480px) {
+  #header {
+    padding-right: 54px;
+  }
   #header #title {
     display: table;
-    margin-right: 5rem;
     min-height: $logo-height;
     h1 {
       display: table-cell;
