@@ -13,11 +13,6 @@
   </a>
   <div id="nav">
     <ul>
-      <li class="icon">
-        <a href="#" aria-label="Menu">
-          {{ partial "font-icon-2x" "bars" }}
-        </a>
-      </li>
       {{ range .Site.Menus.main }}
         <li><a href="{{ .URL }}">{{ .Name }}</a></li>
       {{ end }}

@@ -1,6 +1,0 @@
-<i class="font-icon font-icon-2x" aria-hidden="true">
-{{ $iconFile := . | printf "images/%s.svg" }}
-{{ with resources.Get $iconFile }}
-  {{ .Content | safeHTML }}
-{{ end }}
-</i>

@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="{{ .Site.LanguageCode }}">
-{{ partial "head.html" . }}
-<body class="max-width mx-auto px3 ltr">
-  <div class="content index py4">
-
-  {{ partial "page_nav.html" . }}
-
+{{ define "main" }}
   <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
     <header>
       <h1 class="posttitle" itemprop="name headline">
@@ -77,41 +70,4 @@
       {{ .Content}}
     </div>
   </article>
-
-  {{ partial "comments.html" . }}
-
-  {{ partial "page_nav_mobile.html" . }}
-
-  {{ partial "footer.html" . }}
-
-  </div>
-</body>
-
-<link rel="stylesheet" href={{ "/lib/font-awesome/css/all.min.css" | relURL }}>
-<script src={{ "/lib/jquery/jquery.min.js" | relURL }}></script>
-<script src={{ "/js/main.js" | relURL }}></script>
-{{ if not (isset site.Params "disablecopy") }}
-<script src={{ "js/code-copy.js"  | relURL }}></script>
 {{ end }}
-{{ $mathjax := false }}
-{{ if isset .Params "mathjax" }}
-  {{ $mathjax = .Params.mathjax }}
-{{ else if isset .Site.Params "mathjax" }}
-  {{ $mathjax = .Site.Params.mathjax }}
-{{ end }}
-{{ if $mathjax }}
-<script>
-  MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']]
-    },
-    svg: {
-      fontCache: 'global'
-    }
-  };
-</script>
-<script type="text/javascript" id="MathJax-script" async
-  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-</script>
-{{ end }}
-</html>

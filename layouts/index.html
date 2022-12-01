@@ -7,26 +7,20 @@
       <p>Find me on
       {{ $length := (len .Site.Params.social) }}
       {{ range $index, $elem := .Site.Params.social}}
-      {{ if eq $elem.name "email" }}
-        <a class="icon" target="_blank" rel="noopener" href="mailto:{{ $elem.link }}" aria-label="Email">
-          {{ partial "font-icon" "envelope" }}
-        </a>
-        {{ else if eq $elem.name "scholar" }}
-        <a class="icon" target="_blank" rel="noopener" href="{{ $elem.link }}" aria-label="Google Scholar">
-          {{ partial "font-icon" "graduation-cap" }}
-        </a>
-        {{ else }}
-        <a class="icon" target="_blank" rel="noopener" href="{{ $elem.link }}" aria-label="{{ $elem.name }}">
-          {{ partial "font-icon" $elem.name }}
-        </a>
-        {{ end }}
-        {{ if (lt (add $index 2) $length) }}
-          {{- print " , " -}}
-        {{ else if (lt (add $index 1) $length) }}
+        {{- if eq $elem.name "email" }}
+        <a target="_blank" rel="noopener" href="mailto:{{ $elem.link }}" aria-label="Email">
+            {{ $elem.name }}</a>
+        {{- else }}
+        <a target="_blank" rel="noopener" href="{{ $elem.link }}" aria-label="{{ $elem.name }}">
+          {{ $elem.name }}</a>
+        {{- end }}
+        {{- if (lt (add $index 2) $length) }}
+          {{- print ", " -}}
+        {{- else if (lt (add $index 1) $length) }}
           {{- print " and " -}}
-        {{ else }}
+        {{- else }}
           {{- print "." -}}
-        {{ end }}
+        {{- end }}
       {{ end }}
       </p>
   {{ end }}
