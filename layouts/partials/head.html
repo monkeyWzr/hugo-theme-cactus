@@ -49,4 +49,7 @@
     {{ template "_internal/google_analytics.html" . }}
   {{ end }}
   {{ end }}
+  {{ if .Site.Params.GoatCounter}}
+    {{ partial "goatcounter.html" . }}
+  {{ end }}
 </head>
