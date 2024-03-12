@@ -1,360 +1,98 @@
-<!doctype html><html lang=en-us>
-<head>
-<link rel=preload href=/hugo-theme-cactus/lib/font-awesome/webfonts/fa-brands-400.woff2 as=font type=font/woff2 crossorigin=anonymous>
-<link rel=preload href=/hugo-theme-cactus/lib/font-awesome/webfonts/fa-regular-400.woff2 as=font type=font/woff2 crossorigin=anonymous>
-<link rel=preload href=/hugo-theme-cactus/lib/font-awesome/webfonts/fa-solid-900.woff2 as=font type=font/woff2 crossorigin=anonymous>
-<link rel=preload href=/hugo-theme-cactus/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2 as=font type=font/woff2 crossorigin=anonymous>
-<script type=text/javascript src=https://latest.cactus.chat/cactus.js></script>
-<link rel=stylesheet href=https://latest.cactus.chat/style.css type=text/css>
-<meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<title> JavaScript URI エンコーディング | Cactus theme example</title>
-<link rel=canonical href=https://www.takuzen.me/hugo-theme-cactus/posts/2019-11-10-encodeuricomponent/>
-<meta name=description content="Hugo is a general-purpose website framework. Technically speaking, Hugo is a static site generator. Unlike systems that dynamically build a page with each visitor request, Hugo builds pages when you create or update your content. Since websites are viewed far more often than they are edited, Hugo is designed to provide an optimal viewing experience for your website’s end users and an ideal writing experience for website authors.">
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=robots content="all,follow">
-<meta name=googlebot content="index,follow,snippet,archive">
-<meta property="og:title" content="JavaScript URI エンコーディング">
-<meta property="og:description" content="まとめ encodeURI()とencodeURIComponent()はRFC 2396準拠である。 encodeURI() は完全な URI を表すのに必要な文字 (Reserved Characters) はエンコードしません。 また、予約されていないが &ldquo;そのまま&rdquo; URI に使用できる(Unreserved Marks) 文字をエンコードしません。 encodeURIComponent() は &ldquo;Unreserved Marks&rdquo; 文字をエンコードしません。
-1var set1 = &#34;;,/?:@&=+$#&#34;; // Reserved Characters 2var set2 = &#34;-_.!~*'()&#34;; // Unreserved Marks 3 4console.log(encodeURI(set1)); // ;,/?:@&=+$ 5console.log(encodeURI(set2)); // -_.!~*'() 6 7console.log(encodeURIComponent(set1)); // %3B%2C%2F%3F%3A%40%26%3D%2B%24 8console.log(encodeURIComponent(set2)); // -_.!~*'() rfc2396 appendix-A https://tools.ietf.org/html/rfc2396#appendix-A
-URI-reference = [ absoluteURI | relativeURI ] [ &#34;#&#34; fragment ] absoluteURI = scheme &#34;:&#34; ( hier_part | opaque_part ) relativeURI = ( net_path | abs_path | rel_path ) [ &#34;?">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://www.takuzen.me/hugo-theme-cactus/posts/2019-11-10-encodeuricomponent/"><meta property="article:section" content="posts">
-<meta property="article:published_time" content="2019-11-10T09:00:00+00:00">
-<meta property="article:modified_time" content="2019-11-10T09:00:00+00:00">
-<meta name=twitter:card content="summary">
-<meta name=twitter:title content="JavaScript URI エンコーディング">
-<meta name=twitter:description content="まとめ encodeURI()とencodeURIComponent()はRFC 2396準拠である。 encodeURI() は完全な URI を表すのに必要な文字 (Reserved Characters) はエンコードしません。 また、予約されていないが &ldquo;そのまま&rdquo; URI に使用できる(Unreserved Marks) 文字をエンコードしません。 encodeURIComponent() は &ldquo;Unreserved Marks&rdquo; 文字をエンコードしません。
-1var set1 = &#34;;,/?:@&=+$#&#34;; // Reserved Characters 2var set2 = &#34;-_.!~*'()&#34;; // Unreserved Marks 3 4console.log(encodeURI(set1)); // ;,/?:@&=+$ 5console.log(encodeURI(set2)); // -_.!~*'() 6 7console.log(encodeURIComponent(set1)); // %3B%2C%2F%3F%3A%40%26%3D%2B%24 8console.log(encodeURIComponent(set2)); // -_.!~*'() rfc2396 appendix-A https://tools.ietf.org/html/rfc2396#appendix-A
-URI-reference = [ absoluteURI | relativeURI ] [ &#34;#&#34; fragment ] absoluteURI = scheme &#34;:&#34; ( hier_part | opaque_part ) relativeURI = ( net_path | abs_path | rel_path ) [ &#34;?">
-<link rel=stylesheet href=https://www.takuzen.me/hugo-theme-cactus/css/styles.94f653e9e151e28067a7c5dbbc4600cbd5a3c721e79faaf971e523c40f3b249b8e4f20bb57810dfffa8d559ca5c140fd56eb4cd9c0853113ad08e66afdb08bdd.css integrity="sha512-lPZT6eFR4oBnp8XbvEYAy9WjxyHnn6r5ceUjxA87JJuOTyC7V4EN//qNVZylwUD9VutM2cCFMROtCOZq/bCL3Q=="><!--[if lt IE 9]><script src=https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js></script>
-<script src=https://oss.maxcdn.com/respond/1.4.2/respond.min.js></script><![endif]-->
-<link rel=icon type=image/png href=https://www.takuzen.me/hugo-theme-cactus/images/favicon.ico>
-</head>
-<body class="max-width mx-auto px3 ltr">
-<div class="content index py4">
-<div id=header-post>
-<a id=menu-icon href=#><i class="fas fa-bars fa-lg"></i></a>
+<!doctype html><html lang=en-us><head><link rel=preload href=/hugo-theme-cactus/lib/font-awesome/webfonts/fa-brands-400.woff2 as=font type=font/woff2 crossorigin=anonymous><link rel=preload href=/hugo-theme-cactus/lib/font-awesome/webfonts/fa-regular-400.woff2 as=font type=font/woff2 crossorigin=anonymous><link rel=preload href=/hugo-theme-cactus/lib/font-awesome/webfonts/fa-solid-900.woff2 as=font type=font/woff2 crossorigin=anonymous><link rel=preload href=/hugo-theme-cactus/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2 as=font type=font/woff2 crossorigin=anonymous><script type=text/javascript src=https://latest.cactus.chat/cactus.js></script><link rel=stylesheet href=https://latest.cactus.chat/style.css type=text/css><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><title>JavaScript URI エンコーディング | Cactus theme example</title>
+<link rel=canonical href=https://www.takuzen.me/hugo-theme-cactus/posts/2019-11-10-encodeuricomponent/><meta name=description content="Hugo is a general-purpose website framework. Technically speaking, Hugo is a static site generator. Unlike systems that dynamically build a page with each visitor request, Hugo builds pages when you create or update your content. Since websites are viewed far more often than they are edited, Hugo is designed to provide an optimal viewing experience for your website’s end users and an ideal writing experience for website authors."><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="all,follow"><meta name=googlebot content="index,follow,snippet,archive"><meta property="og:title" content="JavaScript URI エンコーディング"><meta property="og:description" content='まとめ encodeURI()とencodeURIComponent()はRFC 2396準拠である。 encodeURI() は完全な URI を表すのに必要な文字 (Reserved Characters) はエンコードしません。 また、予約されていないが &ldquo;そのまま&rdquo; URI に使用できる(Unreserved Marks) 文字をエンコードしません。 encodeURIComponent() は &ldquo;Unreserved Marks&rdquo; 文字をエンコードしません。
+1var set1 = ";,/?:@&=+$#"; // Reserved Characters 2var set2 = "-_.!~*&#39;()"; // Unreserved Marks 3 4console.log(encodeURI(set1)); // ;,/?:@&=+$ 5console.log(encodeURI(set2)); // -_.!~*&#39;() 6 7console.log(encodeURIComponent(set1)); // %3B%2C%2F%3F%3A%40%26%3D%2B%24 8console.log(encodeURIComponent(set2)); // -_.!~*&#39;() rfc2396 appendix-A https://tools.ietf.org/html/rfc2396#appendix-A
+URI-reference = [ absoluteURI | relativeURI ] [ "#" fragment ] absoluteURI = scheme ":" ( hier_part | opaque_part ) relativeURI = ( net_path | abs_path | rel_path ) [ "?'><meta property="og:type" content="article"><meta property="og:url" content="https://www.takuzen.me/hugo-theme-cactus/posts/2019-11-10-encodeuricomponent/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2019-11-10T09:00:00+00:00"><meta property="article:modified_time" content="2019-11-10T09:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="JavaScript URI エンコーディング"><meta name=twitter:description content='まとめ encodeURI()とencodeURIComponent()はRFC 2396準拠である。 encodeURI() は完全な URI を表すのに必要な文字 (Reserved Characters) はエンコードしません。 また、予約されていないが &ldquo;そのまま&rdquo; URI に使用できる(Unreserved Marks) 文字をエンコードしません。 encodeURIComponent() は &ldquo;Unreserved Marks&rdquo; 文字をエンコードしません。
+1var set1 = ";,/?:@&=+$#"; // Reserved Characters 2var set2 = "-_.!~*&#39;()"; // Unreserved Marks 3 4console.log(encodeURI(set1)); // ;,/?:@&=+$ 5console.log(encodeURI(set2)); // -_.!~*&#39;() 6 7console.log(encodeURIComponent(set1)); // %3B%2C%2F%3F%3A%40%26%3D%2B%24 8console.log(encodeURIComponent(set2)); // -_.!~*&#39;() rfc2396 appendix-A https://tools.ietf.org/html/rfc2396#appendix-A
+URI-reference = [ absoluteURI | relativeURI ] [ "#" fragment ] absoluteURI = scheme ":" ( hier_part | opaque_part ) relativeURI = ( net_path | abs_path | rel_path ) [ "?'><link rel=stylesheet href=https://www.takuzen.me/hugo-theme-cactus/css/styles.94f653e9e151e28067a7c5dbbc4600cbd5a3c721e79faaf971e523c40f3b249b8e4f20bb57810dfffa8d559ca5c140fd56eb4cd9c0853113ad08e66afdb08bdd.css integrity="sha512-lPZT6eFR4oBnp8XbvEYAy9WjxyHnn6r5ceUjxA87JJuOTyC7V4EN//qNVZylwUD9VutM2cCFMROtCOZq/bCL3Q=="><!--[if lt IE 9]><script src=https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js></script><script src=https://oss.maxcdn.com/respond/1.4.2/respond.min.js></script><![endif]--><link rel=icon type=image/png href=https://www.takuzen.me/hugo-theme-cactus/images/favicon.ico></head><body class="max-width mx-auto px3 ltr"><div class="content index py4"><div id=header-post><a id=menu-icon href=#><i class="fas fa-bars fa-lg"></i></a>
 <a id=menu-icon-tablet href=#><i class="fas fa-bars fa-lg"></i></a>
-<a id=top-icon-tablet href=# onclick="$('html, body').animate({scrollTop:0},'fast')" style=display:none aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
-<span id=menu>
-<span id=nav>
-<ul>
-<li><a href=/hugo-theme-cactus/>Home</a></li>
-<li><a href=/hugo-theme-cactus/posts>Writings</a></li>
-<li><a href=/hugo-theme-cactus/tags>Tags</a></li>
-<li><a href=/hugo-theme-cactus/about>About</a></li>
-</ul>
-</span>
-<br>
-<span id=actions>
-<ul>
-<li>
-<a class=icon href=https://www.takuzen.me/hugo-theme-cactus/posts/2019-10-27-uipath/ aria-label=Previous>
-<i class="fas fa-chevron-left" aria-hidden=true onmouseover="$('#i-prev').toggle()" onmouseout="$('#i-prev').toggle()"></i>
-</a>
-</li>
-<li>
-<a class=icon href=https://www.takuzen.me/hugo-theme-cactus/posts/2019-11-18-uipath-best-practice/ aria-label=Next>
-<i class="fas fa-chevron-right" aria-hidden=true onmouseover="$('#i-next').toggle()" onmouseout="$('#i-next').toggle()"></i>
-</a>
-</li>
-<li>
-<a class=icon href=# onclick="$('html, body').animate({scrollTop:0},'fast')" aria-label="Top of Page">
-<i class="fas fa-chevron-up" aria-hidden=true onmouseover="$('#i-top').toggle()" onmouseout="$('#i-top').toggle()"></i>
-</a>
-</li>
-<li>
-<a class=icon href=# aria-label=Share>
-<i class="fas fa-share-alt" aria-hidden=true onmouseover="$('#i-share').toggle()" onmouseout="$('#i-share').toggle()" onclick="return $('#share').toggle(),!1"></i>
-</a>
-</li>
-</ul>
-<span id=i-prev class=info style=display:none>Previous post</span>
+<a id=top-icon-tablet href=# onclick='$("html, body").animate({scrollTop:0},"fast")' style=display:none aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+<span id=menu><span id=nav><ul><li><a href=/hugo-theme-cactus/>Home</a></li><li><a href=/hugo-theme-cactus/posts>Writings</a></li><li><a href=/hugo-theme-cactus/tags>Tags</a></li><li><a href=/hugo-theme-cactus/about>About</a></li></ul></span><br><span id=actions><ul><li><a class=icon href=https://www.takuzen.me/hugo-theme-cactus/posts/2019-10-27-uipath/ aria-label=Previous><i class="fas fa-chevron-left" aria-hidden=true onmouseover='$("#i-prev").toggle()' onmouseout='$("#i-prev").toggle()'></i></a></li><li><a class=icon href=https://www.takuzen.me/hugo-theme-cactus/posts/2019-11-18-uipath-best-practice/ aria-label=Next><i class="fas fa-chevron-right" aria-hidden=true onmouseover='$("#i-next").toggle()' onmouseout='$("#i-next").toggle()'></i></a></li><li><a class=icon href=# onclick='$("html, body").animate({scrollTop:0},"fast")' aria-label="Top of Page"><i class="fas fa-chevron-up" aria-hidden=true onmouseover='$("#i-top").toggle()' onmouseout='$("#i-top").toggle()'></i></a></li><li><a class=icon href=# aria-label=Share><i class="fas fa-share-alt" aria-hidden=true onmouseover='$("#i-share").toggle()' onmouseout='$("#i-share").toggle()' onclick='return $("#share").toggle(),!1'></i></a></li></ul><span id=i-prev class=info style=display:none>Previous post</span>
 <span id=i-next class=info style=display:none>Next post</span>
 <span id=i-top class=info style=display:none>Back to top</span>
-<span id=i-share class=info style=display:none>Share post</span>
-</span>
-<br>
-<div id=share style=display:none>
-<ul>
-<li>
-<a class=icon href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f" aria-label=Facebook>
-<i class="fab fa-facebook" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="https://twitter.com/share?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f&text=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0" aria-label=Twitter>
-<i class="fab fa-twitter" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f&title=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0" aria-label=Linkedin>
-<i class="fab fa-linkedin" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f&is_video=false&description=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0" aria-label=Pinterest>
-<i class="fab fa-pinterest" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="mailto:?subject=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0&body=Check out this article: https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f" aria-label=Email>
-<i class="fas fa-envelope" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="https://getpocket.com/save?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f&title=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0" aria-label=Pocket>
-<i class="fab fa-get-pocket" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="http://reddit.com/submit?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f&title=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0" aria-label=reddit>
-<i class="fab fa-reddit" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f&name=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0&description=%e3%81%be%e3%81%a8%e3%82%81%20encodeURI%28%29%e3%81%a8encodeURIComponent%28%29%e3%81%afRFC%202396%e6%ba%96%e6%8b%a0%e3%81%a7%e3%81%82%e3%82%8b%e3%80%82%20encodeURI%28%29%20%e3%81%af%e5%ae%8c%e5%85%a8%e3%81%aa%20URI%20%e3%82%92%e8%a1%a8%e3%81%99%e3%81%ae%e3%81%ab%e5%bf%85%e8%a6%81%e3%81%aa%e6%96%87%e5%ad%97%20%28Reserved%20Characters%29%20%e3%81%af%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%89%e3%81%97%e3%81%be%e3%81%9b%e3%82%93%e3%80%82%20%e3%81%be%e3%81%9f%e3%80%81%e4%ba%88%e7%b4%84%e3%81%95%e3%82%8c%e3%81%a6%e3%81%84%e3%81%aa%e3%81%84%e3%81%8c%20%26ldquo%3b%e3%81%9d%e3%81%ae%e3%81%be%e3%81%be%26rdquo%3b%20URI%20%e3%81%ab%e4%bd%bf%e7%94%a8%e3%81%a7%e3%81%8d%e3%82%8b%28Unreserved%20Marks%29%20%e6%96%87%e5%ad%97%e3%82%92%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%89%e3%81%97%e3%81%be%e3%81%9b%e3%82%93%e3%80%82%20encodeURIComponent%28%29%20%e3%81%af%20%26ldquo%3bUnreserved%20Marks%26rdquo%3b%20%e6%96%87%e5%ad%97%e3%82%92%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%89%e3%81%97%e3%81%be%e3%81%9b%e3%82%93%e3%80%82%0a1var%20set1%20%3d%20%26%2334%3b%3b%2c%2f%3f%3a%40%26amp%3b%3d%2b%24%23%26%2334%3b%3b%20%2f%2f%20Reserved%20Characters%202var%20set2%20%3d%20%26%2334%3b-_.%21~%2a%26%2339%3b%28%29%26%2334%3b%3b%20%2f%2f%20Unreserved%20Marks%203%204console.log%28encodeURI%28set1%29%29%3b%20%2f%2f%20%3b%2c%2f%3f%3a%40%26amp%3b%3d%2b%24%205console.log%28encodeURI%28set2%29%29%3b%20%2f%2f%20-_.%21~%2a%26%2339%3b%28%29%206%207console.log%28encodeURIComponent%28set1%29%29%3b%20%2f%2f%20%253B%252C%252F%253F%253A%2540%2526%253D%252B%2524%208console.log%28encodeURIComponent%28set2%29%29%3b%20%2f%2f%20-_.%21~%2a%26%2339%3b%28%29%20rfc2396%20appendix-A%20https%3a%2f%2ftools.ietf.org%2fhtml%2frfc2396%23appendix-A%0aURI-reference%20%3d%20%5b%20absoluteURI%20%7c%20relativeURI%20%5d%20%5b%20%26quot%3b%23%26quot%3b%20fragment%20%5d%20absoluteURI%20%3d%20scheme%20%26quot%3b%3a%26quot%3b%20%28%20hier_part%20%7c%20opaque_part%20%29%20relativeURI%20%3d%20%28%20net_path%20%7c%20abs_path%20%7c%20rel_path%20%29%20%5b%20%26quot%3b%3f" aria-label=Tumblr>
-<i class="fab fa-tumblr" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f&t=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0" aria-label="Hacker News">
-<i class="fab fa-hacker-news" aria-hidden=true></i>
-</a>
-</li>
-</ul>
-</div>
-<div id=toc>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#まとめ>まとめ</a></li>
-<li><a href=#rfc2396-appendix-a>rfc2396 appendix-A</a></li>
-<li><a href=#参考>参考</a></li>
-</ul>
-</nav>
-</div>
-</span>
-</div>
-<article class=post itemscope itemtype=http://schema.org/BlogPosting>
-<header>
-<h1 class=posttitle itemprop="name headline">
-JavaScript URI エンコーディング
-</h1>
-<div class=meta>
-<div class=postdate>
-<time datetime="2019-11-10 09:00:00 +0000 UTC" itemprop=datePublished>2019-11-10</time>
-</div>
-<div class=article-read-time>
-<i class="far fa-clock"></i>
-3 minute read
-</div>
-<div class=article-category>
-<i class="fas fa-archive"></i>
-<a class=category-link href=/hugo-theme-cactus/categories/notes>notes</a>
-</div>
-<div class=article-tag>
-<i class="fas fa-tag"></i>
-<a class=tag-link href=/hugo-theme-cactus/tags/javascript rel=tag>JavaScript</a>
-</div>
-</div>
-</header>
-<div class=content itemprop=articleBody>
-<h2 id=まとめ>まとめ</h2>
-<p><code>encodeURI()</code>と<code>encodeURIComponent()</code>はRFC 2396準拠である。
+<span id=i-share class=info style=display:none>Share post</span></span><br><div id=share style=display:none><ul><li><a class=icon href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f" aria-label=Facebook><i class="fab fa-facebook" aria-hidden=true></i></a></li><li><a class=icon href="https://twitter.com/share?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f&text=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0" aria-label=Twitter><i class="fab fa-twitter" aria-hidden=true></i></a></li><li><a class=icon href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f&title=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0" aria-label=Linkedin><i class="fab fa-linkedin" aria-hidden=true></i></a></li><li><a class=icon href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f&is_video=false&description=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0" aria-label=Pinterest><i class="fab fa-pinterest" aria-hidden=true></i></a></li><li><a class=icon href="mailto:?subject=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0&body=Check out this article: https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f" aria-label=Email><i class="fas fa-envelope" aria-hidden=true></i></a></li><li><a class=icon href="https://getpocket.com/save?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f&title=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0" aria-label=Pocket><i class="fab fa-get-pocket" aria-hidden=true></i></a></li><li><a class=icon href="http://reddit.com/submit?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f&title=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0" aria-label=reddit><i class="fab fa-reddit" aria-hidden=true></i></a></li><li><a class=icon href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f&name=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0&description=%e3%81%be%e3%81%a8%e3%82%81%20encodeURI%28%29%e3%81%a8encodeURIComponent%28%29%e3%81%afRFC%202396%e6%ba%96%e6%8b%a0%e3%81%a7%e3%81%82%e3%82%8b%e3%80%82%20encodeURI%28%29%20%e3%81%af%e5%ae%8c%e5%85%a8%e3%81%aa%20URI%20%e3%82%92%e8%a1%a8%e3%81%99%e3%81%ae%e3%81%ab%e5%bf%85%e8%a6%81%e3%81%aa%e6%96%87%e5%ad%97%20%28Reserved%20Characters%29%20%e3%81%af%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%89%e3%81%97%e3%81%be%e3%81%9b%e3%82%93%e3%80%82%20%e3%81%be%e3%81%9f%e3%80%81%e4%ba%88%e7%b4%84%e3%81%95%e3%82%8c%e3%81%a6%e3%81%84%e3%81%aa%e3%81%84%e3%81%8c%20%26ldquo%3b%e3%81%9d%e3%81%ae%e3%81%be%e3%81%be%26rdquo%3b%20URI%20%e3%81%ab%e4%bd%bf%e7%94%a8%e3%81%a7%e3%81%8d%e3%82%8b%28Unreserved%20Marks%29%20%e6%96%87%e5%ad%97%e3%82%92%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%89%e3%81%97%e3%81%be%e3%81%9b%e3%82%93%e3%80%82%20encodeURIComponent%28%29%20%e3%81%af%20%26ldquo%3bUnreserved%20Marks%26rdquo%3b%20%e6%96%87%e5%ad%97%e3%82%92%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%89%e3%81%97%e3%81%be%e3%81%9b%e3%82%93%e3%80%82%0a1var%20set1%20%3d%20%26%2334%3b%3b%2c%2f%3f%3a%40%26amp%3b%3d%2b%24%23%26%2334%3b%3b%20%2f%2f%20Reserved%20Characters%202var%20set2%20%3d%20%26%2334%3b-_.%21~%2a%26%2339%3b%28%29%26%2334%3b%3b%20%2f%2f%20Unreserved%20Marks%203%204console.log%28encodeURI%28set1%29%29%3b%20%2f%2f%20%3b%2c%2f%3f%3a%40%26amp%3b%3d%2b%24%205console.log%28encodeURI%28set2%29%29%3b%20%2f%2f%20-_.%21~%2a%26%2339%3b%28%29%206%207console.log%28encodeURIComponent%28set1%29%29%3b%20%2f%2f%20%253B%252C%252F%253F%253A%2540%2526%253D%252B%2524%208console.log%28encodeURIComponent%28set2%29%29%3b%20%2f%2f%20-_.%21~%2a%26%2339%3b%28%29%20rfc2396%20appendix-A%20https%3a%2f%2ftools.ietf.org%2fhtml%2frfc2396%23appendix-A%0aURI-reference%20%3d%20%5b%20absoluteURI%20%7c%20relativeURI%20%5d%20%5b%20%26%2334%3b%23%26%2334%3b%20fragment%20%5d%20absoluteURI%20%3d%20scheme%20%26%2334%3b%3a%26%2334%3b%20%28%20hier_part%20%7c%20opaque_part%20%29%20relativeURI%20%3d%20%28%20net_path%20%7c%20abs_path%20%7c%20rel_path%20%29%20%5b%20%26%2334%3b%3f" aria-label=Tumblr><i class="fab fa-tumblr" aria-hidden=true></i></a></li><li><a class=icon href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f&t=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0" aria-label="Hacker News"><i class="fab fa-hacker-news" aria-hidden=true></i></a></li></ul></div><div id=toc><nav id=TableOfContents><ul><li><a href=#まとめ>まとめ</a></li><li><a href=#rfc2396-appendix-a>rfc2396 appendix-A</a></li><li><a href=#参考>参考</a></li></ul></nav></div></span></div><article class=post itemscope itemtype=http://schema.org/BlogPosting><header><h1 class=posttitle itemprop="name headline">JavaScript URI エンコーディング</h1><div class=meta><div class=postdate><time datetime="2019-11-10 09:00:00 +0000 UTC" itemprop=datePublished>2019-11-10</time></div><div class=article-read-time><i class="far fa-clock"></i>
+3 minute read</div><div class=article-category><i class="fas fa-archive"></i>
+<a class=category-link href=/categories/notes>notes</a></div><div class=article-tag><i class="fas fa-tag"></i>
+<a class=tag-link href=/tags/javascript rel=tag>JavaScript</a></div></div></header><div class=content itemprop=articleBody><h2 id=まとめ>まとめ</h2><p><code>encodeURI()</code>と<code>encodeURIComponent()</code>はRFC 2396準拠である。
 <code>encodeURI()</code> は完全な URI を表すのに必要な文字 (Reserved Characters) はエンコードしません。
 また、予約されていないが &ldquo;そのまま&rdquo; URI に使用できる(Unreserved Marks) 文字をエンコードしません。
-<code>encodeURIComponent()</code> は &ldquo;Unreserved Marks&rdquo; 文字をエンコードしません。</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JavaScript data-lang=JavaScript><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span style=color:#8be9fd;font-style:italic>var</span> set1 <span style=color:#ff79c6>=</span> <span style=color:#f1fa8c>&#34;;,/?:@&amp;=+$#&#34;</span>; <span style=color:#6272a4>// Reserved Characters
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span><span style=color:#6272a4></span><span style=color:#8be9fd;font-style:italic>var</span> set2 <span style=color:#ff79c6>=</span> <span style=color:#f1fa8c>&#34;-_.!~*&#39;()&#34;</span>;   <span style=color:#6272a4>// Unreserved Marks
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span><span style=color:#6272a4></span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">4</span>console.log(<span style=color:#8be9fd;font-style:italic>encodeURI</span>(set1)); <span style=color:#6272a4>// ;,/?:@&amp;=+$
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">5</span><span style=color:#6272a4></span>console.log(<span style=color:#8be9fd;font-style:italic>encodeURI</span>(set2)); <span style=color:#6272a4>// -_.!~*&#39;()
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">6</span><span style=color:#6272a4></span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">7</span>console.log(<span style=color:#8be9fd;font-style:italic>encodeURIComponent</span>(set1)); <span style=color:#6272a4>// %3B%2C%2F%3F%3A%40%26%3D%2B%24
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">8</span><span style=color:#6272a4></span>console.log(<span style=color:#8be9fd;font-style:italic>encodeURIComponent</span>(set2)); <span style=color:#6272a4>// -_.!~*&#39;()
-</span></code></pre></div><h2 id=rfc2396-appendix-a>rfc2396 appendix-A</h2>
-<p><a href=https://tools.ietf.org/html/rfc2396#appendix-A>https://tools.ietf.org/html/rfc2396#appendix-A</a></p>
-<pre><code>URI-reference = [ absoluteURI | relativeURI ] [ &quot;#&quot; fragment ]
-      absoluteURI   = scheme &quot;:&quot; ( hier_part | opaque_part )
-      relativeURI   = ( net_path | abs_path | rel_path ) [ &quot;?&quot; query ]
+<code>encodeURIComponent()</code> は &ldquo;Unreserved Marks&rdquo; 文字をエンコードしません。</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-JavaScript data-lang=JavaScript><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">1</span><span><span style=color:#8be9fd;font-style:italic>var</span> set1 <span style=color:#ff79c6>=</span> <span style=color:#f1fa8c>&#34;;,/?:@&amp;=+$#&#34;</span>; <span style=color:#6272a4>// Reserved Characters
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">2</span><span><span style=color:#6272a4></span><span style=color:#8be9fd;font-style:italic>var</span> set2 <span style=color:#ff79c6>=</span> <span style=color:#f1fa8c>&#34;-_.!~*&#39;()&#34;</span>;   <span style=color:#6272a4>// Unreserved Marks
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">3</span><span><span style=color:#6272a4></span>
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">4</span><span>console.log(<span style=color:#8be9fd;font-style:italic>encodeURI</span>(set1)); <span style=color:#6272a4>// ;,/?:@&amp;=+$
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">5</span><span><span style=color:#6272a4></span>console.log(<span style=color:#8be9fd;font-style:italic>encodeURI</span>(set2)); <span style=color:#6272a4>// -_.!~*&#39;()
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">6</span><span><span style=color:#6272a4></span>
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">7</span><span>console.log(<span style=color:#8be9fd;font-style:italic>encodeURIComponent</span>(set1)); <span style=color:#6272a4>// %3B%2C%2F%3F%3A%40%26%3D%2B%24
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">8</span><span><span style=color:#6272a4></span>console.log(<span style=color:#8be9fd;font-style:italic>encodeURIComponent</span>(set2)); <span style=color:#6272a4>// -_.!~*&#39;()
+</span></span></span></code></pre></div><h2 id=rfc2396-appendix-a>rfc2396 appendix-A</h2><p><a href=https://tools.ietf.org/html/rfc2396#appendix-A>https://tools.ietf.org/html/rfc2396#appendix-A</a></p><pre tabindex=0><code>URI-reference = [ absoluteURI | relativeURI ] [ &#34;#&#34; fragment ]
+      absoluteURI   = scheme &#34;:&#34; ( hier_part | opaque_part )
+      relativeURI   = ( net_path | abs_path | rel_path ) [ &#34;?&#34; query ]
 
-      hier_part     = ( net_path | abs_path ) [ &quot;?&quot; query ]
+      hier_part     = ( net_path | abs_path ) [ &#34;?&#34; query ]
       opaque_part   = uric_no_slash *uric
 
-      uric_no_slash = unreserved | escaped | &quot;;&quot; | &quot;?&quot; | &quot;:&quot; | &quot;@&quot; |
-                      &quot;&amp;&quot; | &quot;=&quot; | &quot;+&quot; | &quot;$&quot; | &quot;,&quot;
+      uric_no_slash = unreserved | escaped | &#34;;&#34; | &#34;?&#34; | &#34;:&#34; | &#34;@&#34; |
+                      &#34;&amp;&#34; | &#34;=&#34; | &#34;+&#34; | &#34;$&#34; | &#34;,&#34;
 
-      net_path      = &quot;//&quot; authority [ abs_path ]
-      abs_path      = &quot;/&quot;  path_segments
+      net_path      = &#34;//&#34; authority [ abs_path ]
+      abs_path      = &#34;/&#34;  path_segments
       rel_path      = rel_segment [ abs_path ]
 
       rel_segment   = 1*( unreserved | escaped |
-                          &quot;;&quot; | &quot;@&quot; | &quot;&amp;&quot; | &quot;=&quot; | &quot;+&quot; | &quot;$&quot; | &quot;,&quot; )
+                          &#34;;&#34; | &#34;@&#34; | &#34;&amp;&#34; | &#34;=&#34; | &#34;+&#34; | &#34;$&#34; | &#34;,&#34; )
 
-      scheme        = alpha *( alpha | digit | &quot;+&quot; | &quot;-&quot; | &quot;.&quot; )
+      scheme        = alpha *( alpha | digit | &#34;+&#34; | &#34;-&#34; | &#34;.&#34; )
 
       authority     = server | reg_name
 
-      reg_name      = 1*( unreserved | escaped | &quot;$&quot; | &quot;,&quot; |
-                          &quot;;&quot; | &quot;:&quot; | &quot;@&quot; | &quot;&amp;&quot; | &quot;=&quot; | &quot;+&quot; )
+      reg_name      = 1*( unreserved | escaped | &#34;$&#34; | &#34;,&#34; |
+                          &#34;;&#34; | &#34;:&#34; | &#34;@&#34; | &#34;&amp;&#34; | &#34;=&#34; | &#34;+&#34; )
 
-      server        = [ [ userinfo &quot;@&quot; ] hostport ]
+      server        = [ [ userinfo &#34;@&#34; ] hostport ]
       userinfo      = *( unreserved | escaped |
-                         &quot;;&quot; | &quot;:&quot; | &quot;&amp;&quot; | &quot;=&quot; | &quot;+&quot; | &quot;$&quot; | &quot;,&quot; )
+                         &#34;;&#34; | &#34;:&#34; | &#34;&amp;&#34; | &#34;=&#34; | &#34;+&#34; | &#34;$&#34; | &#34;,&#34; )
 
-      hostport      = host [ &quot;:&quot; port ]
+      hostport      = host [ &#34;:&#34; port ]
       host          = hostname | IPv4address
-      hostname      = *( domainlabel &quot;.&quot; ) toplabel [ &quot;.&quot; ]
-      domainlabel   = alphanum | alphanum *( alphanum | &quot;-&quot; ) alphanum
-      toplabel      = alpha | alpha *( alphanum | &quot;-&quot; ) alphanum
-      IPv4address   = 1*digit &quot;.&quot; 1*digit &quot;.&quot; 1*digit &quot;.&quot; 1*digit
+      hostname      = *( domainlabel &#34;.&#34; ) toplabel [ &#34;.&#34; ]
+      domainlabel   = alphanum | alphanum *( alphanum | &#34;-&#34; ) alphanum
+      toplabel      = alpha | alpha *( alphanum | &#34;-&#34; ) alphanum
+      IPv4address   = 1*digit &#34;.&#34; 1*digit &#34;.&#34; 1*digit &#34;.&#34; 1*digit
       port          = *digit
 
       path          = [ abs_path | opaque_part ]
-      path_segments = segment *( &quot;/&quot; segment )
-      segment       = *pchar *( &quot;;&quot; param )
+      path_segments = segment *( &#34;/&#34; segment )
+      segment       = *pchar *( &#34;;&#34; param )
       param         = *pchar
       pchar         = unreserved | escaped |
-                      &quot;:&quot; | &quot;@&quot; | &quot;&amp;&quot; | &quot;=&quot; | &quot;+&quot; | &quot;$&quot; | &quot;,&quot;
+                      &#34;:&#34; | &#34;@&#34; | &#34;&amp;&#34; | &#34;=&#34; | &#34;+&#34; | &#34;$&#34; | &#34;,&#34;
 
       query         = *uric
 
       fragment      = *uric
       
       uric          = reserved | unreserved | escaped
-      reserved      = &quot;;&quot; | &quot;/&quot; | &quot;?&quot; | &quot;:&quot; | &quot;@&quot; | &quot;&amp;&quot; | &quot;=&quot; | &quot;+&quot; |
-                      &quot;$&quot; | &quot;,&quot;
+      reserved      = &#34;;&#34; | &#34;/&#34; | &#34;?&#34; | &#34;:&#34; | &#34;@&#34; | &#34;&amp;&#34; | &#34;=&#34; | &#34;+&#34; |
+                      &#34;$&#34; | &#34;,&#34;
       unreserved    = alphanum | mark
-      mark          = &quot;-&quot; | &quot;_&quot; | &quot;.&quot; | &quot;!&quot; | &quot;~&quot; | &quot;*&quot; | &quot;'&quot; |
-                      &quot;(&quot; | &quot;)&quot;
+      mark          = &#34;-&#34; | &#34;_&#34; | &#34;.&#34; | &#34;!&#34; | &#34;~&#34; | &#34;*&#34; | &#34;&#39;&#34; |
+                      &#34;(&#34; | &#34;)&#34;
 
-      escaped       = &quot;%&quot; hex hex
-      hex           = digit | &quot;A&quot; | &quot;B&quot; | &quot;C&quot; | &quot;D&quot; | &quot;E&quot; | &quot;F&quot; |
-                              &quot;a&quot; | &quot;b&quot; | &quot;c&quot; | &quot;d&quot; | &quot;e&quot; | &quot;f&quot;
+      escaped       = &#34;%&#34; hex hex
+      hex           = digit | &#34;A&#34; | &#34;B&#34; | &#34;C&#34; | &#34;D&#34; | &#34;E&#34; | &#34;F&#34; |
+                              &#34;a&#34; | &#34;b&#34; | &#34;c&#34; | &#34;d&#34; | &#34;e&#34; | &#34;f&#34;
 
       alphanum      = alpha | digit
       alpha         = lowalpha | upalpha
 
-      lowalpha = &quot;a&quot; | &quot;b&quot; | &quot;c&quot; | &quot;d&quot; | &quot;e&quot; | &quot;f&quot; | &quot;g&quot; | &quot;h&quot; | &quot;i&quot; |
-                 &quot;j&quot; | &quot;k&quot; | &quot;l&quot; | &quot;m&quot; | &quot;n&quot; | &quot;o&quot; | &quot;p&quot; | &quot;q&quot; | &quot;r&quot; |
-                 &quot;s&quot; | &quot;t&quot; | &quot;u&quot; | &quot;v&quot; | &quot;w&quot; | &quot;x&quot; | &quot;y&quot; | &quot;z&quot;
-      upalpha  = &quot;A&quot; | &quot;B&quot; | &quot;C&quot; | &quot;D&quot; | &quot;E&quot; | &quot;F&quot; | &quot;G&quot; | &quot;H&quot; | &quot;I&quot; |
-                 &quot;J&quot; | &quot;K&quot; | &quot;L&quot; | &quot;M&quot; | &quot;N&quot; | &quot;O&quot; | &quot;P&quot; | &quot;Q&quot; | &quot;R&quot; |
-                 &quot;S&quot; | &quot;T&quot; | &quot;U&quot; | &quot;V&quot; | &quot;W&quot; | &quot;X&quot; | &quot;Y&quot; | &quot;Z&quot;
-      digit    = &quot;0&quot; | &quot;1&quot; | &quot;2&quot; | &quot;3&quot; | &quot;4&quot; | &quot;5&quot; | &quot;6&quot; | &quot;7&quot; |
-                 &quot;8&quot; | &quot;9&quot;
-</code></pre><h2 id=参考>参考</h2>
-<p><a href=https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent>https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent</a></p>
-<p><a href=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI</a></p>
-<p><a href=https://qiita.com/aosho235/items/0581fc82f8ce2c5ac055>https://qiita.com/aosho235/items/0581fc82f8ce2c5ac055</a></p>
-<p><a href=https://tools.ietf.org/html/rfc2396>https://tools.ietf.org/html/rfc2396</a></p>
-</div>
-</article>
-<div class=blog-post-comments>
-<div id=cactus-comments-thread>
-<script>initComments({node:document.getElementById("cactus-comments-thread"),defaultHomeserverUrl:'https://matrix.cactus.chat:8448',serverName:'cactus.chat',siteName:"your_cactus_comments_sitename",commentSectionId:"/hugo-theme-cactus/posts/2019-11-10-encodeuricomponent/"})</script>
-</div>
-</div>
-<div id=footer-post-container>
-<div id=footer-post>
-<div id=nav-footer style=display:none>
-<ul>
-<li><a href=/hugo-theme-cactus/>Home</a></li>
-<li><a href=/hugo-theme-cactus/posts>Writings</a></li>
-<li><a href=/hugo-theme-cactus/tags>Tags</a></li>
-<li><a href=/hugo-theme-cactus/about>About</a></li>
-</ul>
-</div>
-<div id=toc-footer style=display:none>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#まとめ>まとめ</a></li>
-<li><a href=#rfc2396-appendix-a>rfc2396 appendix-A</a></li>
-<li><a href=#参考>参考</a></li>
-</ul>
-</nav>
-</div>
-<div id=share-footer style=display:none>
-<ul>
-<li>
-<a class=icon href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f" aria-label=Facebook>
-<i class="fab fa-facebook fa-lg" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="https://twitter.com/share?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f&text=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0" aria-label=Twitter>
-<i class="fab fa-twitter fa-lg" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f&title=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0" aria-label=Linkedin>
-<i class="fab fa-linkedin fa-lg" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f&is_video=false&description=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0" aria-label=Pinterest>
-<i class="fab fa-pinterest fa-lg" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="mailto:?subject=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0&body=Check out this article: https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f" aria-label=Email>
-<i class="fas fa-envelope fa-lg" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="https://getpocket.com/save?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f&title=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0" aria-label=Pocket>
-<i class="fab fa-get-pocket fa-lg" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="http://reddit.com/submit?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f&title=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0" aria-label=reddit>
-<i class="fab fa-reddit fa-lg" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f&name=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0&description=%e3%81%be%e3%81%a8%e3%82%81%20encodeURI%28%29%e3%81%a8encodeURIComponent%28%29%e3%81%afRFC%202396%e6%ba%96%e6%8b%a0%e3%81%a7%e3%81%82%e3%82%8b%e3%80%82%20encodeURI%28%29%20%e3%81%af%e5%ae%8c%e5%85%a8%e3%81%aa%20URI%20%e3%82%92%e8%a1%a8%e3%81%99%e3%81%ae%e3%81%ab%e5%bf%85%e8%a6%81%e3%81%aa%e6%96%87%e5%ad%97%20%28Reserved%20Characters%29%20%e3%81%af%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%89%e3%81%97%e3%81%be%e3%81%9b%e3%82%93%e3%80%82%20%e3%81%be%e3%81%9f%e3%80%81%e4%ba%88%e7%b4%84%e3%81%95%e3%82%8c%e3%81%a6%e3%81%84%e3%81%aa%e3%81%84%e3%81%8c%20%26ldquo%3b%e3%81%9d%e3%81%ae%e3%81%be%e3%81%be%26rdquo%3b%20URI%20%e3%81%ab%e4%bd%bf%e7%94%a8%e3%81%a7%e3%81%8d%e3%82%8b%28Unreserved%20Marks%29%20%e6%96%87%e5%ad%97%e3%82%92%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%89%e3%81%97%e3%81%be%e3%81%9b%e3%82%93%e3%80%82%20encodeURIComponent%28%29%20%e3%81%af%20%26ldquo%3bUnreserved%20Marks%26rdquo%3b%20%e6%96%87%e5%ad%97%e3%82%92%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%89%e3%81%97%e3%81%be%e3%81%9b%e3%82%93%e3%80%82%0a1var%20set1%20%3d%20%26%2334%3b%3b%2c%2f%3f%3a%40%26amp%3b%3d%2b%24%23%26%2334%3b%3b%20%2f%2f%20Reserved%20Characters%202var%20set2%20%3d%20%26%2334%3b-_.%21~%2a%26%2339%3b%28%29%26%2334%3b%3b%20%2f%2f%20Unreserved%20Marks%203%204console.log%28encodeURI%28set1%29%29%3b%20%2f%2f%20%3b%2c%2f%3f%3a%40%26amp%3b%3d%2b%24%205console.log%28encodeURI%28set2%29%29%3b%20%2f%2f%20-_.%21~%2a%26%2339%3b%28%29%206%207console.log%28encodeURIComponent%28set1%29%29%3b%20%2f%2f%20%253B%252C%252F%253F%253A%2540%2526%253D%252B%2524%208console.log%28encodeURIComponent%28set2%29%29%3b%20%2f%2f%20-_.%21~%2a%26%2339%3b%28%29%20rfc2396%20appendix-A%20https%3a%2f%2ftools.ietf.org%2fhtml%2frfc2396%23appendix-A%0aURI-reference%20%3d%20%5b%20absoluteURI%20%7c%20relativeURI%20%5d%20%5b%20%26quot%3b%23%26quot%3b%20fragment%20%5d%20absoluteURI%20%3d%20scheme%20%26quot%3b%3a%26quot%3b%20%28%20hier_part%20%7c%20opaque_part%20%29%20relativeURI%20%3d%20%28%20net_path%20%7c%20abs_path%20%7c%20rel_path%20%29%20%5b%20%26quot%3b%3f" aria-label=Tumblr>
-<i class="fab fa-tumblr fa-lg" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f&t=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0" aria-label="Hacker News">
-<i class="fab fa-hacker-news fa-lg" aria-hidden=true></i>
-</a>
-</li>
-</ul>
-</div>
-<div id=actions-footer>
-<a id=menu-toggle class=icon href=# onclick="return $('#nav-footer').toggle(),!1" aria-label=Menu>
-<i class="fas fa-bars fa-lg" aria-hidden=true></i> Menu</a>
-<a id=toc-toggle class=icon href=# onclick="return $('#toc-footer').toggle(),!1" aria-label=TOC>
-<i class="fas fa-list fa-lg" aria-hidden=true></i> TOC</a>
-<a id=share-toggle class=icon href=# onclick="return $('#share-footer').toggle(),!1" aria-label=Share>
-<i class="fas fa-share-alt fa-lg" aria-hidden=true></i> share</a>
-<a id=top style=display:none class=icon href=# onclick="$('html, body').animate({scrollTop:0},'fast')" aria-label="Top of Page">
-<i class="fas fa-chevron-up fa-lg" aria-hidden=true></i> Top</a>
-</div>
-</div>
-</div>
-<footer id=footer>
-<div class=footer-left>
-Copyright &copy; 2021 You
-</div>
-<div class=footer-right>
-<nav>
-<ul>
-<li><a href=/hugo-theme-cactus/>Home</a></li>
-<li><a href=/hugo-theme-cactus/posts>Writings</a></li>
-<li><a href=/hugo-theme-cactus/tags>Tags</a></li>
-<li><a href=/hugo-theme-cactus/about>About</a></li>
-</ul>
-</nav>
-</div>
-</footer>
-</div>
-</body>
-<link rel=stylesheet href=/hugo-theme-cactus/lib/font-awesome/css/all.min.css>
-<script src=/hugo-theme-cactus/lib/jquery/jquery.min.js></script>
-<script src=/hugo-theme-cactus/js/main.js></script>
-<script src=/hugo-theme-cactus/js/code-copy.js></script>
-</html>
+      lowalpha = &#34;a&#34; | &#34;b&#34; | &#34;c&#34; | &#34;d&#34; | &#34;e&#34; | &#34;f&#34; | &#34;g&#34; | &#34;h&#34; | &#34;i&#34; |
+                 &#34;j&#34; | &#34;k&#34; | &#34;l&#34; | &#34;m&#34; | &#34;n&#34; | &#34;o&#34; | &#34;p&#34; | &#34;q&#34; | &#34;r&#34; |
+                 &#34;s&#34; | &#34;t&#34; | &#34;u&#34; | &#34;v&#34; | &#34;w&#34; | &#34;x&#34; | &#34;y&#34; | &#34;z&#34;
+      upalpha  = &#34;A&#34; | &#34;B&#34; | &#34;C&#34; | &#34;D&#34; | &#34;E&#34; | &#34;F&#34; | &#34;G&#34; | &#34;H&#34; | &#34;I&#34; |
+                 &#34;J&#34; | &#34;K&#34; | &#34;L&#34; | &#34;M&#34; | &#34;N&#34; | &#34;O&#34; | &#34;P&#34; | &#34;Q&#34; | &#34;R&#34; |
+                 &#34;S&#34; | &#34;T&#34; | &#34;U&#34; | &#34;V&#34; | &#34;W&#34; | &#34;X&#34; | &#34;Y&#34; | &#34;Z&#34;
+      digit    = &#34;0&#34; | &#34;1&#34; | &#34;2&#34; | &#34;3&#34; | &#34;4&#34; | &#34;5&#34; | &#34;6&#34; | &#34;7&#34; |
+                 &#34;8&#34; | &#34;9&#34;
+</code></pre><h2 id=参考>参考</h2><p><a href=https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent>https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent</a></p><p><a href=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI>https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/encodeURI</a></p><p><a href=https://qiita.com/aosho235/items/0581fc82f8ce2c5ac055>https://qiita.com/aosho235/items/0581fc82f8ce2c5ac055</a></p><p><a href=https://tools.ietf.org/html/rfc2396>https://tools.ietf.org/html/rfc2396</a></p></div></article><div class=blog-post-comments><div id=cactus-comments-thread><script>initComments({node:document.getElementById("cactus-comments-thread"),defaultHomeserverUrl:"https://matrix.cactus.chat:8448",serverName:"cactus.chat",siteName:"your_cactus_comments_sitename",commentSectionId:"/hugo-theme-cactus/posts/2019-11-10-encodeuricomponent/"})</script></div></div><div id=footer-post-container><div id=footer-post><div id=nav-footer style=display:none><ul><li><a href=/hugo-theme-cactus/>Home</a></li><li><a href=/hugo-theme-cactus/posts>Writings</a></li><li><a href=/hugo-theme-cactus/tags>Tags</a></li><li><a href=/hugo-theme-cactus/about>About</a></li></ul></div><div id=toc-footer style=display:none><nav id=TableOfContents><ul><li><a href=#まとめ>まとめ</a></li><li><a href=#rfc2396-appendix-a>rfc2396 appendix-A</a></li><li><a href=#参考>参考</a></li></ul></nav></div><div id=share-footer style=display:none><ul><li><a class=icon href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f" aria-label=Facebook><i class="fab fa-facebook fa-lg" aria-hidden=true></i></a></li><li><a class=icon href="https://twitter.com/share?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f&text=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0" aria-label=Twitter><i class="fab fa-twitter fa-lg" aria-hidden=true></i></a></li><li><a class=icon href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f&title=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0" aria-label=Linkedin><i class="fab fa-linkedin fa-lg" aria-hidden=true></i></a></li><li><a class=icon href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f&is_video=false&description=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0" aria-label=Pinterest><i class="fab fa-pinterest fa-lg" aria-hidden=true></i></a></li><li><a class=icon href="mailto:?subject=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0&body=Check out this article: https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f" aria-label=Email><i class="fas fa-envelope fa-lg" aria-hidden=true></i></a></li><li><a class=icon href="https://getpocket.com/save?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f&title=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0" aria-label=Pocket><i class="fab fa-get-pocket fa-lg" aria-hidden=true></i></a></li><li><a class=icon href="http://reddit.com/submit?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f&title=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0" aria-label=reddit><i class="fab fa-reddit fa-lg" aria-hidden=true></i></a></li><li><a class=icon href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f&name=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0&description=%e3%81%be%e3%81%a8%e3%82%81%20encodeURI%28%29%e3%81%a8encodeURIComponent%28%29%e3%81%afRFC%202396%e6%ba%96%e6%8b%a0%e3%81%a7%e3%81%82%e3%82%8b%e3%80%82%20encodeURI%28%29%20%e3%81%af%e5%ae%8c%e5%85%a8%e3%81%aa%20URI%20%e3%82%92%e8%a1%a8%e3%81%99%e3%81%ae%e3%81%ab%e5%bf%85%e8%a6%81%e3%81%aa%e6%96%87%e5%ad%97%20%28Reserved%20Characters%29%20%e3%81%af%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%89%e3%81%97%e3%81%be%e3%81%9b%e3%82%93%e3%80%82%20%e3%81%be%e3%81%9f%e3%80%81%e4%ba%88%e7%b4%84%e3%81%95%e3%82%8c%e3%81%a6%e3%81%84%e3%81%aa%e3%81%84%e3%81%8c%20%26ldquo%3b%e3%81%9d%e3%81%ae%e3%81%be%e3%81%be%26rdquo%3b%20URI%20%e3%81%ab%e4%bd%bf%e7%94%a8%e3%81%a7%e3%81%8d%e3%82%8b%28Unreserved%20Marks%29%20%e6%96%87%e5%ad%97%e3%82%92%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%89%e3%81%97%e3%81%be%e3%81%9b%e3%82%93%e3%80%82%20encodeURIComponent%28%29%20%e3%81%af%20%26ldquo%3bUnreserved%20Marks%26rdquo%3b%20%e6%96%87%e5%ad%97%e3%82%92%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%89%e3%81%97%e3%81%be%e3%81%9b%e3%82%93%e3%80%82%0a1var%20set1%20%3d%20%26%2334%3b%3b%2c%2f%3f%3a%40%26amp%3b%3d%2b%24%23%26%2334%3b%3b%20%2f%2f%20Reserved%20Characters%202var%20set2%20%3d%20%26%2334%3b-_.%21~%2a%26%2339%3b%28%29%26%2334%3b%3b%20%2f%2f%20Unreserved%20Marks%203%204console.log%28encodeURI%28set1%29%29%3b%20%2f%2f%20%3b%2c%2f%3f%3a%40%26amp%3b%3d%2b%24%205console.log%28encodeURI%28set2%29%29%3b%20%2f%2f%20-_.%21~%2a%26%2339%3b%28%29%206%207console.log%28encodeURIComponent%28set1%29%29%3b%20%2f%2f%20%253B%252C%252F%253F%253A%2540%2526%253D%252B%2524%208console.log%28encodeURIComponent%28set2%29%29%3b%20%2f%2f%20-_.%21~%2a%26%2339%3b%28%29%20rfc2396%20appendix-A%20https%3a%2f%2ftools.ietf.org%2fhtml%2frfc2396%23appendix-A%0aURI-reference%20%3d%20%5b%20absoluteURI%20%7c%20relativeURI%20%5d%20%5b%20%26%2334%3b%23%26%2334%3b%20fragment%20%5d%20absoluteURI%20%3d%20scheme%20%26%2334%3b%3a%26%2334%3b%20%28%20hier_part%20%7c%20opaque_part%20%29%20relativeURI%20%3d%20%28%20net_path%20%7c%20abs_path%20%7c%20rel_path%20%29%20%5b%20%26%2334%3b%3f" aria-label=Tumblr><i class="fab fa-tumblr fa-lg" aria-hidden=true></i></a></li><li><a class=icon href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-11-10-encodeuricomponent%2f&t=JavaScript%20URI%20%e3%82%a8%e3%83%b3%e3%82%b3%e3%83%bc%e3%83%87%e3%82%a3%e3%83%b3%e3%82%b0" aria-label="Hacker News"><i class="fab fa-hacker-news fa-lg" aria-hidden=true></i></a></li></ul></div><div id=actions-footer><a id=menu-toggle class=icon href=# onclick='return $("#nav-footer").toggle(),!1' aria-label=Menu><i class="fas fa-bars fa-lg" aria-hidden=true></i> Menu</a>
+<a id=toc-toggle class=icon href=# onclick='return $("#toc-footer").toggle(),!1' aria-label=TOC><i class="fas fa-list fa-lg" aria-hidden=true></i> TOC</a>
+<a id=share-toggle class=icon href=# onclick='return $("#share-footer").toggle(),!1' aria-label=Share><i class="fas fa-share-alt fa-lg" aria-hidden=true></i> share</a>
+<a id=top style=display:none class=icon href=# onclick='$("html, body").animate({scrollTop:0},"fast")' aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg" aria-hidden=true></i> Top</a></div></div></div><footer id=footer><div class=footer-left>Copyright &copy; 2024 You</div><div class=footer-right><nav><ul><li><a href=/hugo-theme-cactus/>Home</a></li><li><a href=/hugo-theme-cactus/posts>Writings</a></li><li><a href=/hugo-theme-cactus/tags>Tags</a></li><li><a href=/hugo-theme-cactus/about>About</a></li></ul></nav></div></footer></div></body><link rel=stylesheet href=/lib/font-awesome/css/all.min.css><script src=/lib/jquery/jquery.min.js></script><script src=/js/main.js></script><script src=/hugo-theme-cactus/js/code-copy.js></script></html>

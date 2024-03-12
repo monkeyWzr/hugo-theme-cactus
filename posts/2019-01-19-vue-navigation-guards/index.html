@@ -1,359 +1,78 @@
-<!doctype html><html lang=en-us>
-<head>
-<link rel=preload href=/hugo-theme-cactus/lib/font-awesome/webfonts/fa-brands-400.woff2 as=font type=font/woff2 crossorigin=anonymous>
-<link rel=preload href=/hugo-theme-cactus/lib/font-awesome/webfonts/fa-regular-400.woff2 as=font type=font/woff2 crossorigin=anonymous>
-<link rel=preload href=/hugo-theme-cactus/lib/font-awesome/webfonts/fa-solid-900.woff2 as=font type=font/woff2 crossorigin=anonymous>
-<link rel=preload href=/hugo-theme-cactus/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2 as=font type=font/woff2 crossorigin=anonymous>
-<script type=text/javascript src=https://latest.cactus.chat/cactus.js></script>
-<link rel=stylesheet href=https://latest.cactus.chat/style.css type=text/css>
-<meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge">
-<title> VueのNavigation Guards | Cactus theme example</title>
-<link rel=canonical href=https://www.takuzen.me/hugo-theme-cactus/posts/2019-01-19-vue-navigation-guards/>
-<meta name=description content="Hugo is a general-purpose website framework. Technically speaking, Hugo is a static site generator. Unlike systems that dynamically build a page with each visitor request, Hugo builds pages when you create or update your content. Since websites are viewed far more often than they are edited, Hugo is designed to provide an optimal viewing experience for your website’s end users and an ideal writing experience for website authors.">
-<meta name=viewport content="width=device-width,initial-scale=1">
-<meta name=robots content="all,follow">
-<meta name=googlebot content="index,follow,snippet,archive">
-<meta property="og:title" content="VueのNavigation Guards">
-<meta property="og:description" content="Navigation guards are provided by vue-router. Three ways to hook:
- globally per-route in-component  NOTE:
- Params or query changes won&rsquo;t trigger enter/leave navigation guards. You can either watch the $route object to react to those changes, or use the beforeRouteUpdate in-component guard. Make sure to always call the next function, otherwise the hook will never be resolved.  Global 1const router = new VueRouter({ ... }) 2 3// Before Guards 4router.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://www.takuzen.me/hugo-theme-cactus/posts/2019-01-19-vue-navigation-guards/"><meta property="article:section" content="posts">
-<meta property="article:published_time" content="2019-01-25T09:00:00+00:00">
-<meta property="article:modified_time" content="2019-01-25T09:00:00+00:00">
-<meta name=twitter:card content="summary">
-<meta name=twitter:title content="VueのNavigation Guards">
-<meta name=twitter:description content="Navigation guards are provided by vue-router. Three ways to hook:
- globally per-route in-component  NOTE:
- Params or query changes won&rsquo;t trigger enter/leave navigation guards. You can either watch the $route object to react to those changes, or use the beforeRouteUpdate in-component guard. Make sure to always call the next function, otherwise the hook will never be resolved.  Global 1const router = new VueRouter({ ... }) 2 3// Before Guards 4router.">
-<link rel=stylesheet href=https://www.takuzen.me/hugo-theme-cactus/css/styles.94f653e9e151e28067a7c5dbbc4600cbd5a3c721e79faaf971e523c40f3b249b8e4f20bb57810dfffa8d559ca5c140fd56eb4cd9c0853113ad08e66afdb08bdd.css integrity="sha512-lPZT6eFR4oBnp8XbvEYAy9WjxyHnn6r5ceUjxA87JJuOTyC7V4EN//qNVZylwUD9VutM2cCFMROtCOZq/bCL3Q=="><!--[if lt IE 9]><script src=https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js></script>
-<script src=https://oss.maxcdn.com/respond/1.4.2/respond.min.js></script><![endif]-->
-<link rel=icon type=image/png href=https://www.takuzen.me/hugo-theme-cactus/images/favicon.ico>
-</head>
-<body class="max-width mx-auto px3 ltr">
-<div class="content index py4">
-<div id=header-post>
-<a id=menu-icon href=#><i class="fas fa-bars fa-lg"></i></a>
+<!doctype html><html lang=en-us><head><link rel=preload href=/hugo-theme-cactus/lib/font-awesome/webfonts/fa-brands-400.woff2 as=font type=font/woff2 crossorigin=anonymous><link rel=preload href=/hugo-theme-cactus/lib/font-awesome/webfonts/fa-regular-400.woff2 as=font type=font/woff2 crossorigin=anonymous><link rel=preload href=/hugo-theme-cactus/lib/font-awesome/webfonts/fa-solid-900.woff2 as=font type=font/woff2 crossorigin=anonymous><link rel=preload href=/hugo-theme-cactus/lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2 as=font type=font/woff2 crossorigin=anonymous><script type=text/javascript src=https://latest.cactus.chat/cactus.js></script><link rel=stylesheet href=https://latest.cactus.chat/style.css type=text/css><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><title>VueのNavigation Guards | Cactus theme example</title>
+<link rel=canonical href=https://www.takuzen.me/hugo-theme-cactus/posts/2019-01-19-vue-navigation-guards/><meta name=description content="Hugo is a general-purpose website framework. Technically speaking, Hugo is a static site generator. Unlike systems that dynamically build a page with each visitor request, Hugo builds pages when you create or update your content. Since websites are viewed far more often than they are edited, Hugo is designed to provide an optimal viewing experience for your website’s end users and an ideal writing experience for website authors."><meta name=viewport content="width=device-width,initial-scale=1"><meta name=robots content="all,follow"><meta name=googlebot content="index,follow,snippet,archive"><meta property="og:title" content="VueのNavigation Guards"><meta property="og:description" content="Navigation guards are provided by vue-router. Three ways to hook:
+globally per-route in-component NOTE:
+Params or query changes won&rsquo;t trigger enter/leave navigation guards. You can either watch the $route object to react to those changes, or use the beforeRouteUpdate in-component guard. Make sure to always call the next function, otherwise the hook will never be resolved. Global 1const router = new VueRouter({ ... }) 2 3// Before Guards 4router.beforeEach((to, from, next) => { 5 // ."><meta property="og:type" content="article"><meta property="og:url" content="https://www.takuzen.me/hugo-theme-cactus/posts/2019-01-19-vue-navigation-guards/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2019-01-25T09:00:00+00:00"><meta property="article:modified_time" content="2019-01-25T09:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="VueのNavigation Guards"><meta name=twitter:description content="Navigation guards are provided by vue-router. Three ways to hook:
+globally per-route in-component NOTE:
+Params or query changes won&rsquo;t trigger enter/leave navigation guards. You can either watch the $route object to react to those changes, or use the beforeRouteUpdate in-component guard. Make sure to always call the next function, otherwise the hook will never be resolved. Global 1const router = new VueRouter({ ... }) 2 3// Before Guards 4router.beforeEach((to, from, next) => { 5 // ."><link rel=stylesheet href=https://www.takuzen.me/hugo-theme-cactus/css/styles.94f653e9e151e28067a7c5dbbc4600cbd5a3c721e79faaf971e523c40f3b249b8e4f20bb57810dfffa8d559ca5c140fd56eb4cd9c0853113ad08e66afdb08bdd.css integrity="sha512-lPZT6eFR4oBnp8XbvEYAy9WjxyHnn6r5ceUjxA87JJuOTyC7V4EN//qNVZylwUD9VutM2cCFMROtCOZq/bCL3Q=="><!--[if lt IE 9]><script src=https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js></script><script src=https://oss.maxcdn.com/respond/1.4.2/respond.min.js></script><![endif]--><link rel=icon type=image/png href=https://www.takuzen.me/hugo-theme-cactus/images/favicon.ico></head><body class="max-width mx-auto px3 ltr"><div class="content index py4"><div id=header-post><a id=menu-icon href=#><i class="fas fa-bars fa-lg"></i></a>
 <a id=menu-icon-tablet href=#><i class="fas fa-bars fa-lg"></i></a>
-<a id=top-icon-tablet href=# onclick="$('html, body').animate({scrollTop:0},'fast')" style=display:none aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
-<span id=menu>
-<span id=nav>
-<ul>
-<li><a href=/hugo-theme-cactus/>Home</a></li>
-<li><a href=/hugo-theme-cactus/posts>Writings</a></li>
-<li><a href=/hugo-theme-cactus/tags>Tags</a></li>
-<li><a href=/hugo-theme-cactus/about>About</a></li>
-</ul>
-</span>
-<br>
-<span id=actions>
-<ul>
-<li>
-<a class=icon href=https://www.takuzen.me/hugo-theme-cactus/posts/2019-01-18-es6/ aria-label=Previous>
-<i class="fas fa-chevron-left" aria-hidden=true onmouseover="$('#i-prev').toggle()" onmouseout="$('#i-prev').toggle()"></i>
-</a>
-</li>
-<li>
-<a class=icon href=https://www.takuzen.me/hugo-theme-cactus/posts/2019-03-08-object-assign-with-accessor-descriptor/ aria-label=Next>
-<i class="fas fa-chevron-right" aria-hidden=true onmouseover="$('#i-next').toggle()" onmouseout="$('#i-next').toggle()"></i>
-</a>
-</li>
-<li>
-<a class=icon href=# onclick="$('html, body').animate({scrollTop:0},'fast')" aria-label="Top of Page">
-<i class="fas fa-chevron-up" aria-hidden=true onmouseover="$('#i-top').toggle()" onmouseout="$('#i-top').toggle()"></i>
-</a>
-</li>
-<li>
-<a class=icon href=# aria-label=Share>
-<i class="fas fa-share-alt" aria-hidden=true onmouseover="$('#i-share').toggle()" onmouseout="$('#i-share').toggle()" onclick="return $('#share').toggle(),!1"></i>
-</a>
-</li>
-</ul>
-<span id=i-prev class=info style=display:none>Previous post</span>
+<a id=top-icon-tablet href=# onclick='$("html, body").animate({scrollTop:0},"fast")' style=display:none aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg"></i></a>
+<span id=menu><span id=nav><ul><li><a href=/hugo-theme-cactus/>Home</a></li><li><a href=/hugo-theme-cactus/posts>Writings</a></li><li><a href=/hugo-theme-cactus/tags>Tags</a></li><li><a href=/hugo-theme-cactus/about>About</a></li></ul></span><br><span id=actions><ul><li><a class=icon href=https://www.takuzen.me/hugo-theme-cactus/posts/2019-01-18-es6/ aria-label=Previous><i class="fas fa-chevron-left" aria-hidden=true onmouseover='$("#i-prev").toggle()' onmouseout='$("#i-prev").toggle()'></i></a></li><li><a class=icon href=https://www.takuzen.me/hugo-theme-cactus/posts/2019-03-08-object-assign-with-accessor-descriptor/ aria-label=Next><i class="fas fa-chevron-right" aria-hidden=true onmouseover='$("#i-next").toggle()' onmouseout='$("#i-next").toggle()'></i></a></li><li><a class=icon href=# onclick='$("html, body").animate({scrollTop:0},"fast")' aria-label="Top of Page"><i class="fas fa-chevron-up" aria-hidden=true onmouseover='$("#i-top").toggle()' onmouseout='$("#i-top").toggle()'></i></a></li><li><a class=icon href=# aria-label=Share><i class="fas fa-share-alt" aria-hidden=true onmouseover='$("#i-share").toggle()' onmouseout='$("#i-share").toggle()' onclick='return $("#share").toggle(),!1'></i></a></li></ul><span id=i-prev class=info style=display:none>Previous post</span>
 <span id=i-next class=info style=display:none>Next post</span>
 <span id=i-top class=info style=display:none>Back to top</span>
-<span id=i-share class=info style=display:none>Share post</span>
-</span>
-<br>
-<div id=share style=display:none>
-<ul>
-<li>
-<a class=icon href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f" aria-label=Facebook>
-<i class="fab fa-facebook" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="https://twitter.com/share?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f&text=Vue%e3%81%aeNavigation%20Guards" aria-label=Twitter>
-<i class="fab fa-twitter" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f&title=Vue%e3%81%aeNavigation%20Guards" aria-label=Linkedin>
-<i class="fab fa-linkedin" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f&is_video=false&description=Vue%e3%81%aeNavigation%20Guards" aria-label=Pinterest>
-<i class="fab fa-pinterest" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="mailto:?subject=Vue%e3%81%aeNavigation%20Guards&body=Check out this article: https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f" aria-label=Email>
-<i class="fas fa-envelope" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="https://getpocket.com/save?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f&title=Vue%e3%81%aeNavigation%20Guards" aria-label=Pocket>
-<i class="fab fa-get-pocket" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="http://reddit.com/submit?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f&title=Vue%e3%81%aeNavigation%20Guards" aria-label=reddit>
-<i class="fab fa-reddit" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f&name=Vue%e3%81%aeNavigation%20Guards&description=Navigation%20guards%20are%20provided%20by%20vue-router.%20Three%20ways%20to%20hook%3a%0a%20globally%20per-route%20in-component%20%20NOTE%3a%0a%20Params%20or%20query%20changes%20won%26rsquo%3bt%20trigger%20enter%2fleave%20navigation%20guards.%20You%20can%20either%20watch%20the%20%24route%20object%20to%20react%20to%20those%20changes%2c%20or%20use%20the%20beforeRouteUpdate%20in-component%20guard.%20Make%20sure%20to%20always%20call%20the%20next%20function%2c%20otherwise%20the%20hook%20will%20never%20be%20resolved.%20%20Global%201const%20router%20%3d%20new%20VueRouter%28%7b%20...%20%7d%29%202%203%2f%2f%20Before%20Guards%204router." aria-label=Tumblr>
-<i class="fab fa-tumblr" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f&t=Vue%e3%81%aeNavigation%20Guards" aria-label="Hacker News">
-<i class="fab fa-hacker-news" aria-hidden=true></i>
-</a>
-</li>
-</ul>
-</div>
-<div id=toc>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#global>Global</a></li>
-<li><a href=#pre-reoute>Pre-reoute</a></li>
-<li><a href=#in-component>In-component</a></li>
-<li><a href=#resolve-flow>Resolve flow</a></li>
-</ul>
-</nav>
-</div>
-</span>
-</div>
-<article class=post itemscope itemtype=http://schema.org/BlogPosting>
-<header>
-<h1 class=posttitle itemprop="name headline">
-VueのNavigation Guards
-</h1>
-<div class=meta>
-<div class=postdate>
-<time datetime="2019-01-25 09:00:00 +0000 UTC" itemprop=datePublished>2019-01-25</time>
-</div>
-<div class=article-read-time>
-<i class="far fa-clock"></i>
-2 minute read
-</div>
-<div class=article-tag>
-<i class="fas fa-tag"></i>
-<a class=tag-link href=/hugo-theme-cactus/tags/javascript rel=tag>JavaScript</a>
+<span id=i-share class=info style=display:none>Share post</span></span><br><div id=share style=display:none><ul><li><a class=icon href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f" aria-label=Facebook><i class="fab fa-facebook" aria-hidden=true></i></a></li><li><a class=icon href="https://twitter.com/share?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f&text=Vue%e3%81%aeNavigation%20Guards" aria-label=Twitter><i class="fab fa-twitter" aria-hidden=true></i></a></li><li><a class=icon href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f&title=Vue%e3%81%aeNavigation%20Guards" aria-label=Linkedin><i class="fab fa-linkedin" aria-hidden=true></i></a></li><li><a class=icon href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f&is_video=false&description=Vue%e3%81%aeNavigation%20Guards" aria-label=Pinterest><i class="fab fa-pinterest" aria-hidden=true></i></a></li><li><a class=icon href="mailto:?subject=Vue%e3%81%aeNavigation%20Guards&body=Check out this article: https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f" aria-label=Email><i class="fas fa-envelope" aria-hidden=true></i></a></li><li><a class=icon href="https://getpocket.com/save?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f&title=Vue%e3%81%aeNavigation%20Guards" aria-label=Pocket><i class="fab fa-get-pocket" aria-hidden=true></i></a></li><li><a class=icon href="http://reddit.com/submit?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f&title=Vue%e3%81%aeNavigation%20Guards" aria-label=reddit><i class="fab fa-reddit" aria-hidden=true></i></a></li><li><a class=icon href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f&name=Vue%e3%81%aeNavigation%20Guards&description=Navigation%20guards%20are%20provided%20by%20vue-router.%20Three%20ways%20to%20hook%3a%0aglobally%20per-route%20in-component%20NOTE%3a%0aParams%20or%20query%20changes%20won%26rsquo%3bt%20trigger%20enter%2fleave%20navigation%20guards.%20You%20can%20either%20watch%20the%20%24route%20object%20to%20react%20to%20those%20changes%2c%20or%20use%20the%20beforeRouteUpdate%20in-component%20guard.%20Make%20sure%20to%20always%20call%20the%20next%20function%2c%20otherwise%20the%20hook%20will%20never%20be%20resolved.%20Global%201const%20router%20%3d%20new%20VueRouter%28%7b%20...%20%7d%29%202%203%2f%2f%20Before%20Guards%204router.beforeEach%28%28to%2c%20from%2c%20next%29%20%3d%26gt%3b%20%7b%205%20%2f%2f%20." aria-label=Tumblr><i class="fab fa-tumblr" aria-hidden=true></i></a></li><li><a class=icon href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f&t=Vue%e3%81%aeNavigation%20Guards" aria-label="Hacker News"><i class="fab fa-hacker-news" aria-hidden=true></i></a></li></ul></div><div id=toc><nav id=TableOfContents><ul><li><a href=#global>Global</a></li><li><a href=#pre-reoute>Pre-reoute</a></li><li><a href=#in-component>In-component</a></li><li><a href=#resolve-flow>Resolve flow</a></li></ul></nav></div></span></div><article class=post itemscope itemtype=http://schema.org/BlogPosting><header><h1 class=posttitle itemprop="name headline">VueのNavigation Guards</h1><div class=meta><div class=postdate><time datetime="2019-01-25 09:00:00 +0000 UTC" itemprop=datePublished>2019-01-25</time></div><div class=article-read-time><i class="far fa-clock"></i>
+2 minute read</div><div class=article-tag><i class="fas fa-tag"></i>
+<a class=tag-link href=/tags/javascript rel=tag>JavaScript</a>
 ,
-<a class=tag-link href=/hugo-theme-cactus/tags/vue.js rel=tag>Vue.js</a>
-</div>
-</div>
-</header>
-<div class=content itemprop=articleBody>
-<p>Navigation guards are provided by <code>vue-router</code>.
-Three ways to hook:</p>
-<ul>
-<li>globally</li>
-<li>per-route</li>
-<li>in-component</li>
-</ul>
-<p><strong>NOTE:</strong></p>
-<ol>
-<li>Params or query changes won&rsquo;t trigger enter/leave navigation guards. You can either watch the <code>$route</code> object to react to those changes, or use the <code>beforeRouteUpdate</code> in-component guard.</li>
-<li>Make sure to always call the next function, otherwise the hook will never be resolved.</li>
-</ol>
-<h2 id=global>Global</h2>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Javascript data-lang=Javascript><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1</span><span style=color:#ff79c6>const</span> router <span style=color:#ff79c6>=</span> <span style=color:#ff79c6>new</span> VueRouter({ ... })
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3</span><span style=color:#6272a4>// Before Guards
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4</span><span style=color:#6272a4></span>router.beforeEach((to, from, next) =&gt; {
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5</span>  <span style=color:#6272a4>// ...
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6</span><span style=color:#6272a4></span>})
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8</span><span style=color:#6272a4>// Resolve Guards
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9</span><span style=color:#6272a4>// beforeResolve guards will be called right before the navigation is confirmed
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10</span><span style=color:#6272a4>// after all in-component guards and async route components are resolved
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11</span><span style=color:#6272a4></span>router.beforeResolve((to, from, next) =&gt; {
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12</span>  <span style=color:#6272a4>// ...
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13</span><span style=color:#6272a4></span>})
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14</span>
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15</span><span style=color:#6272a4>// After Hooks
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16</span><span style=color:#6272a4></span>router.afterEach((to, from) =&gt; {
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17</span>  <span style=color:#6272a4>// ...
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">18</span><span style=color:#6272a4></span>})
-</code></pre></div><h2 id=pre-reoute>Pre-reoute</h2>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Javascript data-lang=Javascript><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1</span><span style=color:#ff79c6>const</span> router <span style=color:#ff79c6>=</span> <span style=color:#ff79c6>new</span> VueRouter({
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2</span>  routes<span style=color:#ff79c6>:</span> [
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3</span>    {
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4</span>      path<span style=color:#ff79c6>:</span> <span style=color:#f1fa8c>&#39;/foo&#39;</span>,
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5</span>      component<span style=color:#ff79c6>:</span> Foo,
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6</span>      beforeEnter<span style=color:#ff79c6>:</span> (to, from, next) =&gt; {
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7</span>        <span style=color:#6272a4>// ...
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8</span><span style=color:#6272a4></span>      }
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9</span>    }
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10</span>  ]
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11</span>})
-</code></pre></div><h2 id=in-component>In-component</h2>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Javascript data-lang=Javascript><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1</span><span style=color:#ff79c6>const</span> Foo <span style=color:#ff79c6>=</span> {
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2</span>  template<span style=color:#ff79c6>:</span> <span style=color:#f1fa8c>`...`</span>,
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3</span>  beforeRouteEnter (to, from, next) {
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4</span>    <span style=color:#6272a4>// called before the route that renders this component is confirmed.
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5</span><span style=color:#6272a4></span>    <span style=color:#6272a4>// does NOT have access to `this` component instance,
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6</span><span style=color:#6272a4></span>    <span style=color:#6272a4>// because it has not been created yet when this guard is called!
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7</span><span style=color:#6272a4></span>    <span style=color:#6272a4>// However, you can access the instance by passing a callback to next. 
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8</span><span style=color:#6272a4></span>    <span style=color:#6272a4>// The callback will be called when the navigation is confirmed
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9</span><span style=color:#6272a4></span>    <span style=color:#6272a4>// and the component instance will be passed to the callback as the argument
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">10</span><span style=color:#6272a4></span>    beforeRouteEnter (to, from, next) {
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">11</span>      next(vm =&gt; {
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">12</span>        <span style=color:#6272a4>// access to component instance via `vm`
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">13</span><span style=color:#6272a4></span>      })
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">14</span>    }
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">15</span>  },
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">16</span>  beforeRouteUpdate (to, from, next) {
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">17</span>    <span style=color:#6272a4>// called when the route that renders this component has changed,
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">18</span><span style=color:#6272a4></span>    <span style=color:#6272a4>// but this component is reused in the new route.
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">19</span><span style=color:#6272a4></span>    <span style=color:#6272a4>// For example, for a route with dynamic params `/foo/:id`, when we
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">20</span><span style=color:#6272a4></span>    <span style=color:#6272a4>// navigate between `/foo/1` and `/foo/2`, the same `Foo` component instance
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">21</span><span style=color:#6272a4></span>    <span style=color:#6272a4>// will be reused, and this hook will be called when that happens.
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">22</span><span style=color:#6272a4></span>    <span style=color:#6272a4>// has access to `this` component instance.
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">23</span><span style=color:#6272a4></span>  },
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">24</span>  beforeRouteLeave (to, from, next) {
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">25</span>    <span style=color:#6272a4>// called when the route that renders this component is about to
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">26</span><span style=color:#6272a4></span>    <span style=color:#6272a4>// be navigated away from.
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">27</span><span style=color:#6272a4></span>    <span style=color:#6272a4>// has access to `this` component instance.
-</span><span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">28</span><span style=color:#6272a4></span>  }
-<span style="margin-right:.4em;padding:0 .4em;color:#7f7f7f">29</span>}
-</code></pre></div><h2 id=resolve-flow>Resolve flow</h2>
-<ul>
-<li>Navigation triggered.</li>
-<li>Call leave guards in deactivated components.</li>
-<li>Call global beforeEach guards.</li>
-<li>Call beforeRouteUpdate guards in reused components.</li>
-<li>Call beforeEnter in route configs.</li>
-<li>Resolve async route components.</li>
-<li>Call beforeRouteEnter in activated components.</li>
-<li>Call global beforeResolve guards.</li>
-<li>Navigation confirmed.</li>
-<li>Call global afterEach hooks.</li>
-<li>DOM updates triggered.</li>
-<li>Call callbacks passed to next in beforeRouteEnter guards with instantiated instances.</li>
-</ul>
-</div>
-</article>
-<div class=blog-post-comments>
-<div id=cactus-comments-thread>
-<script>initComments({node:document.getElementById("cactus-comments-thread"),defaultHomeserverUrl:'https://matrix.cactus.chat:8448',serverName:'cactus.chat',siteName:"your_cactus_comments_sitename",commentSectionId:"/hugo-theme-cactus/posts/2019-01-19-vue-navigation-guards/"})</script>
-</div>
-</div>
-<div id=footer-post-container>
-<div id=footer-post>
-<div id=nav-footer style=display:none>
-<ul>
-<li><a href=/hugo-theme-cactus/>Home</a></li>
-<li><a href=/hugo-theme-cactus/posts>Writings</a></li>
-<li><a href=/hugo-theme-cactus/tags>Tags</a></li>
-<li><a href=/hugo-theme-cactus/about>About</a></li>
-</ul>
-</div>
-<div id=toc-footer style=display:none>
-<nav id=TableOfContents>
-<ul>
-<li><a href=#global>Global</a></li>
-<li><a href=#pre-reoute>Pre-reoute</a></li>
-<li><a href=#in-component>In-component</a></li>
-<li><a href=#resolve-flow>Resolve flow</a></li>
-</ul>
-</nav>
-</div>
-<div id=share-footer style=display:none>
-<ul>
-<li>
-<a class=icon href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f" aria-label=Facebook>
-<i class="fab fa-facebook fa-lg" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="https://twitter.com/share?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f&text=Vue%e3%81%aeNavigation%20Guards" aria-label=Twitter>
-<i class="fab fa-twitter fa-lg" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f&title=Vue%e3%81%aeNavigation%20Guards" aria-label=Linkedin>
-<i class="fab fa-linkedin fa-lg" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f&is_video=false&description=Vue%e3%81%aeNavigation%20Guards" aria-label=Pinterest>
-<i class="fab fa-pinterest fa-lg" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="mailto:?subject=Vue%e3%81%aeNavigation%20Guards&body=Check out this article: https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f" aria-label=Email>
-<i class="fas fa-envelope fa-lg" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="https://getpocket.com/save?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f&title=Vue%e3%81%aeNavigation%20Guards" aria-label=Pocket>
-<i class="fab fa-get-pocket fa-lg" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="http://reddit.com/submit?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f&title=Vue%e3%81%aeNavigation%20Guards" aria-label=reddit>
-<i class="fab fa-reddit fa-lg" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f&name=Vue%e3%81%aeNavigation%20Guards&description=Navigation%20guards%20are%20provided%20by%20vue-router.%20Three%20ways%20to%20hook%3a%0a%20globally%20per-route%20in-component%20%20NOTE%3a%0a%20Params%20or%20query%20changes%20won%26rsquo%3bt%20trigger%20enter%2fleave%20navigation%20guards.%20You%20can%20either%20watch%20the%20%24route%20object%20to%20react%20to%20those%20changes%2c%20or%20use%20the%20beforeRouteUpdate%20in-component%20guard.%20Make%20sure%20to%20always%20call%20the%20next%20function%2c%20otherwise%20the%20hook%20will%20never%20be%20resolved.%20%20Global%201const%20router%20%3d%20new%20VueRouter%28%7b%20...%20%7d%29%202%203%2f%2f%20Before%20Guards%204router." aria-label=Tumblr>
-<i class="fab fa-tumblr fa-lg" aria-hidden=true></i>
-</a>
-</li>
-<li>
-<a class=icon href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f&t=Vue%e3%81%aeNavigation%20Guards" aria-label="Hacker News">
-<i class="fab fa-hacker-news fa-lg" aria-hidden=true></i>
-</a>
-</li>
-</ul>
-</div>
-<div id=actions-footer>
-<a id=menu-toggle class=icon href=# onclick="return $('#nav-footer').toggle(),!1" aria-label=Menu>
-<i class="fas fa-bars fa-lg" aria-hidden=true></i> Menu</a>
-<a id=toc-toggle class=icon href=# onclick="return $('#toc-footer').toggle(),!1" aria-label=TOC>
-<i class="fas fa-list fa-lg" aria-hidden=true></i> TOC</a>
-<a id=share-toggle class=icon href=# onclick="return $('#share-footer').toggle(),!1" aria-label=Share>
-<i class="fas fa-share-alt fa-lg" aria-hidden=true></i> share</a>
-<a id=top style=display:none class=icon href=# onclick="$('html, body').animate({scrollTop:0},'fast')" aria-label="Top of Page">
-<i class="fas fa-chevron-up fa-lg" aria-hidden=true></i> Top</a>
-</div>
-</div>
-</div>
-<footer id=footer>
-<div class=footer-left>
-Copyright &copy; 2021 You
-</div>
-<div class=footer-right>
-<nav>
-<ul>
-<li><a href=/hugo-theme-cactus/>Home</a></li>
-<li><a href=/hugo-theme-cactus/posts>Writings</a></li>
-<li><a href=/hugo-theme-cactus/tags>Tags</a></li>
-<li><a href=/hugo-theme-cactus/about>About</a></li>
-</ul>
-</nav>
-</div>
-</footer>
-</div>
-</body>
-<link rel=stylesheet href=/hugo-theme-cactus/lib/font-awesome/css/all.min.css>
-<script src=/hugo-theme-cactus/lib/jquery/jquery.min.js></script>
-<script src=/hugo-theme-cactus/js/main.js></script>
-<script src=/hugo-theme-cactus/js/code-copy.js></script>
-</html>
+<a class=tag-link href=/tags/vue.js rel=tag>Vue.js</a></div></div></header><div class=content itemprop=articleBody><p>Navigation guards are provided by <code>vue-router</code>.
+Three ways to hook:</p><ul><li>globally</li><li>per-route</li><li>in-component</li></ul><p><strong>NOTE:</strong></p><ol><li>Params or query changes won&rsquo;t trigger enter/leave navigation guards. You can either watch the <code>$route</code> object to react to those changes, or use the <code>beforeRouteUpdate</code> in-component guard.</li><li>Make sure to always call the next function, otherwise the hook will never be resolved.</li></ol><h2 id=global>Global</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Javascript data-lang=Javascript><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1</span><span><span style=color:#ff79c6>const</span> router <span style=color:#ff79c6>=</span> <span style=color:#ff79c6>new</span> VueRouter({ ... })
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2</span><span>
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3</span><span><span style=color:#6272a4>// Before Guards
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4</span><span><span style=color:#6272a4></span>router.beforeEach((to, from, next) =&gt; {
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5</span><span>  <span style=color:#6272a4>// ...
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6</span><span><span style=color:#6272a4></span>})
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7</span><span>
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8</span><span><span style=color:#6272a4>// Resolve Guards
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9</span><span><span style=color:#6272a4>// beforeResolve guards will be called right before the navigation is confirmed
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10</span><span><span style=color:#6272a4>// after all in-component guards and async route components are resolved
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11</span><span><span style=color:#6272a4></span>router.beforeResolve((to, from, next) =&gt; {
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12</span><span>  <span style=color:#6272a4>// ...
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13</span><span><span style=color:#6272a4></span>})
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14</span><span>
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15</span><span><span style=color:#6272a4>// After Hooks
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16</span><span><span style=color:#6272a4></span>router.afterEach((to, from) =&gt; {
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17</span><span>  <span style=color:#6272a4>// ...
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18</span><span><span style=color:#6272a4></span>})
+</span></span></code></pre></div><h2 id=pre-reoute>Pre-reoute</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Javascript data-lang=Javascript><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1</span><span><span style=color:#ff79c6>const</span> router <span style=color:#ff79c6>=</span> <span style=color:#ff79c6>new</span> VueRouter({
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2</span><span>  routes<span style=color:#ff79c6>:</span> [
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3</span><span>    {
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4</span><span>      path<span style=color:#ff79c6>:</span> <span style=color:#f1fa8c>&#39;/foo&#39;</span>,
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5</span><span>      component<span style=color:#ff79c6>:</span> Foo,
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6</span><span>      beforeEnter<span style=color:#ff79c6>:</span> (to, from, next) =&gt; {
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7</span><span>        <span style=color:#6272a4>// ...
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8</span><span><span style=color:#6272a4></span>      }
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9</span><span>    }
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10</span><span>  ]
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11</span><span>})
+</span></span></code></pre></div><h2 id=in-component>In-component</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Javascript data-lang=Javascript><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 1</span><span><span style=color:#ff79c6>const</span> Foo <span style=color:#ff79c6>=</span> {
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 2</span><span>  template<span style=color:#ff79c6>:</span> <span style=color:#f1fa8c>`...`</span>,
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 3</span><span>  beforeRouteEnter (to, from, next) {
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 4</span><span>    <span style=color:#6272a4>// called before the route that renders this component is confirmed.
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 5</span><span><span style=color:#6272a4></span>    <span style=color:#6272a4>// does NOT have access to `this` component instance,
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 6</span><span><span style=color:#6272a4></span>    <span style=color:#6272a4>// because it has not been created yet when this guard is called!
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 7</span><span><span style=color:#6272a4></span>    <span style=color:#6272a4>// However, you can access the instance by passing a callback to next. 
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 8</span><span><span style=color:#6272a4></span>    <span style=color:#6272a4>// The callback will be called when the navigation is confirmed
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f"> 9</span><span><span style=color:#6272a4></span>    <span style=color:#6272a4>// and the component instance will be passed to the callback as the argument
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">10</span><span><span style=color:#6272a4></span>    beforeRouteEnter (to, from, next) {
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">11</span><span>      next(vm =&gt; {
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">12</span><span>        <span style=color:#6272a4>// access to component instance via `vm`
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">13</span><span><span style=color:#6272a4></span>      })
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">14</span><span>    }
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">15</span><span>  },
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">16</span><span>  beforeRouteUpdate (to, from, next) {
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">17</span><span>    <span style=color:#6272a4>// called when the route that renders this component has changed,
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">18</span><span><span style=color:#6272a4></span>    <span style=color:#6272a4>// but this component is reused in the new route.
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">19</span><span><span style=color:#6272a4></span>    <span style=color:#6272a4>// For example, for a route with dynamic params `/foo/:id`, when we
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">20</span><span><span style=color:#6272a4></span>    <span style=color:#6272a4>// navigate between `/foo/1` and `/foo/2`, the same `Foo` component instance
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">21</span><span><span style=color:#6272a4></span>    <span style=color:#6272a4>// will be reused, and this hook will be called when that happens.
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">22</span><span><span style=color:#6272a4></span>    <span style=color:#6272a4>// has access to `this` component instance.
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">23</span><span><span style=color:#6272a4></span>  },
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">24</span><span>  beforeRouteLeave (to, from, next) {
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">25</span><span>    <span style=color:#6272a4>// called when the route that renders this component is about to
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">26</span><span><span style=color:#6272a4></span>    <span style=color:#6272a4>// be navigated away from.
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">27</span><span><span style=color:#6272a4></span>    <span style=color:#6272a4>// has access to `this` component instance.
+</span></span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">28</span><span><span style=color:#6272a4></span>  }
+</span></span><span style=display:flex><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:.4em;padding:0 .4em;color:#7f7f7f">29</span><span>}
+</span></span></code></pre></div><h2 id=resolve-flow>Resolve flow</h2><ul><li>Navigation triggered.</li><li>Call leave guards in deactivated components.</li><li>Call global beforeEach guards.</li><li>Call beforeRouteUpdate guards in reused components.</li><li>Call beforeEnter in route configs.</li><li>Resolve async route components.</li><li>Call beforeRouteEnter in activated components.</li><li>Call global beforeResolve guards.</li><li>Navigation confirmed.</li><li>Call global afterEach hooks.</li><li>DOM updates triggered.</li><li>Call callbacks passed to next in beforeRouteEnter guards with instantiated instances.</li></ul></div></article><div class=blog-post-comments><div id=cactus-comments-thread><script>initComments({node:document.getElementById("cactus-comments-thread"),defaultHomeserverUrl:"https://matrix.cactus.chat:8448",serverName:"cactus.chat",siteName:"your_cactus_comments_sitename",commentSectionId:"/hugo-theme-cactus/posts/2019-01-19-vue-navigation-guards/"})</script></div></div><div id=footer-post-container><div id=footer-post><div id=nav-footer style=display:none><ul><li><a href=/hugo-theme-cactus/>Home</a></li><li><a href=/hugo-theme-cactus/posts>Writings</a></li><li><a href=/hugo-theme-cactus/tags>Tags</a></li><li><a href=/hugo-theme-cactus/about>About</a></li></ul></div><div id=toc-footer style=display:none><nav id=TableOfContents><ul><li><a href=#global>Global</a></li><li><a href=#pre-reoute>Pre-reoute</a></li><li><a href=#in-component>In-component</a></li><li><a href=#resolve-flow>Resolve flow</a></li></ul></nav></div><div id=share-footer style=display:none><ul><li><a class=icon href="http://www.facebook.com/sharer.php?u=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f" aria-label=Facebook><i class="fab fa-facebook fa-lg" aria-hidden=true></i></a></li><li><a class=icon href="https://twitter.com/share?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f&text=Vue%e3%81%aeNavigation%20Guards" aria-label=Twitter><i class="fab fa-twitter fa-lg" aria-hidden=true></i></a></li><li><a class=icon href="http://www.linkedin.com/shareArticle?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f&title=Vue%e3%81%aeNavigation%20Guards" aria-label=Linkedin><i class="fab fa-linkedin fa-lg" aria-hidden=true></i></a></li><li><a class=icon href="https://pinterest.com/pin/create/bookmarklet/?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f&is_video=false&description=Vue%e3%81%aeNavigation%20Guards" aria-label=Pinterest><i class="fab fa-pinterest fa-lg" aria-hidden=true></i></a></li><li><a class=icon href="mailto:?subject=Vue%e3%81%aeNavigation%20Guards&body=Check out this article: https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f" aria-label=Email><i class="fas fa-envelope fa-lg" aria-hidden=true></i></a></li><li><a class=icon href="https://getpocket.com/save?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f&title=Vue%e3%81%aeNavigation%20Guards" aria-label=Pocket><i class="fab fa-get-pocket fa-lg" aria-hidden=true></i></a></li><li><a class=icon href="http://reddit.com/submit?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f&title=Vue%e3%81%aeNavigation%20Guards" aria-label=reddit><i class="fab fa-reddit fa-lg" aria-hidden=true></i></a></li><li><a class=icon href="http://www.tumblr.com/share/link?url=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f&name=Vue%e3%81%aeNavigation%20Guards&description=Navigation%20guards%20are%20provided%20by%20vue-router.%20Three%20ways%20to%20hook%3a%0aglobally%20per-route%20in-component%20NOTE%3a%0aParams%20or%20query%20changes%20won%26rsquo%3bt%20trigger%20enter%2fleave%20navigation%20guards.%20You%20can%20either%20watch%20the%20%24route%20object%20to%20react%20to%20those%20changes%2c%20or%20use%20the%20beforeRouteUpdate%20in-component%20guard.%20Make%20sure%20to%20always%20call%20the%20next%20function%2c%20otherwise%20the%20hook%20will%20never%20be%20resolved.%20Global%201const%20router%20%3d%20new%20VueRouter%28%7b%20...%20%7d%29%202%203%2f%2f%20Before%20Guards%204router.beforeEach%28%28to%2c%20from%2c%20next%29%20%3d%26gt%3b%20%7b%205%20%2f%2f%20." aria-label=Tumblr><i class="fab fa-tumblr fa-lg" aria-hidden=true></i></a></li><li><a class=icon href="https://news.ycombinator.com/submitlink?u=https%3a%2f%2fwww.takuzen.me%2fhugo-theme-cactus%2fposts%2f2019-01-19-vue-navigation-guards%2f&t=Vue%e3%81%aeNavigation%20Guards" aria-label="Hacker News"><i class="fab fa-hacker-news fa-lg" aria-hidden=true></i></a></li></ul></div><div id=actions-footer><a id=menu-toggle class=icon href=# onclick='return $("#nav-footer").toggle(),!1' aria-label=Menu><i class="fas fa-bars fa-lg" aria-hidden=true></i> Menu</a>
+<a id=toc-toggle class=icon href=# onclick='return $("#toc-footer").toggle(),!1' aria-label=TOC><i class="fas fa-list fa-lg" aria-hidden=true></i> TOC</a>
+<a id=share-toggle class=icon href=# onclick='return $("#share-footer").toggle(),!1' aria-label=Share><i class="fas fa-share-alt fa-lg" aria-hidden=true></i> share</a>
+<a id=top style=display:none class=icon href=# onclick='$("html, body").animate({scrollTop:0},"fast")' aria-label="Top of Page"><i class="fas fa-chevron-up fa-lg" aria-hidden=true></i> Top</a></div></div></div><footer id=footer><div class=footer-left>Copyright &copy; 2024 You</div><div class=footer-right><nav><ul><li><a href=/hugo-theme-cactus/>Home</a></li><li><a href=/hugo-theme-cactus/posts>Writings</a></li><li><a href=/hugo-theme-cactus/tags>Tags</a></li><li><a href=/hugo-theme-cactus/about>About</a></li></ul></nav></div></footer></div></body><link rel=stylesheet href=/lib/font-awesome/css/all.min.css><script src=/lib/jquery/jquery.min.js></script><script src=/js/main.js></script><script src=/hugo-theme-cactus/js/code-copy.js></script></html>
