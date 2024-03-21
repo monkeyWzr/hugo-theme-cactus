@@ -12,12 +12,13 @@
         {{ .Title }}
       </h1>
       <div class="meta">
-        {{ if (or (isset .Site "author") (isset .Site "title"))}}
+        {{ printf "%#v" $.Site.Title }}
+        {{ if (or (.Site.Author) (.Site.Title))}}
         <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <span itemprop="name">
-            {{ if isset .Site "author" }}
+            {{ if .Site.Author }}
               {{ .Site.Author }}
-            {{ else if isset .Site "title" }}
+            {{ else if .Site.Title }}
               {{ .Site.Title }}
             {{ end }}
           </span>
@@ -27,7 +28,7 @@
           {{ $dataFormat := .Site.Params.dateFormat | default "2006-01-02" }}
           <time datetime="{{ .Date }}" itemprop="datePublished">{{ .Date.Format $dataFormat }}</time>
           {{ if (and .Site.Params.show_updated (ne .Lastmod .Date)) }}
-            (Updated: <time datetime="{{ .Lastmod }}" itemprop="dateModified">{{ .Lastmod.Format $dataFormat }}</time>)
+          (Updated: <time datetime="{{ .Lastmod }}" itemprop="dateModified">{{ .Lastmod.Format $dataFormat }}</time>)
           {{ end }}
         </div>
         {{ $showReadTime := .Site.Params.showReadTime | default false }}
@@ -40,20 +41,20 @@
         {{ end }}
         {{ if gt .Params.categories 0 }}
         <div class="article-category">
-            <i class="fas fa-archive"></i>
-            {{ range $index, $value := .Params.categories }}
-            {{ if gt $index 0 }} {{ print ", " }} {{ end }}
-            <a class="category-link" href="{{ "/categories/" | relLangURL }}{{ $value | urlize }}">{{ $value }}</a>
-            {{ end }}
+          <i class="fas fa-archive"></i>
+          {{ range $index, $value := .Params.categories }}
+          {{ if gt $index 0 }} {{ print ", " }} {{ end }}
+          <a class="category-link" href="{{ "/categories/" | relLangURL }}{{ $value | urlize }}">{{ $value }}</a>
+          {{ end }}
         </div>
         {{ end }}
         {{ if gt .Params.tags 0 }}
         <div class="article-tag">
-            <i class="fas fa-tag"></i>
-            {{ range $index, $value := .Params.tags }}
-            {{ if gt $index 0 }} {{ print ", " }} {{ end }}
-            <a class="tag-link" href="{{ "/tags/" | relLangURL }}{{ $value | urlize }}" rel="tag">{{ $value }}</a>
-            {{ end }}
+          <i class="fas fa-tag"></i>
+          {{ range $index, $value := .Params.tags }}
+          {{ if gt $index 0 }} {{ print ", " }} {{ end }}
+          <a class="tag-link" href="{{ "/tags/" | relLangURL }}{{ $value | urlize }}" rel="tag">{{ $value }}</a>
+          {{ end }}
         </div>
         {{ end }}
       </div>
